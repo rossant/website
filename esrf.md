@@ -44,7 +44,7 @@ With transformations, we allow visual objects to be organized in different coord
 
 ## Modular shaders
 
-Offering the possibility to write and organize modular shaders is one of the main challenges of the project. GLSL is a pretty low-level language, describing how *vertices* and *fragments* (i.e. pixels) are processed on the massively parallel GPU architecture. Shaders can become quite complex in real-world use cases. Yet, there are many reoccuring patterns in shaders. By allowing users to design shaders from compact building blocks, we drastically simplify the task of creating complex extendable visuals (DRY principle). We also need these features internally for the transforms.
+Offering the possibility to write and organize modular shaders is one of the main challenges of the project. GLSL is a pretty low-level language, describing how *vertices* and *fragments* (i.e. pixels) are processed on the massively parallel GPU architecture. Shaders can become quite complex in real-world use cases. Yet, there are many recurring patterns in shaders. By allowing users to design shaders from compact building blocks, we drastically simplify the task of creating complex extendable visuals (DRY principle). We also need these features internally for the transforms.
 
 Luke came up with a pretty amazing modular system that seems to encompass all our use cases. The amount of programming wizardry involved is quite stunning. Nicolas pointed out that we were basically creating a new language on top of GLSL along with a dynamic compiler to GLSL. Although many details remain to be worked out, I think we have here a brilliant system that will prove vastly useful for the whole project.
 
@@ -105,7 +105,7 @@ I presented a few demos implementing out-of-memory visualization of HDF5 files w
 
 The code camp was also the occasion for some of the participants to implement demos in modern OpenGL, using our object-oriented interface vispy.gloo.
 
-Gaël Goret implemented an interactive 3D viewer of molecules with vispy.gloo. This viewer is extremely efficient: Nicolas suggested to use true impostors. This smart technique consists in using a tiny number of vertices (or even one) per molecule, instead of rendering spheres with complex meshes. Realistic 3D rendering is achieved with a ray-casting algorithm implemented in the fragment shader. Be sure to [check out the demo here](https://github.com/vispy/codecamp-esrf-2014/tree/master/gg).
+Gaël Goret implemented an interactive 3D viewer of molecules with vispy.gloo. This viewer is extremely efficient: Nicolas suggested to use [true impostors](http://http.developer.nvidia.com/GPUGems3/gpugems3_ch21.html). This smart technique consists in using a tiny number of vertices (or even one) per molecule, instead of rendering spheres with complex meshes. Realistic 3D rendering is achieved with a ray-casting algorithm implemented in the fragment shader. Be sure to [check out the demo here](https://github.com/vispy/codecamp-esrf-2014/tree/master/gg).
 
 ## Wrap-up
 
