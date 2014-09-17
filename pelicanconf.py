@@ -5,7 +5,10 @@ from __future__ import unicode_literals
 
 ###############################################################################
 
+RELATIVE_URLS = True
+SITEURL = ''
 PATH = 'content'
+THEME = 'themes/pure'
 STATIC_PATHS = ['images', 'pdfs']
 DEFAULT_CATEGORY = ''
 DISPLAY_CATEGORIES_ON_MENU = False
@@ -27,9 +30,11 @@ TWITTER_USERNAME = 'cyrillerossant'
 MENUITEMS = [('Home', '/'),
              ('Projects', '/projects/'),
              ('Books', '/books/'),
-             ('CV', '/cv/'),
+             ('About', '/about/'),
             ]
-
+DATE_FORMATS = {
+    'en': '%d/%m/%Y',
+}
 
 ###############################################################################
 
@@ -38,7 +43,6 @@ MENUITEMS = [('Home', '/'),
 
 AUTHOR = 'Cyrille Rossant'
 SITENAME = 'Cyrille Rossant'
-SITEURL = ''
 
 PATH = 'content'
 
@@ -58,17 +62,7 @@ LINKS = ()
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 1
-
-
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
-
-
-
-
-
-
+DEFAULT_PAGINATION = 10
 
 
 
