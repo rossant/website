@@ -206,7 +206,7 @@ h1 {
     font-size: 2.25em;
     margin: 0 0 .1em 0;
     padding: 0 0 .25em 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #aaa;
 }
 
 
@@ -237,12 +237,58 @@ h3 {
 }
 
 
+/****** PAGINATION ******/
+.pagination-wrapper {
+    text-transform: lowercase;
+    color: #777;
+    padding: 6px 0 0em 0;
+    /*border-bottom: 1px solid #eee;*/
+    /*font-size: 100%;*/
+    /*font-weight: 500;*/
+    /*letter-spacing: 0.1em;*/
+}
+.pagination-left, .pagination-right {
+    position: absolute;
+    top: 0;
+}
+.pagination {
+    font-size: .8em;
+    text-align: center;
+    position: relative;
+    margin: 2em 4em -2em 4em;
+    /*max-width: 100%;*/
+}
+.pagination-left {
+    left: 0;
+    text-align: left;
+}
+.pagination-right {
+    right: 0;
+    text-align: right;
+}
+
+
 
 /****** FOOTER ******/
 #footer {
     text-align: center;
-    margin: 4em 0 0 0;
-    padding: 2em 0;
     font-size: 75%;
+    color: #777;
 }
 
+#footer .l-box {
+    margin: 4em 0 1em 0;
+    padding: .25em 5em 1em 0;
+}
+
+#footer .l-box > div {
+    padding: .5em 0;
+    margin: 0;
+    border-top: 1px solid #ddd;
+}
+
+
+#footer .l-box p {
+    margin: 0;
+    padding: 0;
+}
