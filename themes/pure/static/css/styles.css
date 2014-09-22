@@ -57,6 +57,9 @@ a:hover {
     background-color: inherit;
     border: 0;
 }
+#menu a {
+    text-transform: lowercase;
+}
 #social a  {
     margin-right: 0em;
     font-size: 1.59em;
@@ -157,6 +160,13 @@ a:hover {
     padding: 0;
     font-size: 1em;
     text-align: right;
+    text-transform: lowercase;
+}
+
+#content .sub-header {
+    margin: -1.25em 0 0 0;
+    font-size: .9em;
+    color: #777;
 }
 
 #content .l-box {
@@ -165,7 +175,6 @@ a:hover {
 }
 
 #post {
-    /*text-align: justify;*/
 }
 
 code {
@@ -196,7 +205,6 @@ h3 {
 
 /****** FOOTER ******/
 #footer {
-    /*background: #ddd;*/
     text-align: center;
     padding: 2em 0;
     font-size: 75%;

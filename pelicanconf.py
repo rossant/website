@@ -31,7 +31,7 @@ TWITTER_USERNAME = 'cyrillerossant'
 MENUITEMS = [('Home', '/'),
              ('Projects', '/projects/'),
              ('Books', '/books/'),
-             ('About', '/about/'),
+             ('Resume', '/resume/'),
             ]
 DATE_FORMATS = {
     'en': '%Y-%m-%d',
