@@ -145,12 +145,6 @@ a:hover {
     margin: 0;
 }
 
-#content header h1 {
-    margin: 0 0 .1em 0;
-    padding: 0 0 .25em 0;
-    border-bottom: 1px solid black;
-}
-
 #content header {
     margin: 0 0 2em 0;
 }
@@ -162,13 +156,6 @@ a:hover {
     text-align: right;
     text-transform: lowercase;
 }
-
-#content .sub-header {
-    margin: -1.25em 0 0 0;
-    font-size: .9em;
-    color: #777;
-}
-
 #content .l-box {
     margin: 0;
     padding: 0 5em 0 0;
@@ -182,23 +169,56 @@ code {
     padding: 0 .2em;
 }
 
+.book-cover {
+}
+.book-cover img {
+    width: 180px;
+}
+.book-descr h3 {
+    margin: 0 0 1em 0;
+}
+.book-descr .sub-header-3 ul {
+    margin: 0;
+}
 
 
 /****** HEADERS ******/
 h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
 }
+
 h1 {
     font-size: 2.25em;
+    margin: 0 0 .1em 0;
+    padding: 0 0 .25em 0;
+    border-bottom: 1px solid black;
 }
+
+
 h2 {
-    margin: 1.75em 0 1em 0;
-    text-align: right;
+    color: #333;
     font-size: 1.75em;
+    margin: 1.75em 0 1em 0;
+    padding: 0 0 .25em 0;
+    border-bottom: 1px solid #ddd;
 }
+#content .sub-header-2 {
+    text-align: right;
+    margin: -1.75em 0 0 0;
+    font-size: .9em;
+    color: #555;
+}
+
+
 h3 {
     margin: 1.75em 0 .2em 0;
     font-size: 1.3em;
+    color: #666;
+}
+#content .sub-header-3 {
+    margin: -1.25em 0 0 0;
+    font-size: .9em;
+    color: #888;
 }
 
 
@@ -206,6 +226,7 @@ h3 {
 /****** FOOTER ******/
 #footer {
     text-align: center;
+    margin: 4em 0 0 0;
     padding: 2em 0;
     font-size: 75%;
 }
