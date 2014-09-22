@@ -56,11 +56,15 @@ html, button, input, select, textarea,
 
 
 /****** SIDEBAR ******/
-#sidebar {
-    /*background: #ddd;*/
-    padding: 0em;
+
+#sidebar .l-box {
+    margin: 0;
+    padding: 0;
 }
 
+
+#sidebar .portrait {
+}
 #sidebar .portrait img {
     width: 8em;
     height: 8em;
@@ -69,6 +73,7 @@ html, button, input, select, textarea,
 #sidebar .contact {
     font-size: 75%;
     color: #888;
+    width: auto;
 }
 .e-mail:before {
     content: attr(data-website) "\0040" attr(data-user);
@@ -77,15 +82,32 @@ html, button, input, select, textarea,
 }
 
 
+#sidebar .tags {
+    margin: 1em 0 2em 0;
+}
 
 
+#sidebar .books {
+    margin: 1em 0 1em 0;
+}
+#sidebar .books h3 {
+    margin: .5em 0 .5em 0;
+}
+#sidebar .books div {
+    float: left;
+    margin: .5em 1em .5em 0;
+}
+#sidebar .books img {
+    height: 120px;
+}
 
-/****** FOOTER ******/
-#footer {
-    /*background: #ddd;*/
-    text-align: center;
-    padding: 2em 0;
-    font-size: 75%;
+#sidebar .search {
+    margin: 12em 0 1em 0;
+    padding: 0;
+}
+#sidebar .gsc-control-cse, #sidebar .gsc-search-box {
+    padding: 0;
+    border: 0;
 }
 
 
@@ -103,9 +125,21 @@ html, button, input, select, textarea,
 
 #content .l-box {
     margin: 0;
-    padding: 0 3em 0 0;
+    padding: 0 5em 0 0;
 }
 
 #post {
     /*text-align: justify;*/
 }
+
+
+
+
+/****** FOOTER ******/
+#footer {
+    /*background: #ddd;*/
+    text-align: center;
+    padding: 2em 0;
+    font-size: 75%;
+}
+

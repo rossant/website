@@ -1,10 +1,37 @@
-<div class="portrait"><img src="/theme/images/cr.jpg" /></div>
-<div class="name">Cyrille Rossant</div>
-<div class="contact"><span class="e-mail" data-user="tnassor.elliryc" data-website="moc.liamg"></span></div>
-<div class="sub-name">data scientist | software engineer</div>
-<div class="tags">
+<section>
+	<div class="portrait"><img src="/theme/images/cr.jpg" /></div>
+	<div class="name">Cyrille Rossant</div>
+	<div class="contact"><span class="e-mail" data-user="tnassor.elliryc" data-website="moc.liamg"></span></div>
+	<div class="sub-name">data scientist | software engineer</div>
+</section>
+
+<section class="tags">
 {% for tag in ['neuroinformatics', 'python', 'dataviz', 
                'opendata', 'hpc'] %}
-    <span class="tag">#{{ tag }}</span>
+    <span class="tag"><a href="/tags/{{ tag }}">#{{ tag }}</a></span>
 {% endfor %}
-</div>
+</section>
+
+
+<section class="books">
+	<header><h3>Books</h3></header>
+	<div><a href="/books#minibook"><img src="/theme/images/minibook.jpg"/></a></div>
+	<div><a href="/books#cookbook"><img src="/theme/images/cookbook.jpg"/></a></div>
+</section>
+
+
+<section class="search">
+	<script>
+  (function() {
+    var cx = '006027474294305969173:cpp1rvft78s';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</section>
