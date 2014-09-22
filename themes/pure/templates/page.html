@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page.title|striptags }} // {{ super() }}{% endblock title %}
+
+{% block content %}
+
+    <header id="page-header">
+        <h1>{{ page.title }}</h1>
+            <!--<p class="post-meta">
+                // under {% for tag in article.tags %}
+                    <a class="post-category" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+                {% endfor %}
+            </p>-->
+    </header>
+
+    <section id="page">
+        {{ page.content }}
+    </section>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+
+/*
+When setting the primary font stack, apply it to the Pure grid units along
+with `html`, `button`, `input`, `select`, and `textarea`. Pure Grids use
+specific font stacks to ensure the greatest OS/browser compatibility.
+*/
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+    /* Set your content font stack here: */
+    font-family: "Lato", sans-serif;
+}
+
+
+#layout {
+    padding: 0 2em;
+}
+#menu {
+    /*background: #ddd;*/
+    margin: 3em 0 3em 0;
+    padding: 0;
+}
+#menu ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+#menu li {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    text-align: left;
+}
+#menu a {
+    padding: .5em .5em .5em 0em;
+    margin: 0 1.5em 0 0;
+}
+#menu li a:hover {
+    color: #000;
+    background-color: inherit;
+}
+
+#sidebar {
+    /*background: #ddd;*/
+    padding: 0em;
+}
+
+#sidebar .portrait img {
+    width: 6em;
+    height: 6em;
+}
+
+#sidebar .contact {
+    font-size: 75%;
+    color: #888;
+}
+.e-mail:before {
+    content: attr(data-website) "\0040" attr(data-user);
+    unicode-bidi: bidi-override;
+    direction: rtl;
+}
+
+#layout {
+    max-width: 960px;
+    margin: 0 auto;
+    /* padding: 1em; */
+}
+
+#footer {
+    /*background: #ddd;*/
+    text-align: center;
+    padding: 2em 0;
+    font-size: 75%;
+}
+
+
+#content {
+    padding: 0;
+    margin: 0;
+}
+
+#content header h1 {
+    margin: 0;
+}
+
+#content .l-box {
+    margin: 0;
+    padding: 0 3em 0 0;
+}
+
+#post {
+    /*text-align: justify;*/
+}
