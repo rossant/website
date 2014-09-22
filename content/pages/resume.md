@@ -5,28 +5,28 @@ Here is a resume of my current and past professional activities.
 ## Professional experience
 
 ### Analysis of large-scale electrophysiological data
-<div class="sub-header-3">2012&ndash;present</div>
+<div class="sub-header-3">2012&ndash;present (postdoc)</div>
 
 * Cortical Processing Laboratory (Kenneth D. Harris)
 * University College London, UK
 
 
 ### Correlations in neural coding
-<div class="sub-header-3">2009&ndash;2012</div>
+<div class="sub-header-3">2009&ndash;2012 (PhD)</div>
 
 * Cognitive Studies Department (Romain Brette)
 * Ecole Normale Supérieure, FR
 
 
 ### Statistical data analysis of retinal spiking data
-<div class="sub-header-3">2008 (six months)</div>
+<div class="sub-header-3">2008 (six months research internship)</div>
 
 * Molecular Biology Department (Michael Berry)
 * Princeton University, USA
 
 
 ### Data analysis of human locomotor trajectories
-<div class="sub-header-3">2007 (two months)</div>
+<div class="sub-header-3">2007 (two months research internship)</div>
 
 * Laboratory of Action and Perception Physiology (Alain Berthoz)
 * Collège de France, FR
