@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 ###############################################################################
 
 RELATIVE_URLS = True
+LOCALE = 'en_US.utf8'
 SITEURL = ''
 PATH = 'content'
 THEME = 'themes/pure'
@@ -33,7 +34,7 @@ MENUITEMS = [('Home', '/'),
              ('About', '/about/'),
             ]
 DATE_FORMATS = {
-    'en': '%d/%m/%Y',
+    'en': '%Y-%m-%d',
 }
 
 ###############################################################################
