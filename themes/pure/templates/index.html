@@ -1,21 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="posts">
+    <section id="posts">
+
+        <header id="posts-header">
+            <h1>{{ SITENAME }}</h1>
+        </header>
+
         {% for article in articles_page.object_list %}
-            {# Include's latex math only if an article in the index has it present #}
-            {% if article and article.latex and latex is not defined %}
-                {% set latex = True %}
-                {{ article.latex }}
-            {% endif %}
             <section class="post">
                 <header class="post-header">
                     <h3><a class="post-title" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
-                    <p class="post-meta">{{ article.locale_date }}</p>
-                    <p class="post-meta">{{ article.summary }}</p>
+                    <p class="sub-header-3">{{ article.locale_date }}</p>
+                    <p class="post-summary">{{ article.summary }}</p>
                 </header>
             </section>
         {% endfor %}
+
         {% include 'pagination.html' %}
-    </div>
+    </section>
 {% endblock content %}

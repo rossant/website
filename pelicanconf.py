@@ -3,8 +3,8 @@
 from __future__ import unicode_literals
 
 
-###############################################################################
-
+AUTHOR = 'Cyrille Rossant'
+SITENAME = "Cyrille Rossant's blog"
 RELATIVE_URLS = True
 LOCALE = 'en_US.utf8'
 SITEURL = ''
@@ -16,6 +16,7 @@ DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU  = False
 DEFAULT_DATE = 'fs'
 FILENAME_METADATA = '(?P<date>\d{4}-\d{2}-\d{2})-(?P<slug>.*)'
+DEFAULT_PAGINATION = 3
 
 ARTICLE_URL = '{slug}/'
 ARTICLE_SAVE_AS = '{slug}/index.html'
@@ -37,33 +38,12 @@ DATE_FORMATS = {
     'en': '%Y-%m-%d',
 }
 
-###############################################################################
-
-
-
-
-AUTHOR = 'Cyrille Rossant'
-SITENAME = 'Cyrille Rossant'
 
 PATH = 'content'
-
 TIMEZONE = 'Europe/Paris'
-
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
-
-# Blogroll
-LINKS = ()
-
-# Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
-
-DEFAULT_PAGINATION = 10
-
-
-

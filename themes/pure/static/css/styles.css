@@ -189,6 +189,14 @@ code {
 }
 
 
+/****** POSTS HEADER ******/
+#posts .post .post-header h3 {
+    margin: 1.75em 0 .2em 0;
+}
+#posts .post .post-header h3 a {
+}
+
+
 /****** HEADERS ******/
 h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
@@ -223,7 +231,7 @@ h3 {
     color: #666;
 }
 #content .sub-header-3 {
-    margin: -1.25em 0 0 0;
+    margin: -.3em 0 0 0;
     font-size: .9em;
     color: #888;
 }

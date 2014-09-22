@@ -5,6 +5,7 @@ Here is a resume of my current and past professional activities.
 ## Professional experience
 
 ### Analysis of large-scale electrophysiological data
+
 <div class="sub-header-3">2012&ndash;present (postdoc)</div>
 
 * Cortical Processing Laboratory (Kenneth D. Harris)
@@ -14,6 +15,7 @@ I'm developing algorithms and software for analyzing large volumes of electrophy
 
 
 ### Correlations in neural coding
+
 <div class="sub-header-3">2009&ndash;2012 (PhD)</div>
 
 * Cognitive Studies Department (Romain Brette)
@@ -23,6 +25,7 @@ I've developed programs for analyzing intracellular recordings with the help of 
 
 
 ### Statistical data analysis of retinal spiking data
+
 <div class="sub-header-3">2008 (six-months research internship)</div>
 
 * Molecular Biology Department (Michael Berry)
@@ -32,6 +35,7 @@ I've developed a mathematical framework for analyzing and modeling the multineur
 
 
 ### Data analysis of human locomotor trajectories
+
 <div class="sub-header-3">2007 (two-months research internship)</div>
 
 * Laboratory of Action and Perception Physiology (Alain Berthoz)
