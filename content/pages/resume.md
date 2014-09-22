@@ -10,26 +10,34 @@ Here is a resume of my current and past professional activities.
 * Cortical Processing Laboratory (Kenneth D. Harris)
 * University College London, UK
 
+I'm developing algorithms and software for analyzing large volumes of electrophysiological data (high-density multielectrode arrays).
+
 
 ### Correlations in neural coding
 <div class="sub-header-3">2009&ndash;2012 (PhD)</div>
 
 * Cognitive Studies Department (Romain Brette)
-* Ecole Normale Supérieure, FR
+* Ecole Normale Supérieure, France
+
+I've developed programs for analyzing intracellular recordings with the help of spiking neuron models. I've also demonstrated theoretically and experimentally a key role for fast temporal correlations in neural coding.
 
 
 ### Statistical data analysis of retinal spiking data
-<div class="sub-header-3">2008 (six months research internship)</div>
+<div class="sub-header-3">2008 (six-months research internship)</div>
 
 * Molecular Biology Department (Michael Berry)
 * Princeton University, USA
 
+I've developed a mathematical framework for analyzing and modeling the multineuronal spiking activity of in vitro retinal recordings (joint work with Kolia Sadeghi).
+
 
 ### Data analysis of human locomotor trajectories
-<div class="sub-header-3">2007 (two months research internship)</div>
+<div class="sub-header-3">2007 (two-months research internship)</div>
 
 * Laboratory of Action and Perception Physiology (Alain Berthoz)
-* Collège de France, FR
+* Collège de France, France
+
+I've conducted data analysis and modeling investigations of locomotor trajectories recorded with motion-capture cameras.
 
 
 ## Publications and conferences
@@ -82,21 +90,21 @@ Here is a resume of my current and past professional activities.
   * **Rossant C**, Rougier N (2014). [Scientific Data Visualization](http://reseau-loops.github.io/journee_2014_06.html), LoOPS network meeting, Orsay University. Presentation and tutorials on HDF5 and Vispy
   * **Rossant C**, Klein A, Campagnola L, Rougier N (2014). Organization of the Vispy code camp at the European Synchrotron Radiation Facility (ESRF) in Grenoble
   * Rougier N, Klein A, **Rossant C** (2013). Python visualization, EuroSciPy, Brussels, Belgium (sprint).
-  * Brette R, Stimberg M, Benichoux V, **Rossant C**, Goodman D, Fontaine B (2013). Advanced modelling of spiking neural networks with BRIAN. Organization for Computational Neuroscience Meeting, Paris (tutorial)
+  * Brette R, Stimberg M, Benichoux V, **Rossant C**, Goodman D, Fontaine B (2013). Advanced modelling of spiking neural networks with Brian. Organization for Computational Neuroscience Meeting, Paris (tutorial)
   * **Rossant C**, Harris K (2013). Next-generation software for spike sorting with large multi-electrode probes. Janelia Spike Sorting Workshop, Janelia Farm Research Campus, Ashburn, USA (invited talk)
 
 
 ## Education and diplomas
 
-  * 2012: **Ph.D. in Computational Neuroscience** at the ENS and UPMC with highest honors.
-  * 2008: **Master's Degree in Computer Science** (MPRI) at the ENS with highest honors.
-  * 2005: **Bachelor's Degree in Mathematics** (FIMFA) at the ENS with highest honors.
-  * 2005: Entry to the **Ecole Normale Supérieure** (ENS) through competitive examinations in Maths and Physics.
-  * 2002: Preparatory classes (MPSI/MP*) at Lycée Masséna, Nice.
-  * 2002: High school diploma (A-level equivalent) with highest honors.
+  * 2012: **Ph.D. in Computational Neuroscience** at the ENS and UPMC with highest honors
+  * 2008: **Master's Degree in Computer Science** (MPRI) at the ENS with highest honors
+  * 2005: **Bachelor's Degree in Mathematics** (FIMFA) at the ENS with highest honors
+  * 2005: Entry to the **Ecole Normale Supérieure** (ENS) through competitive examinations in Maths and Physics
+  * 2002: Preparatory classes (MPSI/MP*) at Lycée Masséna, Nice
+  * 2002: High school diploma (A-level equivalent) with highest honors
 
 
 ## Teaching
 
-  * 2009-2012: **Teacher assistant** in Mathematics and Computer Science at ENS and UPMC (Bachelor and Master levels).
-  * 2008-2009: Voluntary teaching to high school students at TALENS association.
+  * 2009-2012: **Teacher assistant** in Mathematics and Computer Science at ENS and UPMC (Bachelor and Master levels)
+  * 2008-2009: Voluntary teaching to high school students at TALENS association

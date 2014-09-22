@@ -13,7 +13,7 @@ I've written two books on Python for data science.
 
 	<div class="book-descr pure-u-2-3">
 		<h3>Learning IPython for Interactive Computing and Data Visualization</h3>
-		<div class="sub-header-3">Packt Publishing (135 pages)</div>
+		<div class="sub-header-3">Packt Publishing (135 pages, 20$)</div>
 
 		<p>
 			This book is a beginner-level introduction to Python for data analysis:
@@ -40,7 +40,7 @@ I've written two books on Python for data science.
 
 	<div class="book-descr pure-u-2-3">
 		<h3>IPython Interactive Computing and Visualization Cookbook</h3>
-		<div class="sub-header-3">Packt Publishing (135 pages)</div>
+		<div class="sub-header-3">Packt Publishing (520 pages, 30$)</div>
 
 		<p>
 			This advanced-level book covers a wide range of methods for data science with Python:
