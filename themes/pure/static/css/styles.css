@@ -11,42 +11,59 @@ html, button, input, select, textarea,
 }
 
 
-#layout {
+#layout, #header {
+    margin: 0 auto;
     padding: 0 2em;
-}
-#menu {
-    /*background: #ddd;*/
-    margin: 3em 0 3em 0;
-    padding: 0;
-}
-#menu ul {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-#menu li {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    text-align: left;
-}
-#menu a {
-    padding: .5em .5em .5em 0em;
-    margin: 0 1.5em 0 0;
-}
-#menu li a:hover {
-    color: #000;
-    background-color: inherit;
+    max-width: 960px;
 }
 
+
+
+/****** MENU ******/
+#header {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    padding: 0;
+}
+#header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 100%;
+}
+#header li {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+#header a  {
+    font-size: 1.25em;
+    padding: .5em .5em .5em 0em;
+    margin: 0 1.5em 0 0;
+    border: 0;
+}
+#header li a:hover {
+    color: #000;
+    background-color: inherit;
+    border: 0;
+}
+#social a  {
+    margin-right: 0em;
+    font-size: 1.59em;
+    padding: .2em .5em .25em 0em;
+}
+
+
+
+/****** SIDEBAR ******/
 #sidebar {
     /*background: #ddd;*/
     padding: 0em;
 }
 
 #sidebar .portrait img {
-    width: 6em;
-    height: 6em;
+    width: 8em;
+    height: 8em;
 }
 
 #sidebar .contact {
@@ -59,12 +76,11 @@ html, button, input, select, textarea,
     direction: rtl;
 }
 
-#layout {
-    max-width: 960px;
-    margin: 0 auto;
-    /* padding: 1em; */
-}
 
+
+
+
+/****** FOOTER ******/
 #footer {
     /*background: #ddd;*/
     text-align: center;
@@ -73,6 +89,9 @@ html, button, input, select, textarea,
 }
 
 
+
+
+/****** CONTENT ******/
 #content {
     padding: 0;
     margin: 0;
