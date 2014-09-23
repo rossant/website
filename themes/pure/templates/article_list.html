@@ -1,0 +1,14 @@
+{% for article in articles_page.object_list %}
+    <section class="post">
+        <header class="post-header">
+            <h3><a class="post-title" href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+            <p class="sub-header-3">{{ article.locale_date }}</p>
+            <p class="post-summary">{{ article.summary }}</p>
+        </header>
+    </section>
+    {% if not loop.last %}
+        <hr />
+    {% endif %}
+{% endfor %}
+
+{% include 'pagination.html' %}
