@@ -178,6 +178,10 @@ a:hover {
     #content .l-box {
         padding: 0 0 3em 0;
     }
+
+    #layout {
+        padding: 1em 1em;
+    }
 }
 
 #post {
@@ -202,8 +206,9 @@ code {
 }
 
 .highlight pre {
+    font-family: 'Ubuntu Mono';
     font-size: 10px;
-    padding: 1em 1.25em;
+    padding: 1em 1em;
     white-space: pre;
 }
 
