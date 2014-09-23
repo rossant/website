@@ -48,6 +48,8 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 ### International peer-reviewed scientific journals
 
+
+
   * **Rossant C**, Harris KD (2013). [Hardware-accelerated interactive data visualization for neuroscience in Python](http://cyrille.rossant.net/wp-content/uploads/2011/09/RossantHardware2013.pdf). Frontiers in Neuroinformatics, 7(36). doi:10.3389/fninf.2013.00036
   * **Rossant C**, Fontaine B, Goodman DF (2013). [Playdoh: a lightweight Python library for distributed computing and optimisation](http://cyrille.rossant.net/wp-content/uploads/2011/09/RossantPlaydoh2013.pdf). Journal of Computational Science, 4(5): 352–359; doi:10.1016/j.jocs.2011.06.002
   * **Rossant C**, Fontaine B, Magnusson AK, Brette R (2012). [A calibration-free electrode compensation method](http://cyrille.rossant.net/wp-content/uploads/2011/09/RossantCalibration2012.pdf). Journal of Neurophysiology, 108(9): 2629-2639; doi: 10.1152/jn.01122.2011
@@ -58,7 +60,7 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
   
 ### Magazines
 
-  * **Rossant C** (2014). Vispy: visualisation interactive haute performance. Linux Magazine, Scientific Python special issue, summer 2014
+  * **Rossant C** (2014). Vispy: visualisation interactive haute performance. French Linux Magazine, Scientific Python special issue, summer 2014
 
 
 ### Books

@@ -22,7 +22,7 @@
         <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
     {% endblock head %}
 
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-old-ie-min.css">
@@ -44,7 +44,7 @@
 
 
     <header id="header" class="pure-g">
-        <div class="pure-u-3-4">
+        <div class="pure-u-1 pure-u-sm-3-4">
              <div id="menu">
                  <div class="pure-menu pure-menu-open pure-menu-horizontal">
                     {% include 'menu.html' %}
@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <div class="pure-u-1-4">
+        <div class="pure-u-1 pure-u-sm-1-4">
             <div id="social">
                 <div class="pure-menu pure-menu-open pure-menu-horizontal">
                     {% include 'social.html' %}

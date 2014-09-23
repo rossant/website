@@ -34,7 +34,7 @@ a:hover {
 #header {
     margin-top: 3em;
     margin-bottom: 3em;
-    padding: 0;
+    padding: 0 2em;
 }
 #header ul {
     margin: 0;
@@ -173,6 +173,11 @@ a:hover {
     padding: 0 5em 0 0;
     position: relative;
 }
+@media screen and (max-width: 35.5em) {
+    #content .l-box {
+        padding: 0 0 0 0;
+    }
+}
 
 #post {
 }
@@ -224,7 +229,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: 2.25em;
-    margin: 0 0 .1em 0;
+    margin: 0 0 .1em -.025em;
     padding: 0 0 .25em 0;
     border-bottom: 1px solid #aaa;
 }
