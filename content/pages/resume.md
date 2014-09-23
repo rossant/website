@@ -71,20 +71,20 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
   * Klein A, Rougier N, **Rossant C**, Larson E, Campagnola L (2014). Introducing Vispy's high level modules: easy yet powerful visualization for everyone, EuroSciPy, Cambridge, UK (talk by Klein A)
   * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. Society for Neuroscience Annual Meeting, San Diego, USA (poster)
+  * **Rossant C** (2013). Spike-based computation in cortical networks: theory and data, Mathematical Neuroscience Laboratory, CIRB, Collège de France, Paris
   * Campagnola L, Klein A, **Rossant C**, Rougier N (2013). A Modern and Interactive Visualization Framework, EuroSciPy, Brussels, Belgium (talk by Rougier N)
   * **Rossant C**, Harris K (2013). High-performance interactive data visualization in Python. EuroSciPy, Brussels, Belgium (poster)
   * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. Organization for Computational Neuroscience Meeting, Paris (poster)
+  * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. UCL Neuroscience Symposium, London (poster)
+  * **Rossant C** (2013). Semi-automatic algorithms for manual spike sorting, Cortical Processing Laboratory Seminar, UCL, London
   * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. British Neuroscience Association's biennial meeting, London (poster)
+  * **Rossant C** (2011). Coincidence detection in noisy neurons, Laboratory of Computational Neuroscience Seminar, EPFL, Lausanne, Switzerland
+  * **Rossant C**, Leijon S, Magnusson AK, Brette R (2011). Sensitivity of noisy neurons to coincident inputs. Workshop on Mean-field methods and multiscale analysis of neuronal populations, CIRM, Marseille, France (poster)
   * Brette R, **Rossant C**, Benichoux V (2011). What's new in Brian? Python in Neuroscience Euroscipy Workshop, Paris (talk)
   * **Rossant C**, Brette R (2010). Coincidence detection in noisy neurons. Society for Neuroscience Annual Meeting, San Diego, USA (poster)
   * **Rossant C**, Brette R (2010). Coincidence detection in noisy neurons. NeuroComp, Lyon, France (poster)
   * **Rossant C**, Fontaine B, Goodman DF (2010). Playdoh: a lightweight Python library for distributed computing and optimisation. Euroscipy 2010, Paris (talk)
   * **Rossant C**, Brette R (2010). Coincidence detection in active neurons. Cosyne, Salt Lake City, USA (poster)
-  * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. UCL Neuroscience Symposium, London (poster)
-  * **Rossant C**, Leijon S, Magnusson AK, Brette R (2011). Sensitivity of noisy neurons to coincident inputs. Workshop on Mean-field methods and multiscale analysis of neuronal populations, CIRM, Marseille, France (poster)
-  * **Rossant C** (2013). Spike-based computation in cortical networks: theory and data, Mathematical Neuroscience Laboratory, CIRB, Collège de France, Paris
-  * **Rossant C** (2013). Semi-automatic algorithms for manual spike sorting, Cortical Processing Laboratory Seminar, UCL, London
-  * **Rossant C** (2011). Coincidence detection in noisy neurons, Laboratory of Computational Neuroscience Seminar, EPFL, Lausanne, Switzerland
 
 
 ### Workshops and tutorials

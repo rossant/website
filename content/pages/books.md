@@ -21,7 +21,8 @@ I've written two books on Python for data science.
 
 		<ul>
 			<li>Interactive Python with IPython</li>
-			<li>High-performance numerical computing with NumPy/SciPy</li>
+			<li>Data analysis with pandas</li>
+			<li>Numerical computing with NumPy/SciPy</li>
 			<li>Data visualization with matplotlib</li>
 		</ul>
 

@@ -10,6 +10,7 @@ html, button, input, select, textarea,
     font-family: "Source Sans Pro", sans-serif;
     font-size: 15px;
     font-weight: 300;
+    color: #000;
 }
 
 #layout, #header {
@@ -99,6 +100,10 @@ a:hover {
     font-weight: bold;
 }
 
+#sidebar .sub-name {
+    font-size: .9em;
+}
+
 #sidebar .contact {
     /*margin-top: .5em;*/
 }
@@ -180,7 +185,7 @@ code {
 .book-cover {
 }
 .book-cover img {
-    width: 180px;
+    width: 90%;
 }
 .book-descr h3 {
     margin: 0 0 1em 0;
@@ -195,6 +200,20 @@ code {
     margin: 1.75em 0 .2em 0;
 }
 #posts .post .post-header h3 a {
+}
+#posts hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 3em 7em 1em 7em;
+    padding: 0;
+}
+
+blockquote {
+    color: #777;
+    border-left: .5em solid #eee;
+    padding: 0 0 0 .75em;
 }
 
 
@@ -229,12 +248,12 @@ h2 {
 h3 {
     margin: 1.75em 0 .2em 0;
     font-size: 1.3em;
-    color: #666;
+    color: #777;
 }
 #content .sub-header-3 {
     margin: -.3em 0 0 0;
     font-size: .9em;
-    color: #888;
+    color: #999;
 }
 
 

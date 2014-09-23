@@ -15,6 +15,9 @@
                     <p class="post-summary">{{ article.summary }}</p>
                 </header>
             </section>
+            {% if not loop.last %}
+                <hr />
+            {% endif %}
         {% endfor %}
 
         {% include 'pagination.html' %}
