@@ -8,8 +8,8 @@ Here is a resume of my current and past professional activities.
 
 <div class="sub-header-3">2012&ndash;present (postdoc)</div>
 
-* Cortical Processing Laboratory (Kenneth D. Harris)
-* University College London, UK
+* [Cortical Processing Laboratory](http://www.ucl.ac.uk/cortexlab) ([Kenneth D. Harris](https://iris.ucl.ac.uk/iris/browse/profile?upi=KDHAR02))
+* [University College London](http://www.ucl.ac.uk/), UK
 
 I'm developing algorithms and software for analyzing large volumes of electrophysiological data (high-density multielectrode arrays).
 
@@ -18,8 +18,8 @@ I'm developing algorithms and software for analyzing large volumes of electrophy
 
 <div class="sub-header-3">2009&ndash;2012 (PhD)</div>
 
-* Cognitive Studies Department (Romain Brette)
-* Ecole Normale Supérieure, France
+* [Cognitive Studies Department](http://www.cognition.ens.fr/) ([Romain Brette](http://romainbrette.fr/))
+* [Ecole Normale Supérieure](http://www.ens.fr/), France
 
 I've developed programs for analyzing intracellular recordings with the help of spiking neuron models. I've also demonstrated theoretically and experimentally a key role for fast temporal correlations in neural coding.
 
@@ -28,8 +28,8 @@ I've developed programs for analyzing intracellular recordings with the help of 
 
 <div class="sub-header-3">2008 (six-months research internship)</div>
 
-* Molecular Biology Department (Michael Berry)
-* Princeton University, USA
+* [Molecular Biology Department](http://molbio.princeton.edu/) ([Michael Berry](http://molbio.princeton.edu/faculty/molbio-faculty/95-berry))
+* [Princeton University](http://www.princeton.edu/main/), USA
 
 I've developed a mathematical framework for analyzing and modeling the multineuronal spiking activity of in vitro retinal recordings (joint work with Kolia Sadeghi).
 
@@ -38,8 +38,8 @@ I've developed a mathematical framework for analyzing and modeling the multineur
 
 <div class="sub-header-3">2007 (two-months research internship)</div>
 
-* Laboratory of Action and Perception Physiology (Alain Berthoz)
-* Collège de France, France
+* [Laboratory of Action and Perception Physiology](http://www.lppa.college-de-france.fr/) ([Alain Berthoz](http://www.lppa.college-de-france.fr/equipes/people/Berthoz/))
+* [Collège de France](http://www.college-de-france.fr/site/college/index.htm), France
 
 I've conducted data analysis and modeling investigations of locomotor trajectories recorded with motion-capture cameras.
 
@@ -48,19 +48,17 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 ### International peer-reviewed scientific journals
 
-
-
-  * **Rossant C**, Harris KD (2013). [Hardware-accelerated interactive data visualization for neuroscience in Python](http://cyrille.rossant.net/wp-content/uploads/2011/09/RossantHardware2013.pdf). Frontiers in Neuroinformatics, 7(36). doi:10.3389/fninf.2013.00036
-  * **Rossant C**, Fontaine B, Goodman DF (2013). [Playdoh: a lightweight Python library for distributed computing and optimisation](http://cyrille.rossant.net/wp-content/uploads/2011/09/RossantPlaydoh2013.pdf). Journal of Computational Science, 4(5): 352–359; doi:10.1016/j.jocs.2011.06.002
-  * **Rossant C**, Fontaine B, Magnusson AK, Brette R (2012). [A calibration-free electrode compensation method](http://cyrille.rossant.net/wp-content/uploads/2011/09/RossantCalibration2012.pdf). Journal of Neurophysiology, 108(9): 2629-2639; doi: 10.1152/jn.01122.2011
-  * **Rossant C**, Leijon S, Magnusson AK, Brette R (2011). [Sensitivity of noisy neurons to coincident inputs](http://cyrille.rossant.net/wp-content/uploads/2011/09/RossantSensitivity2011.pdf). Journal of Neuroscience, 31(47): 17193-17206; doi: 10.1523/JNEUROSCI.2482-11.2011
-  * **Rossant C**, Goodman DF, Fontaine B, Platkiewicz J, Magnusson A, Brette B (2011). [Fitting neuron models to spike trains](http://cyrille.rossant.net/wp-content/uploads/2011/09/RossantFitting2011.pdf). Frontiers in Neuroscience, 5:9. doi:10.3389/fnins.2011.00009
-  * **Rossant C**, Goodman D, Platkiewicz J, Brette R (2010). [Automatic fitting of spiking neuron models to electrophysiological recordings](http://cyrille.rossant.net/wp-content/uploads/2011/09/RossantAutomatic2010.pdf). Frontiers in Neuroinformatics, 4:2. doi:10.3389/neuro.11.002.2010
+  * **Rossant C**, Harris KD (2013). [Hardware-accelerated interactive data visualization for neuroscience in Python]({filename}/pdfs/RossantHardware2013.pdf). Frontiers in Neuroinformatics, 7(36). doi:10.3389/fninf.2013.00036
+  * **Rossant C**, Fontaine B, Goodman DF (2013). [Playdoh: a lightweight Python library for distributed computing and optimisation]({filename}/pdfs/RossantPlaydoh2013.pdf). Journal of Computational Science, 4(5): 352–359; doi:10.1016/j.jocs.2011.06.002
+  * **Rossant C**, Fontaine B, Magnusson AK, Brette R (2012). [A calibration-free electrode compensation method]({filename}/pdfs/RossantCalibration2012.pdf). Journal of Neurophysiology, 108(9): 2629-2639; doi: 10.1152/jn.01122.2011
+  * **Rossant C**, Leijon S, Magnusson AK, Brette R (2011). [Sensitivity of noisy neurons to coincident inputs]({filename}/pdfs/RossantSensitivity2011.pdf). Journal of Neuroscience, 31(47): 17193-17206; doi: 10.1523/JNEUROSCI.2482-11.2011
+  * **Rossant C**, Goodman DF, Fontaine B, Platkiewicz J, Magnusson A, Brette B (2011). [Fitting neuron models to spike trains]({filename}/pdfs/RossantFitting2011.pdf). Frontiers in Neuroscience, 5:9. doi:10.3389/fnins.2011.00009
+  * **Rossant C**, Goodman D, Platkiewicz J, Brette R (2010). [Automatic fitting of spiking neuron models to electrophysiological recordings]({filename}/pdfs/RossantAutomatic2010.pdf). Frontiers in Neuroinformatics, 4:2. doi:10.3389/neuro.11.002.2010
 
   
 ### Magazines
 
-  * **Rossant C** (2014). Vispy: visualisation interactive haute performance. French Linux Magazine, Scientific Python special issue, summer 2014
+  * **Rossant C** (2014). [Vispy: visualisation interactive haute performance](http://boutique.ed-diamond.com/gnulinux-magazine-hors-series/597-gnulinux-magazine-hs-73.html). French Linux Magazine, Scientific Python special issue, summer 2014
 
 
 ### Books
@@ -71,7 +69,7 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 ### Conferences
 
-  * Klein A, Rougier N, **Rossant C**, Larson E, Campagnola L (2014). Introducing Vispy's high level modules: easy yet powerful visualization for everyone, EuroSciPy, Cambridge, UK (talk by Klein A)
+  * Klein A, Rougier N, **Rossant C**, Larson E, Campagnola L (2014). [Introducing Vispy's high level modules: easy yet powerful visualization for everyone](https://www.euroscipy.org/2014/schedule/presentation/7/), EuroSciPy, Cambridge, UK (talk by Klein A)
   * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. Society for Neuroscience Annual Meeting, San Diego, USA (poster)
   * **Rossant C** (2013). Spike-based computation in cortical networks: theory and data, Mathematical Neuroscience Laboratory, CIRB, Collège de France, Paris
   * Campagnola L, Klein A, **Rossant C**, Rougier N (2013). A Modern and Interactive Visualization Framework, EuroSciPy, Brussels, Belgium (talk by Rougier N)
@@ -91,7 +89,7 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 ### Workshops and tutorials
 
-  * **Rossant C** (2014). The new interactive features of the IPython 2 notebook, EuroSciPy, Cambridge, UK (advanced tutorial)
+  * **Rossant C** (2014). [The new interactive features of the IPython 2 notebook](https://www.euroscipy.org/2014/schedule/presentation/60/), EuroSciPy, Cambridge, UK (advanced tutorial)
   * Rougier N, Klein A, **Rossant C** (2014). Vispy sprint, EuroSciPy, Cambridge, UK (sprint)
   * **Rossant C**, Rougier N (2014). [Scientific Data Visualization](http://reseau-loops.github.io/journee_2014_06.html), LoOPS network meeting, Orsay University. Presentation and tutorials on HDF5 and Vispy
   * **Rossant C**, Klein A, Campagnola L, Rougier N (2014). Organization of the Vispy code camp at the European Synchrotron Radiation Facility (ESRF) in Grenoble

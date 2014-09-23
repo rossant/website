@@ -12,7 +12,7 @@ I've written two books on Python for data science.
 	</div>
 
 	<div class="book-descr pure-u-1 pure-u-sm-2-3">
-		<h3>Learning IPython for Interactive Computing and Data Visualization</h3>
+		<h3><a href="http://ipython.rossant.net">Learning IPython for Interactive Computing and Data Visualization</a></h3>
 		<div class="sub-header-3">Packt Publishing (135 pages, 20$)</div>
 
 		<p>
@@ -40,7 +40,7 @@ I've written two books on Python for data science.
 	</div>
 
 	<div class="book-descr pure-u-1 pure-u-sm-2-3">
-		<h3>IPython Interactive Computing and Visualization Cookbook</h3>
+		<h3><a href="http://ipython-books.github.io/">IPython Interactive Computing and Visualization Cookbook</a></h3>
 		<div class="sub-header-3">Packt Publishing (520 pages, 30$)</div>
 
 		<p>
