@@ -8,7 +8,7 @@ I've written two books on Python for data science.
 
 <div class="pure-g">
 	<div class="book-cover pure-u-1-3">
-		<a href="http://ipython.rossant.net"><img src="/theme/images/minibook.jpg" /></a>
+		<a href="http://ipython.rossant.net"><img src="/images/minibook.jpg" /></a>
 	</div>
 
 	<div class="book-descr pure-u-2-3">
@@ -36,7 +36,7 @@ I've written two books on Python for data science.
 
 <div class="pure-g">
 	<div class="book-cover pure-u-1-3">
-		<a href="http://ipython-books.github.io/"><img src="/theme/images/cookbook.jpg" class="book-cover" /></a>
+		<a href="http://ipython-books.github.io/"><img src="/images/cookbook.jpg" class="book-cover" /></a>
 	</div>
 
 	<div class="book-descr pure-u-2-3">
