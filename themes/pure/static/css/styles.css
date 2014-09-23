@@ -171,7 +171,7 @@ a:hover {
 }
 #content .l-box {
     margin: 0;
-    padding: 0 5em 0 0;
+    padding: 0 4em 0 0;
     position: relative;
 }
 @media screen and (max-width: 35.5em) {
@@ -199,6 +199,12 @@ code {
 }
 .book-descr .sub-header-3 ul {
     margin: 0;
+}
+
+.highlight pre {
+    font-size: 10px;
+    padding: 1em 1.25em;
+    white-space: pre;
 }
 
 
