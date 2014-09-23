@@ -64,7 +64,8 @@ a:hover {
 #social a  {
     margin-right: 0em;
     font-size: 1.59em;
-    padding: .2em .5em .25em 0em;
+    margin: 0 .5em 0 0;
+    padding: .2em 0 .25em 0em;
 }
 
 
@@ -175,7 +176,7 @@ a:hover {
 }
 @media screen and (max-width: 35.5em) {
     #content .l-box {
-        padding: 0 0 0 0;
+        padding: 0 0 3em 0;
     }
 }
 
@@ -191,6 +192,7 @@ code {
 }
 .book-cover img {
     width: 90%;
+    max-width: 200px;
 }
 .book-descr h3 {
     margin: 0 0 1em 0;
@@ -236,7 +238,7 @@ h1 {
 
 
 h2 {
-    color: #333;
+    color: #555;
     font-size: 1.75em;
     margin: 1.75em 0 1em 0;
     padding: 0 0 .25em 0;
@@ -246,12 +248,12 @@ h2 {
     text-align: right;
     margin: -1.75em 0 0 0;
     font-size: .9em;
-    color: #555;
+    color: #999;
 }
 
 
 h3 {
-    margin: 1.75em 0 .2em 0;
+    margin: 1.75em 0 .1em 0;
     font-size: 1.3em;
     color: #777;
 }

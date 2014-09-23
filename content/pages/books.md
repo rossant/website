@@ -7,11 +7,11 @@ I've written two books on Python for data science.
 <div class="sub-header-2">april 2013</div>
 
 <div class="pure-g">
-	<div class="book-cover pure-u-1-3">
+	<div class="book-cover pure-u-1 pure-u-sm-1-3">
 		<a href="http://ipython.rossant.net"><img src="/images/minibook.jpg" /></a>
 	</div>
 
-	<div class="book-descr pure-u-2-3">
+	<div class="book-descr pure-u-1 pure-u-sm-2-3">
 		<h3>Learning IPython for Interactive Computing and Data Visualization</h3>
 		<div class="sub-header-3">Packt Publishing (135 pages, 20$)</div>
 
@@ -35,11 +35,11 @@ I've written two books on Python for data science.
 <div class="sub-header-2">september 2014</div>
 
 <div class="pure-g">
-	<div class="book-cover pure-u-1-3">
+	<div class="book-cover pure-u-1 pure-u-sm-1-3">
 		<a href="http://ipython-books.github.io/"><img src="/images/cookbook.jpg" class="book-cover" /></a>
 	</div>
 
-	<div class="book-descr pure-u-2-3">
+	<div class="book-descr pure-u-1 pure-u-sm-2-3">
 		<h3>IPython Interactive Computing and Visualization Cookbook</h3>
 		<div class="sub-header-3">Packt Publishing (520 pages, 30$)</div>
 
