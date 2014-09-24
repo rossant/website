@@ -2,12 +2,11 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+SITEURL = 'http://localhost:8000'
 
 AUTHOR = 'Cyrille Rossant'
 SITENAME = "Cyrille Rossant's blog"
-RELATIVE_URLS = True
 LOCALE = 'en_US.utf8'
-SITEURL = ''
 PATH = 'content'
 THEME = 'themes/pure'
 STATIC_PATHS = ['images', 'pdfs']
@@ -15,10 +14,15 @@ DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU  = False
 DEFAULT_DATE = 'fs'
 FILENAME_METADATA = '(?P<date>\d{4}-\d{2}-\d{2})-(?P<slug>.*)'
+
 DEFAULT_PAGINATION = 10
+PAGINATION_PATTERNS = (
+    (1, '{base_name}/', '{base_name}/index.html'),
+    (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),
+)
 
 PLUGIN_PATHS = ['../pelican-plugins']
-PLUGINS = ['render_math', 'summary']
+PLUGINS = ['render_math', 'summary', 'neighbors', 'clean_summary']
 
 DEFAULT_CATEGORY = ''
 

@@ -1,5 +1,6 @@
 Title: Prénoms et réussite au bac
 
+Le sociologue Baptiste Coulmont, auteur de 
 *[Sociologie des prénoms](http://coulmont.com/livres/prenoms/)*, s'est
 intéressé aux corrélations entre le prénom des candidats au baccalauréat
 2012 et leur réussite à cet examen ([voir ici pour l'étude originale sur
