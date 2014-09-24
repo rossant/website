@@ -209,7 +209,7 @@ code {
 
 .highlight pre {
     font-family: 'Ubuntu Mono';
-    font-size: 14px;
+    font-size: .9em;
     padding: .5em;
     word-wrap: normal;
     overflow: auto;
