@@ -24,6 +24,7 @@ I'm developing algorithms and software for analyzing large volumes of electrophy
 * [&Eacute;cole Normale Supérieure](http://www.ens.fr/), France
 
 I've developed programs for analyzing intracellular recordings with the help of spiking neuron models. I've also demonstrated theoretically and experimentally a key role for fast temporal correlations in neural coding.
+[My dissertation is available for download here (PDF, 14MB)]({filename}/pdfs/RossantPhD.pdf).
 
 
 ### Statistical data analysis of retinal spiking data
