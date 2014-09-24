@@ -1,4 +1,5 @@
 Title: Start an IPython notebook server in Windows Explorer
+Tags: python
 
 When one starts using the IPython notebook seriously, there is often the need to open a server in the current directory to open or create a new notebook. Whereas this is straightforward on Unix systems (e.g. `ipython notebook --pylab inline`) since users typically use mainly the command-line, it is a bit more cumbersome from the graphical Windows Explorer. One needs to open a console, go in the current directory, type the command, open the browser, and go to `http://127.0.0.1:8888` (unless the browser automatically launches).
 

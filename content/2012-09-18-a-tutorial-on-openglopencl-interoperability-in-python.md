@@ -1,4 +1,5 @@
 Title: A tutorial on OpenGL/OpenCL interoperability in Python
+Tags: python, gpu
 
 In the last two posts, I've shown 
 [how to use OpenCL for GPGPU](http://cyrille.rossant.net/pyopencl-on-windows-without-a-gpu/), 

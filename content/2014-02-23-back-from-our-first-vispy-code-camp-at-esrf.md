@@ -1,4 +1,5 @@
 Title: Back from our first Vispy code camp at ESRF
+Tags: python, dataviz
 
 We had our first official [Vispy Code Camp](https://github.com/vispy/vispy/wiki/Vispy-code-camp-@ESRF) this week. I and the other core developers of Vispy were kindly invited by the [European Synchrotron Radiation Facility](http://www.esrf.eu). We presented our young library to software engineers from the ESRF and other European synchrotron facilities. It was also the occasion for us to make a gentle introduction to modern OpenGL, as many attendees didn't have experience in real-time GPU rendering. We discovered various scientific use cases in need of high-bandwidth, low-latency real-time visualization of big data.
 

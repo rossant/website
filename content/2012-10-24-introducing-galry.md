@@ -1,4 +1,5 @@
 Title: Introducing Galry, a high-performance interactive 2D visualization Python package
+Tags: python, dataviz, gpu
 
 I'm releasing today the code of a first experimental version of 
 [**Galry, a high-performance interactive 2D visualization Python package**](http://rossant.github.com/galry/)

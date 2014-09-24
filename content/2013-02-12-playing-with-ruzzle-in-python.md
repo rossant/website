@@ -1,4 +1,5 @@
 Title: Playing with Ruzzle in Python
+Tags: python
 
 Ruzzle is becoming a popular game on smartphones and tablets. Inspired by
 Boggle, it consists in finding as many words as possible in a grid of 4x4

@@ -1,4 +1,5 @@
 Title: 2D graphics rendering tutorial with PyOpenGL
+Tags: python, gpu, dataviz
 
 [OpenGL](http://en.wikipedia.org/wiki/OpenGL) is a widely used open and cross-platform library for real-time 3D graphics, developed more than twenty years ago. It provides a low-level API that allows the developer to access the graphics hardware in an uniform way. It is the platform of choice when developing complex 2D or 3D applications that require hardware acceleration and that need to work on different platforms. It can be used in a number of languages including C/C++, C#, Java, Objective-C (used in iPhone and iPad games), Python, etc. In this article, I'll show how OpenGL can be used with Python (thanks to the [PyOpenGL library](http://pyopengl.sourceforge.net/documentation/index.html)) to efficiently render 2D graphics.
 

@@ -1,4 +1,5 @@
 Title: Profiling and optimizing Python code
+Tags: python
 
 > Premature optimization is the root of all evil.
 

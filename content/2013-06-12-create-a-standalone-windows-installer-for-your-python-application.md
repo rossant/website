@@ -1,4 +1,5 @@
 Title: Create a standalone Windows installer for your Python application
+Tags: python
 
 I am developing [a scientific application in Python with a graphical user interface in Qt](https://github.com/klusta-team/klustaviewa). Some end-users use OS X or Linux, but most of them are Windows users who are not familiar with Python or with a command-line interface. It is notoriously difficult to distribute Python applications to end-users who are not programmers, and it's a common criticism that is made against Python.
 

@@ -1,4 +1,5 @@
 Title: Vélib' Open Data
+Tags: python, opendata
 
 [Vélib'](http://en.wikipedia.org/wiki/V%C3%A9lib%27), the public bicycle
 sharing system in Paris. I've written a short [IPython

@@ -1,4 +1,5 @@
 Title: Why use Python for scientific computing?
+Tags: python
 
 Why use Python for scientific computing? This is a legitimate question. For us, regular Python users, using Python is so natural that we sometimes forget that this choice is not obvious for everyone. Matlab is very widely used in some communities (e.g. experimental biologists) and choosing a different platform requires extensive proselytism. We need to find the right words to convince people that Python is really the future for scientific computing.
 

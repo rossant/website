@@ -1,4 +1,5 @@
 Title: Making PyQt4, PySide and IPython work together
+Tags: python
 
 [PyQt](http://en.wikipedia.org/wiki/PyQt) and 
 [PySide](http://en.wikipedia.org/wiki/PySide) 

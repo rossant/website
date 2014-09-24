@@ -1,4 +1,5 @@
 Title: Galry's Story, or the quest of multi-million plots
+Tags: dataviz
 
 About a month ago, 
 [I announced here the availability](http://cyrille.rossant.net/introducing-galry/)

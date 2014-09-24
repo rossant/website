@@ -1,4 +1,5 @@
 Title: What's wrong with scientific Python?
+Tags: python
 
 tl;dr: Although not perfect, Python is today one of the best platforms for scientific computing. It's getting even better everyday thanks to the amazing work of a vibrant and growing community. [I reviewed Python's strengths in a previous post](http://cyrille.rossant.net/why-using-python-for-scientific-computing/). Here, I cover the more sensitive issue of its weaknesses.
 

@@ -1,4 +1,5 @@
 Title: Fréquence des prénoms des candidats au bac 2012
+Tags: opendata
 
 Je poursuis mon analyse des prénoms des candidats au bac cette année (voir 
 [billet précédent](http://cyrille.rossant.net/prenoms-et-reussite-au-bac/)) en

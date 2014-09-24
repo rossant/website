@@ -1,4 +1,5 @@
 Title: Hardware-accelerated interactive data visualization in Python
+Tags: python, dataviz, gpu
 
 There have been several interesting discussions recently about the future of visualization in Python. [Jake Vanderplas](http://jakevdp.github.com/) wrote a [detailled post about the current state-of-the-art of visualization software in Python](http://jakevdp.github.com/blog/2013/03/23/matplotlib-and-the-future-of-visualization-in-python/).
 [Michael Droettboom](http://mdboom.github.com), one of the Matplotlib's core developers, consequently wrote about [the future challenges Matplotlib will need to tackle](http://mdboom.github.com/blog/2013/03/25/matplotlib-lessons-learned/). Matplotlib has been designed more than ten years ago, and now needs to embrace modern trends including web frontends, high-level R-style plotting interfaces, hardware-accelerated visualization, etc.

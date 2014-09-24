@@ -1,4 +1,5 @@
 Title: Prénoms et réussite au bac
+Tags: opendata
 
 Le sociologue Baptiste Coulmont, auteur de 
 *[Sociologie des prénoms](http://coulmont.com/livres/prenoms/)*, s'est

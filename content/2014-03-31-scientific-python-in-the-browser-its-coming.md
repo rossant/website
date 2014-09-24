@@ -1,4 +1,5 @@
 Title: Scientific Python in the Browser: it's coming!
+Tags: python
 
 There is currently a manifest trend in the scientific Python ecosystem: Python is slowly but surely coming to the browser. It's a real challenge, but we're getting there. In this post, I want to give an overview of where we are, and where we're headed.
 

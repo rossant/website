@@ -1,4 +1,5 @@
 Title: A PyOpenCL tutorial on Windows with or without a GPU
+Tags: python, gpu
 
 I've been using [CUDA](http://en.wikipedia.org/wiki/CUDA) and 
 [PyCUDA](http://documen.tician.de/pycuda/) as 

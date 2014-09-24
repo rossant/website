@@ -1,4 +1,5 @@
 Title: Build a Python IDE for Windows with Notepad++ and IPython
+Tags: python
 
 I've been looking for a good and free Python IDE for Windows for a long time. I first used
 [Eclipse](http://www.eclipse.org/) and [Pydev](http://pydev.org/), but

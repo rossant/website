@@ -1,4 +1,5 @@
 Title: NumPy performance tricks
+Tags: python
 
 I've been using NumPy for nearly five years, but I'm still learning
 performance tricks. The reason is that I currently need to deal with

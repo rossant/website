@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-SITEURL = 'http://localhost:8000'
+SITEURL = 'http://192.168.1.75:8000'
 
 AUTHOR = 'Cyrille Rossant'
 SITENAME = "Cyrille Rossant's blog"

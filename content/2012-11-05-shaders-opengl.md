@@ -1,4 +1,5 @@
 Title: The Power of Shaders in Real-Time Graphics Programming
+Tags: gpu, dataviz
 
 I've been programming in 
 [OpenGL](http://en.wikipedia.org/wiki/OpenGL)
