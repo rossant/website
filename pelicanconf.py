@@ -22,7 +22,12 @@ PAGINATION_PATTERNS = (
 )
 
 PLUGIN_PATHS = ['../pelican-plugins']
-PLUGINS = ['render_math', 'summary', 'neighbors', 'clean_summary']
+PLUGINS = [
+			'render_math',
+			'summary', 
+			'neighbors', 
+			# 'clean_summary',
+]
 
 DEFAULT_CATEGORY = ''
 

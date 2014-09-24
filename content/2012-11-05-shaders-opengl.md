@@ -17,6 +17,8 @@ Jason McKesson is a very good
 resource for learning modern OpenGL programming using the programmable
 pipeline.
 
+<!-- PELICAN_END_SUMMARY -->
+
 The graphics pipeline
 ---------------------
 
@@ -320,7 +322,7 @@ you should simply replace `PyQt4` by `PySide` in the imports. The
 
     # Window creation function.
     def create_window(window_class):
-        """Create a QT window in Python, or interactively in IPython with QT GUI
+        """Create a Qt window in Python, or interactively in IPython with Qt GUI
         event loop integration:
             # in ~/.ipython/ipython_config.py
             c.TerminalIPythonApp.gui = 'qt'
@@ -454,7 +456,7 @@ you should simply replace `PyQt4` by `PySide` in the imports. The
         data = np.zeros((10000, 2), dtype=np.float32)
         data[:,0] = np.linspace(-1., 1., len(data))
         
-        # define a QT window with an OpenGL widget inside it
+        # define a Qt window with an OpenGL widget inside it
         class TestWindow(QtGui.QMainWindow):
             def __init__(self):
                 super(TestWindow, self).__init__()

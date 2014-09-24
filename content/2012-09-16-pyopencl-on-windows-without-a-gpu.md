@@ -12,6 +12,8 @@ Nvidia GPU, but rather an
 an integrated graphics processor. Those computers thus cannot execute a CUDA 
 program.
 
+<!-- PELICAN_END_SUMMARY -->
+
 Whereas changing the GPU on a desktop computer is straightforward (one still 
 needs to buy a new graphics card...), it is generally not possible to do so 
 on a laptop. It prevents a number of developers to run, compile or debug CUDA 

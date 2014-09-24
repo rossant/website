@@ -2,9 +2,13 @@ Title: Start an IPython notebook server in Windows Explorer
 
 When one starts using the IPython notebook seriously, there is often the need to open a server in the current directory to open or create a new notebook. Whereas this is straightforward on Unix systems (e.g. `ipython notebook --pylab inline`) since users typically use mainly the command-line, it is a bit more cumbersome from the graphical Windows Explorer. One needs to open a console, go in the current directory, type the command, open the browser, and go to `http://127.0.0.1:8888` (unless the browser automatically launches).
 
-Here is a simple method to simplify the process. It is based on the great [AutoHotKey](http://www.autohotkey.com/) tool which lets one automate repetitive tasks with e.g. keyboard shortcuts. Here is a script launching an IPython notebook server in the current active window:
+Here is a simple method to simplify the process. It is based on the great [AutoHotKey](http://www.autohotkey.com/) tool which lets one automate repetitive tasks with e.g. keyboard shortcuts.
 
-	:::text
+<!-- PELICAN_END_SUMMARY -->
+
+Here is a script launching an IPython notebook server in the current active window:
+
+	:::ahk
     #SingleInstance Force
     #NoTrayIcon
 

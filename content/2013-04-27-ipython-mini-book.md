@@ -13,7 +13,7 @@ Python. It targets developers, students, teachers, hobbyists who know
 Python a bit, and who want to learn IPython for the extended console,
 the Notebook, and for more advanced scientific applications.
 
- 
+ <!-- PELICAN_END_SUMMARY -->
 
 The book first introduces IPython for interactive Python and shell
 programming. It shows how IPython can considerably improve the

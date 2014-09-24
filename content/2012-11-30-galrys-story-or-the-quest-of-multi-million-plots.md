@@ -1,4 +1,4 @@
-Title: Galry's Story, or the Quest of Multi-Million Plots
+Title: Galry's Story, or the quest of multi-million plots
 
 About a month ago, 
 [I announced here the availability](http://cyrille.rossant.net/introducing-galry/)
@@ -11,6 +11,8 @@ much more tests on various systems and graphics cards. In this post I'll
 talk about how the idea of writing a new visualization package came up in the
 first place. I'll also describe the new features that are coming to the
 library.
+
+<!-- PELICAN_END_SUMMARY -->
 
 After my announcement,
 I was pleased to see that there were a lot of people interested in
@@ -178,7 +180,7 @@ systems and graphics card manufacturers. Writing a multi-platform system means
 that all supported systems need to be tested, and that's not particularly easy
 to do in practice: there are a large number of combinations of systems
 (Windows, different Linux distributions, Mac OSX, either 32 bits
-and 64 bits), of graphics card drivers, versions of Python/PyOpenGL/QT, etc.
+and 64 bits), of graphics card drivers, versions of Python/PyOpenGL/Qt, etc.
 
 
 High-level interface

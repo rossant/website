@@ -2,9 +2,11 @@ Title: Create a standalone Windows installer for your Python application
 
 I am developing [a scientific application in Python with a graphical user interface in Qt](https://github.com/klusta-team/klustaviewa). Some end-users use OS X or Linux, but most of them are Windows users who are not familiar with Python or with a command-line interface. It is notoriously difficult to distribute Python applications to end-users who are not programmers, and it's a common criticism that is made against Python.
 
+<!-- PELICAN_END_SUMMARY -->
+
 I thought for a long time that there was nothing that could be done about that. But I recently wanted to find a solution. A complicated installation process can really be a barrier to entry for regular Windows users. So I've been looking for days for the right way to create a full standalone installer that installs everything (Python, external packages, and the software) along with icons on the desktop and the Start menu. I tried different approaches and none was satisfying at first. In particular, I tried to combine multiple installers for Python and the numerous external packages (NumPy, Matplotlib, PyQt, etc., coming from [Chris Gohlke's webpage](http://www.lfd.uci.edu/~gohlke/pythonlibs/)) into a single installer. It looked like something difficult to do, especially when the installers are `.exe` files and not `.msi` files. I tried to use some script to launch all installers successively and have the Next buttons pressed automatically, but it was not working very well and it was a bit of a mess.
 
-I finally found a solution that I find quite satisfying. I haven't found this solution clearly explained anywhere on the Web, so I'm sharing it here. The goal is to **distribute any Python application (possibly with a GUI) as a single-file `.exe` installer**. No dependencies, no prerequisites, just a regular `setup.exe` file that installs everything, including a full standalone, isolated Python distribution, into `C:\Program Files\MyApp\` like a regular program. The end-user does not even need to know that the software is written in Python.
+I finally found a solution that I find quite satisfying. I haven't found this solution clearly explained anywhere on the Web, so I'm sharing it here. The goal is to distribute any Python application (possibly with a GUI) as a single-file `.exe` installer. No dependencies, no prerequisites, just a regular `setup.exe` file that installs everything, including a full standalone, isolated Python distribution, into `C:\Program Files\MyApp\` like a regular program. The end-user does not even need to know that the software is written in Python.
 
 This solution can be summarized in two words: **WinPython** and **Inno Setup**.
 
@@ -26,7 +28,7 @@ Here is a summary of what you need to do to create an installer for your Python 
   * Use the wizard to create a new installer file (it is just a `.iss` text file).
   * Tell the wizard to copy your folder `MyApplication` to `C:\Program Files\MyApplication`. The ISS code for this looks like this:
   
-        :::text
+        :::ini
         [Files]
         Source: "D:\Dev\MyApplication"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
         
@@ -36,7 +38,7 @@ Here is a summary of what you need to do to create an installer for your Python 
     
 Create some shortcuts. Here is the ISS code to create a shorcut in the Start menu launching a Python GUI application:
 
-    :::text
+    :::ini
     [Icons]
     Name: "{group}\Application"; Filename: "{app}\WinPython-64bit-2.7.5.0\python-2.7.5.amd64\pythonw.exe"; WorkingDir: "{app}"; Parameters: """{app}\WinPython-64bit-2.7.5.0\python-2.7.5.amd64\Lib\site-packages\myapplication\scripts\runmyapp.py"""; IconFilename: "{app}\favicon.ico"
 
@@ -49,13 +51,13 @@ You can create shortcuts on the desktop too. [See more details here](http://www.
 
 Inno Setup allows you to customize the installation process as you wish. Together with Python scripts, you can really achieve anything. For instance, here is how you can run a Python script at the end of the installation process.
 
-    :::text
+    :::ini
     [Run]
     Filename: "{app}\WinPython-64bit-2.7.5.0\python-2.7.5.amd64\python.exe"; WorkingDir: "{app}"; Parameters: """{app}\postinstall.py"""; Flags: runhidden
 
 Here are a few directives that you can use to customize some aspects of the installation wizard (icon, images, colors...):
     
-    :::text
+    :::ini
     [Setup]
     SetupIconFile=D:\Dev\myapp\favicon.ico
     WizardImageFile=wizard.bmp

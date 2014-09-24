@@ -19,6 +19,8 @@ des parents...). Ce sont ces derniers critères qui ont une influence
 certaine sur les résultats scolaires, démontrant des inégalités
 profondes dans le système éducatif actuel.
 
+<!-- PELICAN_END_SUMMARY -->
+
 **EDIT**: [maintenant, vous pouvez connaître les résultats des candidats
 portant votre prénom!](http://coulmont.com/bac/)
 

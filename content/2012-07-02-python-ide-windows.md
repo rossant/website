@@ -17,6 +17,8 @@ scientific computing. It allows to run scripts in a command-line
 interface, and offers the possibility to continue an interactive session
 afterwards. It also includes a debugger and many more features.
 
+<!-- PELICAN_END_SUMMARY -->
+
 Unfortunately, using both Notepad++ and IPython in a convenient way
 during an interactive session, where one edits a script and runs it many
 times, is not straightforward. One can simply open both programs, with

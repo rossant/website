@@ -11,6 +11,8 @@ often at the expense of pure performance. Conversely, highly optimized code
 tends to be more difficult to read, and can lead to bugs that are hard to
 fix.
 
+<!-- PELICAN_END_SUMMARY -->
+
 It appears that of those two possible directions, [design and code 
 readability are more important _at first_ than premature
 optimization](http://en.wikipedia.org/wiki/Program_optimization#When_to_optimize). 

@@ -9,7 +9,10 @@ est Camille** avec 4 848 candidats. Voici les quelques prénoms les plus
 utilisés, représentatifs des prénoms à la mode aux alentours de l'année
 1994 (nuage réalisé sur [Wordle](http://www.wordle.net)).
 
+
 ![]({filename}images/prenoms-cloud.png)
+
+<!-- PELICAN_END_SUMMARY -->
 
     :::text
     Camille     4848

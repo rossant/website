@@ -2,6 +2,8 @@ Title: What's wrong with scientific Python?
 
 tl;dr: Although not perfect, Python is today one of the best platforms for scientific computing. It's getting even better everyday thanks to the amazing work of a vibrant and growing community. [I reviewed Python's strengths in a previous post](http://cyrille.rossant.net/why-using-python-for-scientific-computing/). Here, I cover the more sensitive issue of its weaknesses.
 
+<!-- PELICAN_END_SUMMARY -->
+
 Don't get me wrong. I love Python. I use it everyday. I think that, as of today, it is nothing less than one of the best platforms for high-performance scientific computing and data science. Not only among other competing open-source languages like R or Scilab; to me, it even outclasses commercial products like Matlab.
 
 That being said, nobody's perfect. While Python is mostly an excellent platform, it has some weaknesses. Sadly, those may prevent many people from jumping from Matlab & co to Python. I'd like to review them here. Note that these are my own opinions and many might disagree.

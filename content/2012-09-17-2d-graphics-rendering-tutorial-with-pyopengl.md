@@ -1,17 +1,8 @@
 Title: 2D graphics rendering tutorial with PyOpenGL
 
-[OpenGL](http://en.wikipedia.org/wiki/OpenGL)
-is a widely used open and cross-platform library for real-time 3D
-graphics, developed more than twenty years ago.
-It provides a low-level API that allows the developer to access
-the graphics hardware in an uniform way. It is the platform of choice
-when developing complex 2D or 3D applications that require hardware acceleration
-and that need to work on different platforms. It can be used in a number of 
-languages including C/C++, C#, Java, Objective-C (used in iPhone and iPad 
-games), Python, etc. In this article, I'll show how OpenGL can be used
-with Python (thanks to the 
-[PyOpenGL library](http://pyopengl.sourceforge.net/documentation/index.html)) 
-to efficiently render 2D graphics.
+[OpenGL](http://en.wikipedia.org/wiki/OpenGL) is a widely used open and cross-platform library for real-time 3D graphics, developed more than twenty years ago. It provides a low-level API that allows the developer to access the graphics hardware in an uniform way. It is the platform of choice when developing complex 2D or 3D applications that require hardware acceleration and that need to work on different platforms. It can be used in a number of languages including C/C++, C#, Java, Objective-C (used in iPhone and iPad games), Python, etc. In this article, I'll show how OpenGL can be used with Python (thanks to the [PyOpenGL library](http://pyopengl.sourceforge.net/documentation/index.html)) to efficiently render 2D graphics.
+
+<!-- PELICAN_END_SUMMARY -->
 
 Installation
 ------------
@@ -56,11 +47,11 @@ QGLWidget
 ---------
 
 We'll define a 
-[QT](http://en.wikipedia.org/wiki/Qt_(framework)) 
+[Qt](http://en.wikipedia.org/wiki/Qt_(framework)) 
 widget that displays points at random positions in the window.
 This widget will derive from 
 [`QGLWidget`](http://doc.qt.nokia.com/4.7-snapshot/qglwidget.html), 
-a QT widget that offers access to
+a Qt widget that offers access to
 the OpenGL API for rendering. Three methods at least need to be overriden
 in the derived class: `initializeGL()`, `updateGL()`, and `resizeGL(w, h)`.
 
@@ -174,15 +165,15 @@ commands. Here we just tell OpenGL to draw within the entire window.
     # the window corner OpenGL coordinates are (-+1, -+1)
     gl.glOrtho(-1, 1, 1, -1, -1, 1)
 
-Setting the PyQT widget
+Setting the PyQt widget
 -----------------------
 
-Here we use PyQT as a GUI window system. To show a window on the screen and
-use our OpenGL widget, we first need to define a QT main window, put the
-OpenGL widget inside, and finally create a QT application to host the main
+Here we use PyQt as a GUI window system. To show a window on the screen and
+use our OpenGL widget, we first need to define a Qt main window, put the
+OpenGL widget inside, and finally create a Qt application to host the main
 window.
     
-    # define a QT window with an OpenGL widget inside it
+    # define a Qt window with an OpenGL widget inside it
     class TestWindow(QtGui.QMainWindow):
         def __init__(self):
             super(TestWindow, self).__init__()
@@ -194,7 +185,7 @@ window.
             self.setCentralWidget(self.widget)
             self.show()
     
-    # create the QT App and window
+    # create the Qt App and window
     app = QtGui.QApplication(sys.argv)
     window = TestWindow()
     window.show()
@@ -205,7 +196,7 @@ Full script
 
 Here is the full script.
 
-    # PyQT4 imports
+    # PyQt4 imports
     from PyQt4 import QtGui, QtCore, QtOpenGL
     from PyQt4.QtOpenGL import QGLWidget
     # PyOpenGL imports
@@ -265,7 +256,7 @@ Here is the full script.
         import numpy as np
         import numpy.random as rdn
         
-        # define a QT window with an OpenGL widget inside it
+        # define a Qt window with an OpenGL widget inside it
         class TestWindow(QtGui.QMainWindow):
             def __init__(self):
                 super(TestWindow, self).__init__()
@@ -279,7 +270,7 @@ Here is the full script.
                 self.setCentralWidget(self.widget)
                 self.show()
         
-        # create the QT App and window
+        # create the Qt App and window
         app = QtGui.QApplication(sys.argv)
         window = TestWindow()
         window.show()

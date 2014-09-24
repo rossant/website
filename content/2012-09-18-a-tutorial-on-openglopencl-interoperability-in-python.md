@@ -8,6 +8,8 @@ with Python. Here I'll show how both OpenCL and OpenGL
 can be used at the same time with Python. It's called OpenCL-OpenGL 
 interoperability. What is it about?
 
+<!-- PELICAN_END_SUMMARY -->
+
 *   OpenGL gives low-level access to the graphics card to do *real-time graphics
     rendering* with hardware acceleration in an hardware-independent way.
 *   OpenCL gives low-level access to the graphics card to do *general-purpose
@@ -144,6 +146,7 @@ source data), and to the OpenGL VBO. We first get the array index in the
 current thread, then we copy the data from the OpenCL buffer to the OpenGL VBO,
 and transform the y-coordinate through a sine function.
 
+    :::cuda
     # OpenCL kernel that generates a sine function.
     clkernel = """
     __kernel void clkernel(__global float2* clpos, __global float2* glpos)
@@ -235,7 +238,7 @@ Full script
 
 Here is the full script.
 
-    # PyQT4 imports
+    # PyQt4 imports
     from PyQt4 import QtGui, QtCore, QtOpenGL
     from PyQt4.QtOpenGL import QGLWidget
     # PyOpenGL imports
@@ -372,7 +375,7 @@ Here is the full script.
         import sys
         import numpy as np
         
-        # define a QT window with an OpenGL widget inside it
+        # define a Qt window with an OpenGL widget inside it
         class TestWindow(QtGui.QMainWindow):
             def __init__(self):
                 super(TestWindow, self).__init__()
@@ -388,7 +391,7 @@ Here is the full script.
                 self.setCentralWidget(self.widget)
                 self.show()
         
-        # create the QT App and window
+        # create the Qt App and window
         app = QtGui.QApplication(sys.argv)
         window = TestWindow()
         window.show()

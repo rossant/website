@@ -1,9 +1,10 @@
-Title: Why you should move to Python 3 -- now
+Title: Why you should move to Python 3 – now
 
 I started to learn Python in 2008. The same year, Python 3 was released. Yet, almost six years later, I'm still using Python 2. Like the [vast majority of scientific Python programmers, apparently](http://ipython.org/usersurvey2013.html).
 
 But now is the time for me to move to Python 3. You should too. Here's why.
 
+<!-- PELICAN_END_SUMMARY -->
 
 ## Why would you want to move to Python 3?
 

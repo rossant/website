@@ -2,6 +2,8 @@ Title: A mathematical proof that our world is in three dimensions
 
 Everyone knows that our world is three-dimensional. It seems indeed obvious that there are three independent spatial directions, no less, no more. But can we really be sure? After all, everything we know about our world comes from our senses and from what our brains interprete. Does the fact that we _see_ in 3D really proves that the world _is_ in 3D? Can we have a mathematical proof, based on experimental observations, that the world is three-dimensional? This question is totally relevant, and several scientists and philosophers, like [Immanuel Kant](http://en.wikipedia.org/wiki/Immanuel_Kant), have been interested in it (see for example [this blog post](http://webinet.cafe-sciences.org/articles/dans-combien-de-dimensions-vivons-nous/) in French for a nice review).
 
+<!-- PELICAN_END_SUMMARY -->
+
 Here, I detail Kant's idea of a rigourous proof that we live in a 3D world. There are three steps:
 
 1. We model the world as an N-dimensional Euclidean space and we study a mathematical object called a **vector field** that verifies some natural properties.

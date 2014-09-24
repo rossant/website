@@ -5,6 +5,8 @@ Boggle, it consists in finding as many words as possible in a grid of 4x4
 letters. Here I'll show how one can easily generate and resolve grids
 automatically in Python.
 
+<!-- PELICAN_END_SUMMARY -->
+
 Generating grids
 ----------------
 

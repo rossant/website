@@ -4,6 +4,8 @@ I'm releasing today the code of a first experimental version of
 [**Galry, a high-performance interactive 2D visualization Python package**](http://rossant.github.com/galry/)
 that I'm creating as part of my current research project.
 
+<!-- PELICAN_END_SUMMARY -->
+
 The rationale of this package is to provide a highly flexible and optimized
 way of visualizing large 2D datasets in Python by using the full power of the
 graphics card.
@@ -30,9 +32,9 @@ current version), and almost smoothly with **100 million points** (~15 FPS).
 Galry integrates smoothly with 
 [IPython](http://ipython.org/)
 and 
-[QT](http://en.wikipedia.org/wiki/Qt_(framework)), 
+[Qt](http://en.wikipedia.org/wiki/Qt_(framework)), 
 through either 
-[PyQT](http://www.riverbankcomputing.co.uk/software/pyqt/intro) or 
+[PyQt](http://www.riverbankcomputing.co.uk/software/pyqt/intro) or 
 [PySide](http://qt-project.org/wiki/PySide). 
 
 Demo

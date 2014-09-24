@@ -3,36 +3,38 @@ Title: Making PyQt4, PySide and IPython work together
 [PyQt](http://en.wikipedia.org/wiki/PyQt) and 
 [PySide](http://en.wikipedia.org/wiki/PySide) 
 are two independent Python libraries allowing access to the
-[QT framework](http://en.wikipedia.org/wiki/Qt_(framework)). 
+[Qt framework](http://en.wikipedia.org/wiki/Qt_(framework)). 
 PyQt is maintained by the British firm 
 [Riverbank Computing](http://www.riverbankcomputing.co.uk),
-whereas PySide is developed by QT developers from 
+whereas PySide is developed by Qt developers from 
 [Nokia](http://en.wikipedia.org/wiki/Nokia). PySide was created
 by Nokia in 2009 after they _"failed to reach an agreement with PyQt developers
 to change its licensing terms to include LGPL as an alternative license"_
 ([quoting Wikipedia](http://en.wikipedia.org/wiki/PySide)). 
 Fortunately, the two APIs are very similar (which is
-not that surprising given that they are just bindings to the same QT library).
+not that surprising given that they are just bindings to the same Qt library).
 
-Developers willing to create a Python project based on QT do not necessarily
+<!-- PELICAN_END_SUMMARY -->
+
+Developers willing to create a Python project based on Qt do not necessarily
 need to choose between the two libraries: it is possible to support both
 as soon as some deprecated features of PyQt are not used. Some details can
 be found on the 
-[QT website](http://qt-project.org/wiki/Differences_Between_PySide_and_PyQt)
+[Qt website](http://qt-project.org/wiki/Differences_Between_PySide_and_PyQt)
 or on the
 [PyQt website](http://www.riverbankcomputing.co.uk/static/Docs/PyQt4/html/incompatible_apis.html).
 
 Here I give some tips about how to support both PySide and PyQt4 in a Python 
 project. In addition, I describe how IPython can be configured to work 
 properly with those libraries: it is indeed possible to 
-[interact with QT widgets from the IPython console](http://ipython.org/ipython-doc/dev/interactive/qtconsole.html#qt-and-the-qtconsole). 
+[interact with Qt widgets from the IPython console](http://ipython.org/ipython-doc/dev/interactive/qtconsole.html#qt-and-the-qtconsole). 
 This can be extremely helpful for debugging 
 or even in real-world applications. It is also very interesting when 
 [using matplotlib from IPython](http://ipython.org/ipython-doc/stable/interactive/reference.html#gui-event-loop-support) 
-(the GUI backend then being QT).
+(the GUI backend then being Qt).
 
 
-Importing QT in Python
+Importing Qt in Python
 ----------------------
 
 The
@@ -68,20 +70,20 @@ which comes from the `python_qt_binding` package):
         sip.setapi('QDate', 2)
         sip.setapi('QDateTime', 2)
         sip.setapi('QString', 2)
-        sip.setapi('QTextStream', 2)
-        sip.setapi('QTime', 2)
+        sip.setapi('QtextStream', 2)
+        sip.setapi('Qtime', 2)
         sip.setapi('QUrl', 2)
         sip.setapi('QVariant', 2)
     except ValueError, e:
         raise RuntimeError('Could not set API version (%s): did you import PyQt4 directly?' % e)
 
 This code must be called before any PyQt4 import. It can be a problem with
-IPython, which automatically imports PyQt4 when QT GUI event loop integration
+IPython, which automatically imports PyQt4 when Qt GUI event loop integration
 is active. A possible solution is to paste the above code
 in `~/.ipython/profile_default/ipython_config.py`.
 
 Also, you may want to set the 
-[`QT_API` environment variable](http://ipython.org/ipython-doc/dev/interactive/reference.html#pyqt-and-pyside)
+[`Qt_API` environment variable](http://ipython.org/ipython-doc/dev/interactive/reference.html#pyqt-and-pyside)
 to either `pyqt` or `pyside` depending on which library you want to use. 
 [See here for detailled instructions on Windows](http://www.technoon.com/how-to-add-environment-variables-in-windows-8.html).
 
@@ -90,34 +92,34 @@ to either `pyqt` or `pyside` depending on which library you want to use.
 Configuring IPython
 -------------------
 
-To enable the QT GUI event loop integration in IPython, you need to uncomment
+To enable the Qt GUI event loop integration in IPython, you need to uncomment
 the following lines in `~/.ipython/profile_default/ipython_config.py` (this file is
 automatically created when you create an IPython profile):
 
     c.TerminalIPythonApp.gui = 'qt'
     c.TerminalIPythonApp.pylab = 'qt'
 
-This allows you to open a QT window in an interactive way, and to access the QT
+This allows you to open a Qt window in an interactive way, and to access the Qt
 widget instance from IPython while the window is open. It solves also some 
 slow-down issues in the IPython console when windows have been opened.
 It also works with matplotlib.
 
 
-Create a QT window with IPython
+Create a Qt window with IPython
 -------------------------------
 
-When QT GUI event loop integration is active, a QT application is
+When Qt GUI event loop integration is active, a Qt application is
 automatically created upon IPython launch, so that:
 
-    window = MyQTWindow()
+    window = MyQtWindow()
     window.show
     
 just works. But this won't work by default in Python (e.g. with
-`python script.py`) since a QT application won't have been opened in the first
+`python script.py`) since a Qt application won't have been opened in the first
 place. By contrast, using the following code:
 
     app = QtGui.QApplication(sys.argv)
-    window = MyQTWindow()
+    window = MyQtWindow()
     window.show
     app.exec_()
     
@@ -127,7 +129,7 @@ have the expected behavior in both cases (interactive IPython, or standard
 Python interpreter), I use the following code:
 
     def create_window(window_class):
-        """Create a QT window in Python, or interactively in IPython with QT GUI
+        """Create a Qt window in Python, or interactively in IPython with Qt GUI
         event loop integration.
         """
         app_created = False
@@ -145,9 +147,9 @@ Python interpreter), I use the following code:
 
 This function can be used like this:
 
-    class MyQTWindow(QtGui.QMainWindow):
-        # [...] your QT window code
+    class MyQtWindow(QtGui.QMainWindow):
+        # [...] your Qt window code
         pass
 
-    window = create_window(MyQTWindow)
+    window = create_window(MyQtWindow)
     
