@@ -16,8 +16,8 @@ DISPLAY_PAGES_ON_MENU  = False
 DEFAULT_DATE = 'fs'
 FILENAME_METADATA = '(?P<date>\d{4}-\d{2}-\d{2})-(?P<slug>.*)'
 
-MD_EXTENSIONS = ['codehilite(css_class=highlight, guess_lang=False, lang=python)',
-				 'extra']
+# MD_EXTENSIONS = ['codehilite(css_class=highlight,guess_lang=False)',
+# 				 'extra']
 
 DEFAULT_PAGINATION = 10
 PAGINATION_PATTERNS = (
@@ -27,7 +27,7 @@ PAGINATION_PATTERNS = (
 
 PLUGIN_PATHS = ['../pelican-plugins']
 PLUGINS = [
-			'render_math',
+			'pelican_plugin-render_math',
 			'summary', 
 			'neighbors', 
 			# 'clean_summary',
