@@ -79,11 +79,24 @@ a:hover {
 
 
 #sidebar .portrait {
-}
-#sidebar .portrait img {
     width: 100%;
     max-width: 250px;
+    max-height: 200px;
+    margin: 0 0 .5em 0;
+
+    vertical-align: center;
+    /*margin: auto 2em;*/
+    overflow: hidden
 }
+#sidebar .portrait img {
+/*    width: 100%;
+    max-width: 250px;*/
+    margin: -5% 0;
+    width: 100%;
+    vertical-align: middle;
+}
+
+
 
 #sidebar .name {
     font-weight: bold;
@@ -170,19 +183,6 @@ a:hover {
     margin: 0;
     padding: 0 4em 0 0;
     position: relative;
-}
-@media screen and (max-width: 47.999em) {
-    #content .l-box {
-        padding: 0 0 3em 0;
-    }
-
-    #header {
-        padding: 0 1em;
-    }
-
-    #layout {
-        padding: 1em 1em;
-    }
 }
 
 #post {
@@ -311,23 +311,51 @@ h3 {
 /****** FOOTER ******/
 #footer {
     text-align: center;
-    font-size: 75%;
     color: #777;
 }
 
 #footer .l-box {
     margin: 4em 0 1em 0;
-    padding: .25em 5em 1em 0;
+    padding: .25em 4em 1em 0;
 }
 
 #footer .l-box > div {
     padding: .5em 0;
     margin: 0;
     border-top: 1px solid #ddd;
+    font-size: 75%;
 }
 
 
 #footer .l-box p {
     margin: 0;
     padding: 0;
+}
+
+
+
+
+
+/****** MEDIA ******/
+@media screen and (max-width: 47.999em) {
+    #content .l-box {
+        padding: 0 0 3em 0;
+    }
+
+    #header {
+        padding: 0 1em;
+    }
+
+    #layout {
+        padding: 1em 1em;
+    }
+
+    #sidebar {
+        padding-top: 1em;
+        border-top: 1px solid #ddd;
+    }
+
+    #footer .l-box {
+        padding-right: 1em;
+    }
 }
