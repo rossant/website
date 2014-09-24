@@ -1,6 +1,6 @@
-Title: Numpy performance tricks
+Title: NumPy performance tricks
 
-I've been using Numpy for nearly five years, but I'm still learning
+I've been using NumPy for nearly five years, but I'm still learning
 performance tricks. The reason is that I currently need to deal with
 very large arrays (hundreds of millions of elements) and the performance
 of my code started to be disappointing. Then, through extensive

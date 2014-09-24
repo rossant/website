@@ -144,6 +144,7 @@ to the fixed-function pipeline. It is now completely deprecated, yet almost
 all tutorials do not mention that. For example, here is a non-exhaustive list
 of deprecated OpenGL functions:
 
+    :::text
     glColorPointer, glVertexPointer, glEnableClientState, glLoadIdentity,
     glLoadMatrix, glMultMatrix, glOrtho*, glPopMatrix, glRotate*, glScale*,
     glTranslate*, glMaterial*, glLight*... 
