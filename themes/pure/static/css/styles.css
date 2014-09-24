@@ -8,7 +8,7 @@ html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
     /* Set your content font stack here: */
     font-family: "Source Sans Pro", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 300;
     color: #000;
 }
@@ -81,20 +81,8 @@ a:hover {
 #sidebar .portrait {
 }
 #sidebar .portrait img {
-    width: 8em;
-    height: 8em;
-}
-
-.circular {
-    width: 8em;
-    height: 8em;
-    border-radius: 4em;
-    -webkit-border-radius: 4em;
-    -moz-border-radius: 4em;
-    background: url(/theme/images/cr.jpg);
-    background-repeat: repeat-x;
-    background-size: 8em;
-    background-position: .2em 0;
+    width: 100%;
+    max-width: 225px;
 }
 
 #sidebar .name {
@@ -128,16 +116,36 @@ a:hover {
 
 #sidebar .books {
     margin: 1em 0 1em 0;
+    display: block;
+    clear: both;
 }
 #sidebar .books h3 {
     margin: .5em 0 .5em 0;
 }
 #sidebar .books div {
+    margin: 0;
+    padding: 0;
     float: left;
-    margin: .5em 1em .5em 0;
+    width: 50%;
 }
+#sidebar .books div.book-1 {
+}
+#sidebar .books div.book-2 {
+    text-align: right;
+}
+/*#sidebar .books div.book-1 {
+    float: left;
+}
+#sidebar .books div.book-2 {
+    float: right;
+}
+#sidebar .books div.book-2 img {
+    margin-left: auto;
+    margin-right: 0;
+}*/
 #sidebar .books img {
-    height: 120px;
+    /*max-height: 138px;*/
+    width: 95%;
 }
 
 #sidebar .search {
