@@ -16,7 +16,7 @@ html, button, input, select, textarea,
 #layout, #header {
     margin: 0 auto;
     padding: 0 2em;
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 a {
@@ -82,7 +82,7 @@ a:hover {
 }
 #sidebar .portrait img {
     width: 100%;
-    max-width: 225px;
+    max-width: 250px;
 }
 
 #sidebar .name {
@@ -133,18 +133,7 @@ a:hover {
 #sidebar .books div.book-2 {
     text-align: right;
 }
-/*#sidebar .books div.book-1 {
-    float: left;
-}
-#sidebar .books div.book-2 {
-    float: right;
-}
-#sidebar .books div.book-2 img {
-    margin-left: auto;
-    margin-right: 0;
-}*/
 #sidebar .books img {
-    /*max-height: 138px;*/
     width: 95%;
 }
 
@@ -182,9 +171,13 @@ a:hover {
     padding: 0 4em 0 0;
     position: relative;
 }
-@media screen and (max-width: 35.5em) {
+@media screen and (max-width: 47.999em) {
     #content .l-box {
         padding: 0 0 3em 0;
+    }
+
+    #header {
+        padding: 0 1em;
     }
 
     #layout {
@@ -215,8 +208,8 @@ code {
 
 .highlight pre {
     font-family: 'Ubuntu Mono';
-    font-size: 10px;
-    padding: 1em 1em;
+    font-size: 14px;
+    padding: .5em;
     white-space: pre;
 }
 
