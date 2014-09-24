@@ -15,8 +15,10 @@ DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU  = False
 DEFAULT_DATE = 'fs'
 FILENAME_METADATA = '(?P<date>\d{4}-\d{2}-\d{2})-(?P<slug>.*)'
-DEFAULT_PAGINATION = 3
+DEFAULT_PAGINATION = 10
 
+PLUGIN_PATHS = ['../pelican-plugins']
+PLUGINS = ['render_math', 'summary']
 
 DEFAULT_CATEGORY = ''
 

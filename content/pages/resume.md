@@ -1,5 +1,7 @@
 Title: Resume
 
+I am a former student of [&Eacute;cole normale Supérieure](http://www.ens.fr), where I studied mathematics and computer science. I also have a PhD in neuroinformatics.
+
 Here is a resume of my current and past professional activities.
 
 ## Professional experience
@@ -19,7 +21,7 @@ I'm developing algorithms and software for analyzing large volumes of electrophy
 <div class="sub-header-3">2009&ndash;2012 (PhD)</div>
 
 * [Cognitive Studies Department](http://www.cognition.ens.fr/) ([Romain Brette](http://romainbrette.fr/))
-* [Ecole Normale Supérieure](http://www.ens.fr/), France
+* [&Eacute;cole Normale Supérieure](http://www.ens.fr/), France
 
 I've developed programs for analyzing intracellular recordings with the help of spiking neuron models. I've also demonstrated theoretically and experimentally a key role for fast temporal correlations in neural coding.
 
@@ -103,7 +105,7 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
   * 2012: **Ph.D. in Computational Neuroscience** at the ENS and UPMC with highest honors
   * 2008: **Master's Degree in Computer Science** (MPRI) at the ENS with highest honors
   * 2005: **Bachelor's Degree in Mathematics** (FIMFA) at the ENS with highest honors
-  * 2005: Entry to the **Ecole Normale Supérieure** (ENS) through competitive examinations in Maths and Physics
+  * 2005: Entry to the **&Eacute;cole Normale Supérieure** (ENS) through competitive examinations in Maths and Physics
   * 2002: Preparatory classes (MPSI/MP*) at Lycée Masséna, Nice
   * 2002: High school diploma (A-level equivalent) with highest honors
 
