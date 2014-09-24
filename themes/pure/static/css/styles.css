@@ -211,6 +211,8 @@ code {
     font-family: 'Ubuntu Mono';
     font-size: 14px;
     padding: .5em;
+    word-wrap: normal;
+    overflow: auto;
     white-space: pre;
 }
 
