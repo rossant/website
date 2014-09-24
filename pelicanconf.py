@@ -6,6 +6,7 @@ SITEURL = 'http://localhost:8000'
 
 AUTHOR = 'Cyrille Rossant'
 SITENAME = "Cyrille Rossant's blog"
+DISQUS_SITENAME = 'rossant'
 LOCALE = 'en_US.utf8'
 PATH = 'content'
 THEME = 'themes/pure'
