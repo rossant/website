@@ -32,9 +32,13 @@ PLUGINS = [
 			'neighbors',
 ]
 
+# OUTPUT_PATH = '../rossant.github.io'
+
 DEFAULT_CATEGORY = ''
 
 DIRECT_TEMPLATES = ('index', 'archives')
+
+ARCHIVES_SAVE_AS = 'archives/index.html'
 
 ARTICLE_URL = '{slug}/'
 ARTICLE_SAVE_AS = '{slug}/index.html'
