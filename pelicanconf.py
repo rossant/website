@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-SITEURL = 'http://192.168.1.75:8000'
+SITEURL = 'http://cyrille-new.rossant.net'
 
 AUTHOR = 'Cyrille Rossant'
 SITENAME = "Cyrille Rossant's blog"
@@ -29,8 +29,7 @@ PLUGIN_PATHS = ['../pelican-plugins']
 PLUGINS = [
 			'pelican_plugin-render_math',
 			'summary', 
-			'neighbors', 
-			# 'clean_summary',
+			'neighbors',
 ]
 
 DEFAULT_CATEGORY = ''
