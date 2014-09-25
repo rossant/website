@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+# make sure to end all internal links with '/' so that mod_rewrite .htaccess works 
+# with subdirectories
 SITEURL = 'http://cyrille-new.rossant.net'
 
 AUTHOR = 'Cyrille Rossant'
