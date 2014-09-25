@@ -21,7 +21,7 @@ I'm interested in bringing closer Python and the browser closer together. More p
 
 ## Python for data science
 
-I've written [two books on IPython and Python for data science and interactive computing]({filename}/pages/books.md).
+I've written [two books on Python for data science and interactive computing]({filename}/pages/books.md).
 
 
 ## Open data

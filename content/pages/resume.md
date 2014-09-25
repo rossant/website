@@ -1,6 +1,6 @@
 Title: Resume
 
-I am a former student of [&Eacute;cole normale Supérieure](http://www.ens.fr), where I studied mathematics and computer science. I also have a PhD in neuroinformatics.
+I am a former student of [&Eacute;cole Normale Supérieure](http://www.ens.fr), where I studied mathematics and computer science. I also have a PhD in neuroinformatics.
 
 Here is a resume of my current and past professional activities.
 
@@ -51,7 +51,7 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 ### International peer-reviewed scientific journals
 
-  * **Rossant C**, Harris KD (2013). [Hardware-accelerated interactive data visualization for neuroscience in Python]({filename}/pdfs/RossantHardware2013.pdf). Frontiers in Neuroinformatics, 7(36). doi:10.3389/fninf.2013.00036
+  * **Rossant C**, Harris KD (2013). [Hardware-accelerated interactive data visualization for neuroscience in Python]({filename}/pdfs/RossantHardware2013.pdf). Frontiers in Neuroinformatics, 7(36); doi:10.3389/fninf.2013.00036
   * **Rossant C**, Fontaine B, Goodman DF (2013). [Playdoh: a lightweight Python library for distributed computing and optimisation]({filename}/pdfs/RossantPlaydoh2013.pdf). Journal of Computational Science, 4(5): 352–359; doi:10.1016/j.jocs.2011.06.002
   * **Rossant C**, Fontaine B, Magnusson AK, Brette R (2012). [A calibration-free electrode compensation method]({filename}/pdfs/RossantCalibration2012.pdf). Journal of Neurophysiology, 108(9): 2629-2639; doi: 10.1152/jn.01122.2011
   * **Rossant C**, Leijon S, Magnusson AK, Brette R (2011). [Sensitivity of noisy neurons to coincident inputs]({filename}/pdfs/RossantSensitivity2011.pdf). Journal of Neuroscience, 31(47): 17193-17206; doi: 10.1523/JNEUROSCI.2482-11.2011
@@ -96,7 +96,7 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 * Rougier N, Klein A, **Rossant C** (2014). Vispy sprint, EuroSciPy, Cambridge, UK (sprint)
 * **Rossant C**, Rougier N (2014). [Scientific Data Visualization](http://reseau-loops.github.io/journee_2014_06.html), LoOPS network meeting, Orsay University. Presentation and tutorials on HDF5 and Vispy
 * **Rossant C**, Klein A, Campagnola L, Rougier N (2014). Organization of the Vispy code camp at the European Synchrotron Radiation Facility (ESRF) in Grenoble
-* Rougier N, Klein A, **Rossant C** (2013). Python visualization, EuroSciPy, Brussels, Belgium (sprint).
+* Rougier N, Klein A, **Rossant C** (2013). Python visualization, EuroSciPy, Brussels, Belgium (sprint)
 * Brette R, Stimberg M, Benichoux V, **Rossant C**, Goodman D, Fontaine B (2013). Advanced modelling of spiking neural networks with Brian. Organization for Computational Neuroscience Meeting, Paris (tutorial)
 * **Rossant C**, Harris K (2013). Next-generation software for spike sorting with large multi-electrode probes. Janelia Spike Sorting Workshop, Janelia Farm Research Campus, Ashburn, USA (invited talk)
 
@@ -113,7 +113,7 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 ## Teaching
 
-* 2009-2012: **Teacher assistant** in Mathematics and Computer Science at ENS and UPMC (Bachelor and Master levels): probability theory, measure theory, statistics, calculus, real analysis, dynamical systems, signal processing, scientific Python.
+* 2009-2012: **Teacher assistant** in Mathematics and Computer Science at ENS and UPMC (Bachelor and Master levels): probability theory, measure theory, statistics, calculus, real analysis, dynamical systems, signal processing, scientific Python
 
 * 2008-2009: Voluntary teaching to high school students at TALENS association
 

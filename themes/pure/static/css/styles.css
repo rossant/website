@@ -232,7 +232,7 @@ code {
 }
 #posts .post .post-header h3 a {
 }*/
-#posts hr {
+#posts hr, #tag-posts hr {
     display: block;
     height: 1px;
     border: 0;
