@@ -2,7 +2,7 @@ Title: Projects
 
 ## Platform for large-scale electrophysiological data analysis
 
-Next-generation electrophysiological recording devices require scalable data analysis platforms. I'm leading the development of a new [Python-based platform](http://klusta-team.github.io/) that will let scientists analyze their terabytes of data remotely and effectively in the Web browser.
+Next-generation electrophysiological recording devices require scalable data analysis platforms. I'm leading the development of a new [Python-based platform](http://klusta-team.github.io/) that will let scientists analyze their terabytes of data remotely and effectively in the Web browser (thanks to the [IPython notebook](http://ipython.org/notebook.html)).
 
 I'm focusing on raw data visualization and extraction of spike trains from raw extracellular recordings (spike sorting).
 
@@ -21,7 +21,7 @@ I'm interested in bringing closer Python and the browser closer together. More p
 
 ## Python for data science
 
-I've written [two books on Python for data science and interactive computing]({filename}/pages/books.md).
+I've written [two books on IPython and Python for data science and interactive computing]({filename}/pages/books.md).
 
 
 ## Open data
