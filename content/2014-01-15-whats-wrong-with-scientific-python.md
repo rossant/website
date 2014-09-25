@@ -9,7 +9,7 @@ Don't get me wrong. I love Python. I use it everyday. I think that, as of today,
 
 That being said, nobody's perfect. While Python is mostly an excellent platform, it has some weaknesses. Sadly, those may prevent many people from jumping from Matlab & co to Python. I'd like to review them here. Note that these are my own opinions and many might disagree.
 
-**Update** (24/01/2014): this updated version contains a few clarifications and additions compared to the original version from 15/01/2014. See also in the comments a [very good summary and perspective by Konrad Hinsen](http://cyrille.rossant.net/whats-wrong-with-scientific-python/#comment-1512).
+**Update** (24/01/2014): this updated version contains a few clarifications and additions compared to the original version from 15/01/2014. See also in the comments a [very good summary and perspective by Konrad Hinsen](http://cyrille.rossant.net/whats-wrong-with-scientific-python/#comment-1603524572).
 
 
 ## A good general-purpose language, but not that good for scientific computing
