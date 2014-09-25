@@ -11,7 +11,7 @@ utilisés, représentatifs des prénoms à la mode aux alentours de l'année
 1994 (nuage réalisé sur [Wordle](http://www.wordle.net)).
 
 
-![]({filename}images/prenoms-cloud.png)
+![Prénoms]({filename}images/prenoms-cloud.png)
 
 <!-- PELICAN_END_SUMMARY -->
 
@@ -64,7 +64,7 @@ portés par 2, 3, 4 candidats ou plus. Cela revient à étudier la
 distribution des fréquences des prénoms. On obtient alors la courbe
 suivante.
 
-![]({filename}images/prenoms-zipf.png)
+![Loi de Zipf]({filename}images/prenoms-zipf.png)
 
 A gauche est représenté la fraction de prénoms qui sont portés par 1, 2,
 ... jusqu'à 20 candidats (points bleus). Si 65% des prénoms sont portés
@@ -114,7 +114,7 @@ pourcentage de candidats couverts par 1, 2, 3... prénoms, en triant les
 prénoms par ordre décroissant de fréquence. On obtient le graphique
 suivant (à droite, échelle log-log) :
 
-![]({filename}images/prenoms-frequency.png)
+![Fréquence]({filename}images/prenoms-frequency.png)
 
 Le "coude" observé à gauche est typique d'une loi de Zipf. De gauche à
 droite, les prénoms sont classés par fréquence décroissante (le prénom

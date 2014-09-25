@@ -277,7 +277,7 @@ Here is the full script.
         window.show()
         app.exec_()
 
-<a href="http://cyrille.rossant.net/wp-content/uploads/2012/09/gl.png"><img src="http://cyrille.rossant.net/wp-content/uploads/2012/09/gl-286x300.png" alt="" title="PyOpenGL tutorial" width="286" height="300" class="aligncenter size-medium wp-image-944" /></a>        
+![PyOpenGL tutorial]({filename}images/gl.png)    
         
 Final notes
 -----------

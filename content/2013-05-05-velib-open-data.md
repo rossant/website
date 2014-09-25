@@ -14,5 +14,4 @@ data has been obtained on a sunny Sunday of May...
 
 <!-- PELICAN_END_SUMMARY -->
 
-[![Vélib open data,
-Paris]({filename}images/velib.png)]({filename}images/velib.png)
+![Vélib open data, Paris]({filename}images/velib.png)

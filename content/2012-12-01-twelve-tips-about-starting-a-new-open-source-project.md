@@ -62,7 +62,7 @@ My point is that programming is not necessarily the hard part. *Designing* is th
 
 Unfortunately, I don't have any concrete advice about how to achieve that. I know that many people are using some formal methods for finding the prefect architecture, involving horrid swearwords such as ["UML"](http://en.wikipedia.org/wiki/Unified_Modeling_Language) and scary schematics with many boxes and arrows all over the place. I've never had the chance to learn that in school, and I've naturally been developing a more *instinctive* (who said bogus?) way of thinking about the big picture.
 
-![](http://upload.wikimedia.org/wikipedia/commons/8/81/UML_Diagrams.jpg)
+![UML](http://upload.wikimedia.org/wikipedia/commons/8/81/UML_Diagrams.jpg)
 
 Take the time to think about the code you're writing. Is it [smelling good](http://en.wikipedia.org/wiki/Code_smell)? If not, think again and [refactor](http://en.wikipedia.org/wiki/Refactoring). Is your code design rigid or flexible? Are you doing it the right way? Being constantly critical about your own code allows you to deal with [badly designed code](http://en.wikipedia.org/wiki/Anti-pattern) early on.
 
@@ -117,6 +117,6 @@ Have fun
 
 Finally, the whole point of open source development is to have fun (well, maybe not the whole point, but it's an important factor). You should be in love with your language and passionate about programming in general. Do you like sport more than programming? If so, just turn off your computer and do what you like.
 
-![](http://1.bp.blogspot.com/-85-oqQ7DBX4/T4wNBbg8kdI/AAAAAAAAABw/pCpdCT2jfDw/s1600/wisbase-1.jpg)
+![Have fun!](http://1.bp.blogspot.com/-85-oqQ7DBX4/T4wNBbg8kdI/AAAAAAAAABw/pCpdCT2jfDw/s1600/wisbase-1.jpg)
 
 

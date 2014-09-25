@@ -399,11 +399,9 @@ Here is the full script.
         app.exec_()
         
 
-        
-<a href="http://cyrille.rossant.net/wp-content/uploads/2012/09/glcl.png"><img src="http://cyrille.rossant.net/wp-content/uploads/2012/09/glcl-286x300.png" alt="" title="Gl-CL interop" width="286" height="300" class="aligncenter size-medium wp-image-954" /></a>
-        
-        
-        
+![GL-CL interop]({filename}images/glcl.png)
+
+
 Final notes
 -----------
 
