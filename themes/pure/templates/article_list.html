@@ -5,6 +5,11 @@
             <p class="sub-header-3">{{ article.locale_date }}</p>
             <p class="post-summary">{{ article.summary }}</p>
         </header>
+        <div class="read-more">
+            <a class="pure-button" href="{{ SITEURL }}/{{ article.url }}">
+                read on
+            </a>
+        </div>
     </section>
     {% if not loop.last %}
         <hr />

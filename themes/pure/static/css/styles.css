@@ -169,7 +169,7 @@ a:hover {
 }
 
 #content header {
-    margin: 0 0 2em 0;
+    margin: 0 0 1em 0;
 }
 
 #content header .post-meta {
@@ -240,7 +240,9 @@ code {
     margin: 3em 7em 1em 7em;
     padding: 0;
 }
-
+#posts .read-more {
+    text-align: right;
+}
 blockquote {
     color: #777;
     border-left: .5em solid #eee;
@@ -303,10 +305,10 @@ h3 {
     top: 0;
 }
 .pagination {
-    font-size: .8em;
+    font-size: .9em;
     text-align: center;
     position: relative;
-    margin: 2em 4em -2em 4em;
+    margin: 2em 2em -2em 2em;
     /*max-width: 100%;*/
 }
 .pagination-left {
