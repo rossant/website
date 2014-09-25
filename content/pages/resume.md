@@ -23,8 +23,7 @@ I'm developing algorithms and software for analyzing large volumes of electrophy
 * [Cognitive Studies Department](http://www.cognition.ens.fr/) ([Romain Brette](http://romainbrette.fr/))
 * [&Eacute;cole Normale Supérieure](http://www.ens.fr/), France
 
-I've developed programs for analyzing intracellular recordings with the help of spiking neuron models. I've also demonstrated theoretically and experimentally a key role for fast temporal correlations in neural coding.
-[My dissertation is available for download here (PDF, 14MB)]({filename}/pdfs/RossantPhD.pdf).
+I've developed programs for analyzing intracellular recordings with the help of spiking neuron models. I've also demonstrated theoretically and experimentally a key role for fast temporal correlations in neural coding. [My dissertation is available for download here (PDF, 14MB)]({filename}/pdfs/RossantPhD.pdf).
 
 
 ### Statistical data analysis of retinal spiking data
@@ -34,7 +33,7 @@ I've developed programs for analyzing intracellular recordings with the help of 
 * [Molecular Biology Department](http://molbio.princeton.edu/) ([Michael Berry](http://molbio.princeton.edu/faculty/molbio-faculty/95-berry))
 * [Princeton University](http://www.princeton.edu/main/), USA
 
-I've developed a mathematical framework for analyzing and modeling the multineuronal spiking activity of in vitro retinal recordings (joint work with Kolia Sadeghi).  [My dissertation is available for download here (PDF, 2MB)]({filename}/pdfs/RossantMasterThesis.pdf).
+I've developed a statistical framework for analyzing and modeling the multineuronal spiking activity of retinal ganglion cells recorded with high-density multielectrode arrays (joint work with Kolia Sadeghi). [My dissertation is available for download here (PDF, 2MB)]({filename}/pdfs/RossantMasterThesis.pdf).
 
 
 ### Data analysis of human locomotor trajectories
@@ -103,19 +102,19 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 ## Education and diplomas
 
-* 2012: **Ph.D. in Computational Neuroscience** at the ENS and UPMC with highest honors
-* 2008: **Master's Degree in Computer Science** (MPRI) at the ENS with highest honors
-* 2005: **Bachelor's Degree in Mathematics** (FIMFA) at the ENS with highest honors
-* 2005: Entry to the **&Eacute;cole Normale Supérieure** (ENS) through competitive examinations in Maths and Physics
+* 2012: **PhD in computational neuroscience** at the ENS and UPMC with highest honors
+* 2008: **Master's Degree in computer science** (MPRI) at the ENS with highest honors
+* 2005: **Bachelor's Degree in mathematics** ([FIMFA](https://www.math.ens.fr/enseignement/Presentation,7.html)) at the ENS with highest honors
+* 2005: Entry to the **&Eacute;cole Normale Supérieure** (ENS) through competitive examinations in maths and physics
 * 2002: Preparatory classes (MPSI/MP*) at Lycée Masséna, Nice
 * 2002: High school diploma (A-level equivalent) with highest honors
 
 
 ## Teaching
 
-* 2009-2012: **Teacher assistant** in Mathematics and Computer Science at ENS and UPMC (Bachelor and Master levels): probability theory, measure theory, statistics, calculus, real analysis, dynamical systems, signal processing, scientific Python
+* 2009-2012: **Teacher assistant** in mathematics and computer science at ENS and UPMC (Bachelor and Master levels): probability theory, measure theory, statistics, calculus, real analysis, dynamical systems, signal processing, scientific Python
 
-* 2008-2009: Voluntary teaching to high school students at TALENS association
+* 2008-2009: Voluntary teaching to high school students at [TALENS](http://pesu.ens.fr/talens/) association
 
 
 ## Technical skills
@@ -124,6 +123,6 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 * Scientific Python, MATLAB, data visualization
 * Programming on graphics cards: CUDA, OpenCL
 * Computer graphics: OpenGL, DirectX, ray tracing, video game development, Photoshop, Illustrator
-* Website development: HTML5, CSS3, JavaScript, d3.js, PHP/MySQL
-* Mobile and windows applications: C#, .NET, Windows Phone
+* Website development: HTML5, CSS3, JavaScript, backbone.js, d3.js, PHP/MySQL
+* Mobile and windows applications: C#, .NET, Windows Phone, Qt
 * Other languages: C, C++, Perl, Java

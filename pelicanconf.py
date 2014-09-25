@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 # make sure to end all internal links with '/' so that mod_rewrite .htaccess works 
 # with subdirectories
 SITEURL = 'http://cyrille-new.rossant.net'
+SITEURL = '/'  # FOR LOCAL DEV ONLY
 
 AUTHOR = 'Cyrille Rossant'
 SITENAME = "Cyrille Rossant's blog"
@@ -21,7 +22,7 @@ FILENAME_METADATA = '(?P<date>\d{4}-\d{2}-\d{2})-(?P<slug>.*)'
 MD_EXTENSIONS = ['codehilite(css_class=highlight,guess_lang=False,linenums=False)',
 				 'extra']
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 5
 PAGINATION_PATTERNS = (
     (1, '{base_name}/', '{base_name}/index.html'),
     (2, '{base_name}/page/{number}/', '{base_name}/page/{number}/index.html'),

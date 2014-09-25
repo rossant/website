@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments.css">
 {% endblock %}
 
+{% block title %}{{ SITENAME }} - {{ article.title }}{% endblock title %}
+
 {% block head_js %}
     <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
     <script>
