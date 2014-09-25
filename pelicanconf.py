@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 
 # make sure to end all internal links with '/' so that mod_rewrite .htaccess works 
 # with subdirectories
-SITEURL = 'http://cyrille-new.rossant.net'
-SITEURL = '/'  # FOR LOCAL DEV ONLY
+SITEURL = 'http://cyrille.rossant.net'
+# SITEURL = '/'  # FOR LOCAL DEV ONLY
 
 AUTHOR = 'Cyrille Rossant'
 SITENAME = "Cyrille Rossant's blog"
