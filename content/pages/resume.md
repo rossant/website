@@ -34,7 +34,7 @@ I've developed programs for analyzing intracellular recordings with the help of 
 * [Molecular Biology Department](http://molbio.princeton.edu/) ([Michael Berry](http://molbio.princeton.edu/faculty/molbio-faculty/95-berry))
 * [Princeton University](http://www.princeton.edu/main/), USA
 
-I've developed a mathematical framework for analyzing and modeling the multineuronal spiking activity of in vitro retinal recordings (joint work with Kolia Sadeghi).
+I've developed a mathematical framework for analyzing and modeling the multineuronal spiking activity of in vitro retinal recordings (joint work with Kolia Sadeghi).  [My dissertation is available for download here (PDF, 2MB)]({filename}/pdfs/RossantMasterThesis.pdf).
 
 
 ### Data analysis of human locomotor trajectories
@@ -67,51 +67,63 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 ### Books
 
   * **Rossant C** (2014). [IPython Interactive Computing and Visualization Cookbook](http://www.packtpub.com/ipython-interactive-computing-and-visualization-cookbook/book). Packt Publishing, 520 pages, ISBN 9781783284818
-  * **Rossant C** (2013). [Learning IPython for Interactive Computing and Data Visualization](http://www.packtpub.com/learning-ipython-for-interactive-computing-and-data-visualization/book). Packt Publishing, 138 pages, ISBN 1782169938
+  * **Rossant C** (2013). [Learning IPython for Interactive Computing and Data Visualization](http://www.packtpub.com/learning-ipython-for-interactive-computing-and-data-visualization/book). Packt Publishing, 138 pages, ISBN 9781782169938
 
 
 ### Conferences
 
-  * Klein A, Rougier N, **Rossant C**, Larson E, Campagnola L (2014). [Introducing Vispy's high level modules: easy yet powerful visualization for everyone](https://www.euroscipy.org/2014/schedule/presentation/7/), EuroSciPy, Cambridge, UK (talk by Klein A)
-  * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. Society for Neuroscience Annual Meeting, San Diego, USA (poster)
-  * **Rossant C** (2013). Spike-based computation in cortical networks: theory and data, Mathematical Neuroscience Laboratory, CIRB, Collège de France, Paris
-  * Campagnola L, Klein A, **Rossant C**, Rougier N (2013). A Modern and Interactive Visualization Framework, EuroSciPy, Brussels, Belgium (talk by Rougier N)
-  * **Rossant C**, Harris K (2013). High-performance interactive data visualization in Python. EuroSciPy, Brussels, Belgium (poster)
-  * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. Organization for Computational Neuroscience Meeting, Paris (poster)
-  * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. UCL Neuroscience Symposium, London (poster)
-  * **Rossant C** (2013). Semi-automatic algorithms for manual spike sorting, Cortical Processing Laboratory Seminar, UCL, London
-  * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. British Neuroscience Association's biennial meeting, London (poster)
-  * **Rossant C** (2011). Coincidence detection in noisy neurons, Laboratory of Computational Neuroscience Seminar, EPFL, Lausanne, Switzerland
-  * **Rossant C**, Leijon S, Magnusson AK, Brette R (2011). Sensitivity of noisy neurons to coincident inputs. Workshop on Mean-field methods and multiscale analysis of neuronal populations, CIRM, Marseille, France (poster)
-  * Brette R, **Rossant C**, Benichoux V (2011). What's new in Brian? Python in Neuroscience Euroscipy Workshop, Paris (talk)
-  * **Rossant C**, Brette R (2010). Coincidence detection in noisy neurons. Society for Neuroscience Annual Meeting, San Diego, USA (poster)
-  * **Rossant C**, Brette R (2010). Coincidence detection in noisy neurons. NeuroComp, Lyon, France (poster)
-  * **Rossant C**, Fontaine B, Goodman DF (2010). Playdoh: a lightweight Python library for distributed computing and optimisation. Euroscipy 2010, Paris (talk)
-  * **Rossant C**, Brette R (2010). Coincidence detection in active neurons. Cosyne, Salt Lake City, USA (poster)
+* Klein A, Rougier N, **Rossant C**, Larson E, Campagnola L (2014). [Introducing Vispy's high level modules: easy yet powerful visualization for everyone](https://www.euroscipy.org/2014/schedule/presentation/7/), EuroSciPy, Cambridge, UK (talk by Klein A)
+* **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. Society for Neuroscience Annual Meeting, San Diego, USA (poster)
+* **Rossant C** (2013). Spike-based computation in cortical networks: theory and data, Mathematical Neuroscience Laboratory, CIRB, Collège de France, Paris
+* Campagnola L, Klein A, **Rossant C**, Rougier N (2013). A Modern and Interactive Visualization Framework, EuroSciPy, Brussels, Belgium (talk by Rougier N)
+* **Rossant C**, Harris K (2013). High-performance interactive data visualization in Python. EuroSciPy, Brussels, Belgium (poster)
+* **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. Organization for Computational Neuroscience Meeting, Paris (poster)
+* **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. UCL Neuroscience Symposium, London (poster)
+* **Rossant C** (2013). Semi-automatic algorithms for manual spike sorting, Cortical Processing Laboratory Seminar, UCL, London
+* **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. British Neuroscience Association's biennial meeting, London (poster)
+* **Rossant C** (2011). Coincidence detection in noisy neurons, Laboratory of Computational Neuroscience Seminar, EPFL, Lausanne, Switzerland
+* **Rossant C**, Leijon S, Magnusson AK, Brette R (2011). Sensitivity of noisy neurons to coincident inputs. Workshop on Mean-field methods and multiscale analysis of neuronal populations, CIRM, Marseille, France (poster)
+* Brette R, **Rossant C**, Benichoux V (2011). What's new in Brian? Python in Neuroscience Euroscipy Workshop, Paris (talk)
+* **Rossant C**, Brette R (2010). Coincidence detection in noisy neurons. Society for Neuroscience Annual Meeting, San Diego, USA (poster)
+* **Rossant C**, Brette R (2010). Coincidence detection in noisy neurons. NeuroComp, Lyon, France (poster)
+* **Rossant C**, Fontaine B, Goodman DF (2010). Playdoh: a lightweight Python library for distributed computing and optimisation. Euroscipy 2010, Paris (talk)
+* **Rossant C**, Brette R (2010). Coincidence detection in active neurons. Cosyne, Salt Lake City, USA (poster)
 
 
 ### Workshops and tutorials
 
-  * **Rossant C** (2014). [The new interactive features of the IPython 2 notebook](https://www.euroscipy.org/2014/schedule/presentation/60/), EuroSciPy, Cambridge, UK (advanced tutorial)
-  * Rougier N, Klein A, **Rossant C** (2014). Vispy sprint, EuroSciPy, Cambridge, UK (sprint)
-  * **Rossant C**, Rougier N (2014). [Scientific Data Visualization](http://reseau-loops.github.io/journee_2014_06.html), LoOPS network meeting, Orsay University. Presentation and tutorials on HDF5 and Vispy
-  * **Rossant C**, Klein A, Campagnola L, Rougier N (2014). Organization of the Vispy code camp at the European Synchrotron Radiation Facility (ESRF) in Grenoble
-  * Rougier N, Klein A, **Rossant C** (2013). Python visualization, EuroSciPy, Brussels, Belgium (sprint).
-  * Brette R, Stimberg M, Benichoux V, **Rossant C**, Goodman D, Fontaine B (2013). Advanced modelling of spiking neural networks with Brian. Organization for Computational Neuroscience Meeting, Paris (tutorial)
-  * **Rossant C**, Harris K (2013). Next-generation software for spike sorting with large multi-electrode probes. Janelia Spike Sorting Workshop, Janelia Farm Research Campus, Ashburn, USA (invited talk)
+* **Rossant C** (2014). [The new interactive features of the IPython 2 notebook](https://www.euroscipy.org/2014/schedule/presentation/60/), EuroSciPy, Cambridge, UK (advanced tutorial)
+* Rougier N, Klein A, **Rossant C** (2014). Vispy sprint, EuroSciPy, Cambridge, UK (sprint)
+* **Rossant C**, Rougier N (2014). [Scientific Data Visualization](http://reseau-loops.github.io/journee_2014_06.html), LoOPS network meeting, Orsay University. Presentation and tutorials on HDF5 and Vispy
+* **Rossant C**, Klein A, Campagnola L, Rougier N (2014). Organization of the Vispy code camp at the European Synchrotron Radiation Facility (ESRF) in Grenoble
+* Rougier N, Klein A, **Rossant C** (2013). Python visualization, EuroSciPy, Brussels, Belgium (sprint).
+* Brette R, Stimberg M, Benichoux V, **Rossant C**, Goodman D, Fontaine B (2013). Advanced modelling of spiking neural networks with Brian. Organization for Computational Neuroscience Meeting, Paris (tutorial)
+* **Rossant C**, Harris K (2013). Next-generation software for spike sorting with large multi-electrode probes. Janelia Spike Sorting Workshop, Janelia Farm Research Campus, Ashburn, USA (invited talk)
 
 
 ## Education and diplomas
 
-  * 2012: **Ph.D. in Computational Neuroscience** at the ENS and UPMC with highest honors
-  * 2008: **Master's Degree in Computer Science** (MPRI) at the ENS with highest honors
-  * 2005: **Bachelor's Degree in Mathematics** (FIMFA) at the ENS with highest honors
-  * 2005: Entry to the **&Eacute;cole Normale Supérieure** (ENS) through competitive examinations in Maths and Physics
-  * 2002: Preparatory classes (MPSI/MP*) at Lycée Masséna, Nice
-  * 2002: High school diploma (A-level equivalent) with highest honors
+* 2012: **Ph.D. in Computational Neuroscience** at the ENS and UPMC with highest honors
+* 2008: **Master's Degree in Computer Science** (MPRI) at the ENS with highest honors
+* 2005: **Bachelor's Degree in Mathematics** (FIMFA) at the ENS with highest honors
+* 2005: Entry to the **&Eacute;cole Normale Supérieure** (ENS) through competitive examinations in Maths and Physics
+* 2002: Preparatory classes (MPSI/MP*) at Lycée Masséna, Nice
+* 2002: High school diploma (A-level equivalent) with highest honors
 
 
 ## Teaching
 
-  * 2009-2012: **Teacher assistant** in Mathematics and Computer Science at ENS and UPMC (Bachelor and Master levels)
-  * 2008-2009: Voluntary teaching to high school students at TALENS association
+* 2009-2012: **Teacher assistant** in Mathematics and Computer Science at ENS and UPMC (Bachelor and Master levels): probability theory, measure theory, statistics, calculus, real analysis, dynamical systems, signal processing, scientific Python.
+
+* 2008-2009: Voluntary teaching to high school students at TALENS association
+
+
+## Technical skills
+
+* Applied mathematics: statistics, data mining, machine learning, signal processing, image processing and computer vision, mathematical optimization, dynamical systems, graph theory, high-dimensional data analysis, computational geometry
+* Scientific Python, MATLAB, data visualization
+* Programming on graphics cards: CUDA, OpenCL
+* Computer graphics: OpenGL, DirectX, ray tracing, video game development, Photoshop, Illustrator
+* Website development: HTML5, CSS3, JavaScript, d3.js, PHP/MySQL
+* Mobile and windows applications: C#, .NET, Windows Phone
+* Other languages: C, C++, Perl, Java
