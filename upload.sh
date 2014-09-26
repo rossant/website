@@ -6,7 +6,8 @@ if [ -n "$1" ]
 
 	pelican -s pelicanconf_pub.py
 	#git status
-	git add content/*.md content/*.ipynb
+	git add content/*.md
+	git add content/*.ipynb
 	git commit -am "$1" && git push
 	cp -ar output/. ../rossant.github.io
 	cd ../rossant.github.io
