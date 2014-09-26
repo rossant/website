@@ -1,10 +1,9 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
+
+
 
 # make sure to end all internal links with '/' so that mod_rewrite .htaccess works 
 # with subdirectories
-SITEURL = 'http://cyrille.rossant.net'
+# SITEURL = 'http://cyrille.rossant.net'
 # SITEURL = '/'  # FOR LOCAL DEV ONLY
 
 AUTHOR = 'Cyrille Rossant'

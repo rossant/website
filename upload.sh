@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 if [ -n "$1" ]
-then
-	pelican
+	then
+	cp pelicanconf.py pelicanconf_pub.py
+	echo "SITEURL = 'http://cyrille.rossant.net'" | cat - pelicanconf_pub.py > /tmp/out && mv /tmp/out pelicanconf_pub.py
+
+	pelican -s pelicanconf_pub.py
 	git status
 	git commit -am "$1" && git push
 	cp -ar output/. ../rossant.github.io
