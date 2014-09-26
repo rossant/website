@@ -5,12 +5,13 @@ if [ -n "$1" ]
 	echo "SITEURL = 'http://cyrille.rossant.net'" | cat - pelicanconf_pub.py > /tmp/out && mv /tmp/out pelicanconf_pub.py
 
 	pelican -s pelicanconf_pub.py
-	git status
+	#git status
+	git add content/*.md content/*.ipynb
 	git commit -am "$1" && git push
 	cp -ar output/. ../rossant.github.io
 	cd ../rossant.github.io
 	git add --ignore-removal *
-	git status
+	#git status
 	git commit -am "$1" && git push
 else
 	echo "Please provide a commit message."
