@@ -45,7 +45,7 @@ ARCHIVES_SAVE_AS = 'archives/index.html'
 ARTICLE_URL = '{slug}/'
 ARTICLE_SAVE_AS = '{slug}/index.html'
 
-PAGE_URL = '{slug}/index.html'
+PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
 
 TAG_URL = 'tag/{slug}/'
