@@ -79,8 +79,8 @@ DEFAULT_LANG = 'en'
 # FEED_ATOM = 'feeds/atom.xml'
 # FEED_RSS = 'feeds/rss.xml'
 
-FEED_ALL_ATOM = 'feeds/all.atom.xml'
-FEED_ALL_RSS = 'feeds/all.rss.xml'
+FEED_ALL_ATOM = 'feeds/atom.xml'
+FEED_ALL_RSS = 'feeds/rss.xml'
 
 FEED_DOMAIN = SITEURL
 CATEGORY_FEED_ATOM = None
