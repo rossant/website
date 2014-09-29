@@ -8,11 +8,11 @@ I've written two books on Python for data science.
 
 <div class="pure-g">
 	<div class="book-cover pure-u-1 pure-u-sm-1-3">
-		<a href="http://ipython.rossant.net"><img src="/images/minibook.jpg" alt="IPython minibook" /></a>
+		<a href="http://ipython-books.github.io/minibook/"><img src="/images/minibook.jpg" alt="IPython minibook" /></a>
 	</div>
 
 	<div class="book-descr pure-u-1 pure-u-sm-2-3">
-		<h3><a href="http://ipython.rossant.net">Learning IPython for Interactive Computing and Data Visualization</a></h3>
+		<h3><a href="http://ipython-books.github.io/minibook/">Learning IPython for Interactive Computing and Data Visualization</a></h3>
 		<div class="sub-header-3">Packt Publishing (135 pages, 20$)</div>
 
 		<p>
@@ -36,11 +36,11 @@ I've written two books on Python for data science.
 
 <div class="pure-g">
 	<div class="book-cover pure-u-1 pure-u-sm-1-3">
-		<a href="http://ipython-books.github.io/"><img src="/images/cookbook.jpg" class="book-cover" alt="IPython Cookbook" /></a>
+		<a href="http://ipython-books.github.io/cookbook/"><img src="/images/cookbook.jpg" class="book-cover" alt="IPython Cookbook" /></a>
 	</div>
 
 	<div class="book-descr pure-u-1 pure-u-sm-2-3">
-		<h3><a href="http://ipython-books.github.io/">IPython Interactive Computing and Visualization Cookbook</a></h3>
+		<h3><a href="http://ipython-books.github.io/cookbook/">IPython Interactive Computing and Visualization Cookbook</a></h3>
 		<div class="sub-header-3">Packt Publishing (520 pages, 30$)</div>
 
 		<p>
