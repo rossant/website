@@ -12,6 +12,6 @@ there are. The Seine is easily recognizable, and the fact that most
 stations near the river are full might be linked to the fact that this
 data has been obtained on a sunny Sunday of May...
 
-<!-- PELICAN_END_SUMMARY -->
-
 ![Vélib open data, Paris]({filename}images/velib.png)
+
+<!-- PELICAN_END_SUMMARY -->

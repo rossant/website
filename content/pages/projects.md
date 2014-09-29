@@ -29,6 +29,6 @@ The second book is an advanced-level guide to data science with Python, covering
 
 I analyze public datasets with Python and I make data visualizations.
 
-* [Map of all car accidents in France in 2012](http://rue89.nouvelobs.com/2014/06/25/carte-presque-tous-les-accidents-route-2012-253113), realized with [Rue89](http://rue89.nouvelobs.com) journalists during an [Open Data Hackathon organized by the French Minister of the Interior](http://fr.okfn.org/2014/08/09/retour-sur-le-premier-hackathon-sur-les-donnees-du-ministere-de-linterieur/). I gathered several data sources with IPython and pandas to create the final dataset of all accidents.
+* [Map of all road accidents in France in 2012](/opendata-interior-hackathon/), realized with [Rue89](http://rue89.nouvelobs.com/2014/06/25/carte-presque-tous-les-accidents-route-2012-253113) journalists during an [Open Data Hackathon organized by the French Minister of the Interior](http://fr.okfn.org/2014/08/09/retour-sur-le-premier-hackathon-sur-les-donnees-du-ministere-de-linterieur/). I gathered several data sources with IPython and pandas to create the final dataset of all accidents.
 * [Vélib' in Paris](/velib-open-data/)
 * First names of students taking their high-school diplomas (in French, based on an [original study by Baptiste Coulmont](http://coulmont.com/blog/2012/07/08/prenoms-mentions-bac-2012/)): [post 1](/prenoms-et-reussite-au-bac/) and [post 2](/frequence-des-prenoms-des-candidats-au-bac-2012/)

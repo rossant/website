@@ -241,7 +241,7 @@ code {
     margin: 2.5em 10% 2em 10%;
     padding: 0;
 }
-#posts .read-more {
+.read-more {
     text-align: right;
 }
 blockquote {
