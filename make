@@ -49,7 +49,6 @@ def clean():
 def upload():
 	"""Build and push all changes online."""
 	build(local=False)
-	return
 	call("git add content/*.md")
 	call("git add content/*.ipynb")
 	call("git commit -am %s")
