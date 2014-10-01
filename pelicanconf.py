@@ -17,7 +17,8 @@ DEFAULT_DATE = 'fs'
 FILENAME_METADATA = '(?P<date>\d{4}-\d{2}-\d{2})-(?P<slug>.*)'
 
 MD_EXTENSIONS = ['codehilite(css_class=highlight,guess_lang=False,linenums=False)',
-				 'extra']
+				 'headerid',
+                 'extra']
 
 DEFAULT_PAGINATION = 5
 PAGINATION_PATTERNS = (
