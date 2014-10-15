@@ -135,7 +135,11 @@ a:hover {
 #sidebar .books h3 {
     margin: .5em 0 .5em 0;
 }
-#sidebar .books div {
+#sidebar .books div.sub-header {
+    font-size: .9em;
+    margin: 0 0 1em 0;
+}
+#sidebar .books div.book-1, #sidebar .books div.book-2 {
     margin: 0;
     padding: 0;
     float: left;
