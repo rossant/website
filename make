@@ -10,9 +10,11 @@ import socketserver
 
 BASEURL = 'cyrille.rossant.net'
 
-def call(cmd):
+def call(cmd, wait=True):
     cmd_list = shlex.split(cmd)
-    subprocess.Popen(cmd_list).wait()
+    p = subprocess.Popen(cmd_list)
+    if wait: 
+     	p.wait()
 
 def conf():
     "Generate the derivate conf files."
@@ -34,14 +36,15 @@ def build(local=True, monitor=True):
     monitor = monitor & local
     conf()
     which = 'loc' if local else 'pub'
-    call("pelican -s=pelicanconf_%s.py %s" % (which, '-r' if monitor else ''))
+    call("pelican -s=pelicanconf_%s.py %s" % (which, '-r' if monitor else ''), 
+    	 wait=not(monitor))
 
 def serve():
     "Launch a local HTTP server."
     build()
     os.chdir('output')
     # subprocess.Popen(["python", "-m", "http.server"])
-    call("python -m http.server")
+    call("python -m http.server", wait=False)
     os.chdir('..')
 
 def clean():
@@ -58,7 +61,7 @@ def upload(msg):
     call('git commit -am "%s"' % msg)
     call("git push")
     call("cp -ar output/. ../%s" % BASEURL)
-    os.chdir("../" % BASEURL)
+    os.chdir("../%s" % BASEURL)
     call("git add --ignore-removal *")
     call('git commit -am "%s"' % msg)
     call('git push')
@@ -71,6 +74,7 @@ commands = {
     # None: lambda: print("Please provide a command."),
     None: serve,
     'build': build,
+    'build_once': lambda: build(monitor=False),
     'serve': serve,
     'conf': conf,
     'clean': clean,
