@@ -96,7 +96,7 @@ Second, some editors decided unilaterally to change the formatting of some words
 
 There could be hundreds of such changes in a single chapter (multiplied by fifteen chapters). Word's *Track changes* feature made the process even more enjoyable. It not only tracks changes in the text, but also formatting and many other non-relevant changes. In the end, the actual changes that could result in errors were flooded within thousands of non-relevant edits. I couldn't find a way to automatically filter these non-relevant edits.
 
-Oh, and if you forget to enable *Track changes*, they your changes are completely lost. This is because Word tracks actual changes rather than comparing two versions like a sane version system like Git would do.
+Oh, and if you forget to enable *Track changes*, then your changes are completely lost. This is because Word tracks actual changes rather than comparing two versions like a sane version system like Git would do.
 
 I spent tens if not hundreds of hours tracking and correcting these edits. It is ironic to think that this process was supposed to increase the overall quality of the book. If I hadn't been sufficiently vigilant, many "new" errors (introduced during the editing phase) would have slipped by.
 
