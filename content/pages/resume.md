@@ -57,7 +57,7 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
   * **Rossant C**, Goodman DF, Fontaine B, Platkiewicz J, Magnusson A, Brette B (2011). [Fitting neuron models to spike trains]({filename}/pdfs/RossantFitting2011.pdf). Frontiers in Neuroscience, 5:9. doi:10.3389/fnins.2011.00009
   * **Rossant C**, Goodman D, Platkiewicz J, Brette R (2010). [Automatic fitting of spiking neuron models to electrophysiological recordings]({filename}/pdfs/RossantAutomatic2010.pdf). Frontiers in Neuroinformatics, 4:2. doi:10.3389/neuro.11.002.2010
 
-  
+
 ### Magazines
 
   * **Rossant C** (2014). [Vispy: visualisation interactive haute performance](http://boutique.ed-diamond.com/gnulinux-magazine-hors-series/597-gnulinux-magazine-hs-73.html). French Linux Magazine, Scientific Python special issue, summer 2014
@@ -71,7 +71,9 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 ### Conferences
 
-* Klein A, Rougier N, **Rossant C**, Larson E, Campagnola L (2014). [Introducing Vispy's high level modules: easy yet powerful visualization for everyone](https://www.euroscipy.org/2014/schedule/presentation/7/), EuroSciPy, Cambridge, UK (talk by Klein A)
+<!--* Steinmetz N, Kadir S, **Rossant C**, Goodman D, Hunter M, Barbarits B, Harris T, Carandini M, Harris K (2015). Simultaneous recording from large numbers of neurons in a visual cortical column with next-generation microelectrodes. Cosyne 2015 (poster)-->
+* Kadir S, **Rossant C**, Goodman D, Schulman J, Hunter M, Belluscio M, Buzsaki G, Harris D (2014). Spike sorting for large dense arrays. Society for Neuroscience Annual Meeting, Washington, USA (poster)
+* Klein A, Rougier N, **Rossant C**, Larson E, Campagnola L (2014). [Introducing Vispy's high level modules: easy yet powerful visualization for everyone](https://www.euroscipy.org/2014/schedule/presentation/7/). EuroSciPy, Cambridge, UK (talk by Klein A)
 * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. Society for Neuroscience Annual Meeting, San Diego, USA (poster)
 * **Rossant C** (2013). Spike-based computation in cortical networks: theory and data, Mathematical Neuroscience Laboratory, CIRB, Collège de France, Paris
 * Campagnola L, Klein A, **Rossant C**, Rougier N (2013). A Modern and Interactive Visualization Framework, EuroSciPy, Brussels, Belgium (talk by Rougier N)
@@ -91,6 +93,7 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 ### Workshops and tutorials
 
+* **Rossant C**, Harris K (2014). File formats for large-scale electrophysiology. Janelia Workshop, Janelia Farm Research Campus, Ashburn, USA (invited talk)
 * **Rossant C** (2014). [The new interactive features of the IPython 2 notebook](https://www.euroscipy.org/2014/schedule/presentation/60/), EuroSciPy, Cambridge, UK (advanced tutorial)
 * Rougier N, Klein A, **Rossant C** (2014). Vispy sprint, EuroSciPy, Cambridge, UK (sprint)
 * **Rossant C**, Rougier N (2014). [Scientific Data Visualization](http://reseau-loops.github.io/journee_2014_06.html), LoOPS network meeting, Orsay University. Presentation and tutorials on HDF5 and Vispy
@@ -114,6 +117,8 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 * 2009-2012: **Teacher assistant** in mathematics and computer science at ENS and UPMC (Bachelor and Master levels): probability theory, measure theory, statistics, calculus, real analysis, dynamical systems, signal processing, scientific Python
 
+* 2009-: Private lessons in mathematics to students in high school and preparatory classes
+
 * 2008-2009: Voluntary teaching to high school students at [TALENS](http://pesu.ens.fr/talens/) association
 
 
@@ -123,6 +128,6 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 * Scientific Python, MATLAB, data visualization
 * Programming on graphics cards: CUDA, OpenCL
 * Computer graphics: OpenGL, DirectX, ray tracing, video game development, Photoshop, Illustrator
-* Website development: HTML5, CSS3, JavaScript, backbone.js, d3.js, PHP/MySQL
+* Website development: HTML5, CSS3, JavaScript, Backbone, D3js, PHP/MySQL
 * Mobile and windows applications: C#, .NET, Windows Phone, Qt
-* Other languages: C, C++, Perl, Java
+* Other languages: C, C++, assembly, Perl, Java
