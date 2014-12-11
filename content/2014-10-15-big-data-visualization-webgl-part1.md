@@ -5,6 +5,9 @@ In this post series, I'll talk about the [big data visualization platform I'm cu
 
 <!-- PELICAN_END_SUMMARY -->
 
+* Part 1: Overview
+* [Part 2: Vispy]({filename}2014-12-11-big-data-visualization-webgl-part2.md)
+
 ## Overview
 
 This project brings together several modern trends in data science and computing:
