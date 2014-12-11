@@ -2,33 +2,6 @@ Title: Books
 
 I've written two books on Python for data science.
 
-<a name="minibook"></a>
-## IPython Minibook
-<div class="sub-header-2">april 2013</div>
-
-<div class="pure-g">
-	<div class="book-cover pure-u-1 pure-u-sm-1-3">
-		<a href="http://ipython-books.github.io/minibook/"><img src="/images/minibook.jpg" alt="IPython minibook" /></a>
-	</div>
-
-	<div class="book-descr pure-u-1 pure-u-sm-2-3">
-		<h3><a href="http://ipython-books.github.io/minibook/">Learning IPython for Interactive Computing and Data Visualization</a></h3>
-		<div class="sub-header-3">Packt Publishing (135 pages, 20$)</div>
-
-		<p>
-			This book is a beginner-level introduction to Python for data analysis:
-		</p>
-
-		<ul>
-			<li>Interactive Python with IPython</li>
-			<li>Data analysis with pandas</li>
-			<li>Numerical computing with NumPy/SciPy</li>
-			<li>Data visualization with matplotlib</li>
-		</ul>
-
-	</div>
-</div>
-
 
 <a name="cookbook"></a>
 ## IPython Cookbook
@@ -53,10 +26,33 @@ I've written two books on Python for data science.
 			<li>Statistics, machine learning, data mining</li>
 			<li>Signal processing and mathematical modeling</li>
 		</ul>
-
-
-
-
 	</div>
 </div>
 
+
+<a name="minibook"></a>
+## IPython Minibook
+<div class="sub-header-2">april 2013</div>
+
+<div class="pure-g">
+    <div class="book-cover pure-u-1 pure-u-sm-1-3">
+        <a href="http://ipython-books.github.io/minibook/"><img src="/images/minibook.jpg" alt="IPython minibook" /></a>
+    </div>
+
+    <div class="book-descr pure-u-1 pure-u-sm-2-3">
+        <h3><a href="http://ipython-books.github.io/minibook/">Learning IPython for Interactive Computing and Data Visualization</a></h3>
+        <div class="sub-header-3">Packt Publishing (135 pages, 20$)</div>
+
+        <p>
+            This book is a beginner-level introduction to Python for data analysis:
+        </p>
+
+        <ul>
+            <li>Interactive Python with IPython</li>
+            <li>Data analysis with pandas</li>
+            <li>Numerical computing with NumPy/SciPy</li>
+            <li>Data visualization with matplotlib</li>
+        </ul>
+
+    </div>
+</div>
