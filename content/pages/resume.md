@@ -58,22 +58,29 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
   * **Rossant C**, Goodman D, Platkiewicz J, Brette R (2010). [Automatic fitting of spiking neuron models to electrophysiological recordings]({filename}/pdfs/RossantAutomatic2010.pdf). Frontiers in Neuroinformatics, 4:2. doi:10.3389/neuro.11.002.2010
 
 
+<!-- ### Invited blog posts -->
+
+<!-- * **Rossant C** (2015, in prep). An illustrated introduction to the t-SNE algorithm. O'Reilly blog -->
+
+
 ### Magazines
 
-  * **Rossant C** (2014). [Vispy: visualisation interactive haute performance](http://boutique.ed-diamond.com/gnulinux-magazine-hors-series/597-gnulinux-magazine-hs-73.html). French Linux Magazine, Scientific Python special issue, summer 2014
+  * **Rossant C** (2015, in prep). Visualization of large datasets with VisPy. French Linux Magazine, upcoming Big Data special issue, 2015
+  * **Rossant C** (2015, in prep). Introduction to scikit-learn. French Linux Magazine, upcoming Big Data special issue, 2015
+  * **Rossant C** (2014). [VisPy: visualisation interactive haute performance](http://boutique.ed-diamond.com/gnulinux-magazine-hors-series/597-gnulinux-magazine-hs-73.html). French Linux Magazine, Scientific Python special issue, summer 2014
 
 
 ### Books
 
+  * **Rossant C** (2015, in prep). Learning IPython for Interactive Computing and Data Visualization, second edition. Packt Publishing, ISBN 9781783986989
   * **Rossant C** (2014). [IPython Interactive Computing and Visualization Cookbook](http://www.packtpub.com/ipython-interactive-computing-and-visualization-cookbook/book). Packt Publishing, 520 pages, ISBN 9781783284818
   * **Rossant C** (2013). [Learning IPython for Interactive Computing and Data Visualization](http://www.packtpub.com/learning-ipython-for-interactive-computing-and-data-visualization/book). Packt Publishing, 138 pages, ISBN 9781782169932
 
 
 ### Conferences
 
-<!--* Steinmetz N, Kadir S, **Rossant C**, Goodman D, Hunter M, Barbarits B, Harris T, Carandini M, Harris K (2015). Simultaneous recording from large numbers of neurons in a visual cortical column with next-generation microelectrodes. Cosyne 2015 (poster)-->
 * Kadir S, **Rossant C**, Goodman D, Schulman J, Hunter M, Belluscio M, Buzsaki G, Harris D (2014). Spike sorting for large dense arrays. Society for Neuroscience Annual Meeting, Washington, USA (poster)
-* Klein A, Rougier N, **Rossant C**, Larson E, Campagnola L (2014). [Introducing Vispy's high level modules: easy yet powerful visualization for everyone](https://www.euroscipy.org/2014/schedule/presentation/7/). EuroSciPy, Cambridge, UK (talk by Klein A)
+* Klein A, Rougier N, **Rossant C**, Larson E, Campagnola L (2014). [Introducing VisPy's high level modules: easy yet powerful visualization for everyone](https://www.euroscipy.org/2014/schedule/presentation/7/). EuroSciPy, Cambridge, UK (talk by Klein A)
 * **Rossant C**, Harris K (2013). Spike sorting for large dense electrode arrays: User interface software. Society for Neuroscience Annual Meeting, San Diego, USA (poster)
 * **Rossant C** (2013). Spike-based computation in cortical networks: theory and data, Mathematical Neuroscience Laboratory, CIRB, Collège de France, Paris
 * Campagnola L, Klein A, **Rossant C**, Rougier N (2013). A Modern and Interactive Visualization Framework, EuroSciPy, Brussels, Belgium (talk by Rougier N)
@@ -93,14 +100,20 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 ### Workshops and tutorials
 
+* **Rossant C**, Rougier N, Klein A, Campagnola L, Larson E, Zaid I, Hunter M (2015). VisPy sprint, Collège de France, Paris (organization and participation to the sprint)
 * **Rossant C**, Harris K (2014). File formats for large-scale electrophysiology. Janelia Workshop, Janelia Farm Research Campus, Ashburn, USA (invited talk)
 * **Rossant C** (2014). [The new interactive features of the IPython 2 notebook](https://www.euroscipy.org/2014/schedule/presentation/60/), EuroSciPy, Cambridge, UK (advanced tutorial)
-* Rougier N, Klein A, **Rossant C** (2014). Vispy sprint, EuroSciPy, Cambridge, UK (sprint)
-* **Rossant C**, Rougier N (2014). [Scientific Data Visualization](http://reseau-loops.github.io/journee_2014_06.html), LoOPS network meeting, Orsay University. Presentation and tutorials on HDF5 and Vispy
-* **Rossant C**, Klein A, Campagnola L, Rougier N (2014). Organization of the Vispy code camp at the European Synchrotron Radiation Facility (ESRF) in Grenoble
+* Rougier N, Klein A, **Rossant C** (2014). VisPy sprint, EuroSciPy, Cambridge, UK (sprint)
+* **Rossant C**, Rougier N (2014). [Scientific Data Visualization](http://reseau-loops.github.io/journee_2014_06.html), LoOPS network meeting, Orsay University. Presentation and tutorials on HDF5 and VisPy
+* **Rossant C**, Klein A, Campagnola L, Rougier N (2014). Organization of the VisPy code camp at the European Synchrotron Radiation Facility (ESRF) in Grenoble
 * Rougier N, Klein A, **Rossant C** (2013). Python visualization, EuroSciPy, Brussels, Belgium (sprint)
 * Brette R, Stimberg M, Benichoux V, **Rossant C**, Goodman D, Fontaine B (2013). Advanced modelling of spiking neural networks with Brian. Organization for Computational Neuroscience Meeting, Paris (tutorial)
 * **Rossant C**, Harris K (2013). Next-generation software for spike sorting with large multi-electrode probes. Janelia Spike Sorting Workshop, Janelia Farm Research Campus, Ashburn, USA (invited talk)
+
+
+## Grants and awards
+
+* Research grant (2014-2015). Cooperation between Paris-Sciences-Lettres (PSL) and University College London.
 
 
 ## Education and diplomas
