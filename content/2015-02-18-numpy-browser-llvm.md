@@ -143,7 +143,7 @@ Two LLVM functions are defined here (`define` instruction):
 * `@__main__.f.int32.int32`
 * `@wrapper.__main__.f.int32.int32`
 
-In LLVM, the names of global variables and functions start with a `@`. Names can contain many non-alphanumerical characters, including dots `.` and quotes `"`. LLVM IR is a strongly-typed language. As we can see in the function definitions, the first function takes four parameters (`i32*`, `i8*`, `i32`, `i32`) and returns a `i32` value.
+In LLVM, the names of global variables and functions start with a `@`. Names can contain many non-alphanumerical characters, including dots `.` and quotes `"`. Comments start with a semi-colon `;`. LLVM IR is a strongly-typed language. As we can see in the function definitions, the first function takes four parameters (`i32*`, `i8*`, `i32`, `i32`) and returns a `i32` value.
 
 Let's try to reverse-engineer this. The return value of this LLVM value is a success/failure output value. The actual value returned by our Python function is set in the pointer passed as a first argument. I'm not quite clear about the purpose of the second `i8*` argument; it might be related to the CPython environment and it doesn't seem important for what we're doing here. The last two `i32` arguments are our actual arguments `x` and `y`.
 
@@ -207,7 +207,7 @@ We now have a JavaScript file that supposedly implements our function. How do we
 
 I encountered a few difficulties:
 
-* Programs compiled with emscripten are generally regular C programs with a main loop. However, what I want is an interactive access to my LLVM function from JavaScript.
+* Programs compiled with emscripten are generally regular C programs with a main loop. However, what I want is an interactive access to my LLVM function from JavaScript. The `NO_EXIT_RUNTIME=1` option prevents the runtime exit at the end of the function execution.
 * According to the documentation of emscripten, there is a way to access the LLVM functions from JavaScript. However, I must have done something wrong because I only managed to access the `main` entry point function (which actually doesn't exist).
 * So I ended up creating a `main()` function in LLVM wrapping ` @__main__.f.int32.int32()`.
 
@@ -361,9 +361,69 @@ The signature follows the same pattern as before. The first argument is the inte
 * `[1 x i64] shape`: the shape of the array
 * `[1 x i64] strides`: the strides of the array
 
+This time too, we need a wrapper. We'll do something even uglier than before: we'll hardcode the array metadata (dtype, shape, etc.) in the wrapper.
+
+```python
+>>> def add_wrapper(lib):
+...     main = """
+...     define i32 @main(i32* nocapture %ret, i8* nocapture readnone %env, i32* nocapture readonly %arr)
+...     {
+...     
+...         %tmp = alloca i8
+...         store i8 0, i8* %tmp
+...         
+...         %agg1 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } undef, i8* %tmp, 0             ; parent
+...         %agg2 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg1, i64 3, 1                ; nitems
+...         %agg3 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg2, i64 4, 2                ; itemsize
+...         %agg4 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg3, i32* %arr, 3            ; data
+...         %agg5 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg4, [1 x i64] [i64 3], 4    ; shape
+...         %agg6 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg5, [1 x i64] [i64 4], 5    ; strides
+...         
+...         %ptr = alloca { i8*, i64, i64, i32*, [1 x i64], [1 x i64] }
+...         store { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg6, { i8*, i64, i64, i32*, [1 x i64], [1 x i64] }* %ptr
+...     
+...         %out = call i32 @"__main__.np_sum.array(int32,_1d,_A,_nonconst)"(i32* %ret, i8* %env, { i8*, i64, i64, i32*, [1 x i64], [1 x i64] }* %ptr)
+...         ret i32 %out
+...     }
+>>> 
+...     declare i32 @"__main__.np_sum.array(int32,_1d,_A,_nonconst)"(i32* nocapture, i8* nocapture readnone, { i8*, i64, i64, i32*, [1 x i64], [1 x i64] }* nocapture readonly)
+...     """
+...     ll_module = ll.parse_assembly(main)
+...     ll_module.verify()
+...     try:
+...         lib.add_llvm_module(ll_module)
+...     except RuntimeError:
+...         print("Warning: the module as already been added.")
+...     return lib
+```
+
+What does this wrapper do? It takes as input the data buffer of an array, creates an appropriate structure for the corresponding NumPy array, and calls our compiled Python function. Note that the `alloca` instruction creates a pointer, while `insertvalue` lets us create the LLVM ndarray structure.
+
+This wrapper will make our lives easier in JavaScript. We'll just pass the data buffer, and this LLVM wrapper will take care of creating the appropriate array structure. The drawback is that the shape of the array is fixed at compile time here. For sure, there are much cleaner ways to do it.
+
+Let's compile this with emscripten:
+
+```python
+>>> os.chdir('/data/git/numpy-js')
+>>> lib = get_lib(np_sum)
+>>> add_wrapper(lib)
+>>> with open('array.ll', 'w') as fh:
+...     fh.write((str(lib._final_module)))
+>>> os.system('./emscripten/emcc array.ll -o array.js -O3 -s NO_EXIT_RUNTIME=1')
+256
+```
+
+```
+Value:   %.4.fca.4.0.extract = extractvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %.4.insert15, 4, 0
+Value:   %.4.insert15 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %.4.insert12, [1 x i64] %.4.field14, 5
+LLVM ERROR: ExpandStructRegs does not handle nested structs
+```
+
+This doesn't sound very good. A bit of googling tells us that [PNaCl and emscripten do not support nested structures well](https://code.google.com/p/nativeclient/issues/detail?id=3815). The bug is still open at this time. Apparently, these projects target LLVM IR generated by Clang, which doesn't seem to use nested structs (?). I opened [an issue](https://github.com/numba/numba/issues/993) on the Numba GitHub repository, and someone suggested to disable the Numba optimizations. It worked, but then I had another similar bug. It looked like a dead-end.
+
+Fortunately, after some more googling I found out that [other people had encountered the same bug](http://code.google.com/p/nativeclient/issues/detail?id=3932) with LLVM IR code generated by Julia and Rust. On this bug report, someone mentioned [a fix for Rust](https://github.com/epdtry/rust-emscripten-passes). So I tried it. I had to patch a C++ file in PNaCl and run a custom LLVM pass on the LLVM IR generated by Numba. It was a long shot, but it actually worked.
 
 
-bugs and fix for rust
 
 ## Fixing the bugs with NumPy arrays
 
