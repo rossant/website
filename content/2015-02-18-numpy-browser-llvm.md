@@ -368,24 +368,24 @@ This time too, we need a wrapper. We'll do something even uglier than before: we
 ...     main = """
 ...     define i32 @main(i32* nocapture %ret, i8* nocapture readnone %env, i32* nocapture readonly %arr)
 ...     {
-...     
+...
 ...         %tmp = alloca i8
 ...         store i8 0, i8* %tmp
-...         
+...
 ...         %agg1 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } undef, i8* %tmp, 0             ; parent
 ...         %agg2 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg1, i64 3, 1                ; nitems
 ...         %agg3 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg2, i64 4, 2                ; itemsize
 ...         %agg4 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg3, i32* %arr, 3            ; data
 ...         %agg5 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg4, [1 x i64] [i64 3], 4    ; shape
 ...         %agg6 = insertvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg5, [1 x i64] [i64 4], 5    ; strides
-...         
+...
 ...         %ptr = alloca { i8*, i64, i64, i32*, [1 x i64], [1 x i64] }
 ...         store { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %agg6, { i8*, i64, i64, i32*, [1 x i64], [1 x i64] }* %ptr
-...     
+...
 ...         %out = call i32 @"__main__.np_sum.array(int32,_1d,_A,_nonconst)"(i32* %ret, i8* %env, { i8*, i64, i64, i32*, [1 x i64], [1 x i64] }* %ptr)
 ...         ret i32 %out
 ...     }
->>> 
+>>>
 ...     declare i32 @"__main__.np_sum.array(int32,_1d,_A,_nonconst)"(i32* nocapture, i8* nocapture readnone, { i8*, i64, i64, i32*, [1 x i64], [1 x i64] }* nocapture readonly)
 ...     """
 ...     ll_module = ll.parse_assembly(main)
@@ -456,10 +456,26 @@ This is better than what I expected! I also managed to pass 2D arrays with a lit
 
 TODO: 2D table
 
-## Fixing the bugs with NumPy arrays
-
 ## Performance
 
-## Limitations
+TODO
 
 ## Conclusion
+
+There are several things that I didn't manage or didn't try to do:
+
+* Returning an array
+* Passing several arrays as arguments
+* Using ufuncs
+
+Although interesting in itself, this proof-of-concept has important limitations:
+
+* It is inherently limited by what Numba's nopython mode provides. Currently, just the most basic constructs of [Python](http://numba.pydata.org/numba-doc/0.17.0/reference/pysupported.html) and [NumPy](http://numba.pydata.org/numba-doc/0.17.0/reference/numpysupported.html) are available in this mode. There is no array creation, reshaping, no array operations without preallocating the output arrays, etc. Python features are also quite limited; for example, no containers (lists, dicts, sets, etc.) are available as these constructs require the Python C API. It's unclear to me how much the Numba devs want to implement in the nopython mode.
+
+* I hard-coded the LLVM wrappers manually, which is quite horrible. However, I believe it would not be too complicated to build such wrappers dynamically using llvmlite.
+
+* This seems obvious, but: this approach only lets you compile Python functions ahead-of-time. Once you're in JavaScript, you can't write or compile your own functions on-the-fly. By contrast, the first approach I described in the introduction would let you do that.
+
+* The whole approach feels hackish (you need to apply obscure patches to unstable branches of various projects written in 3 or 4 different languages) and I don't believe it could be ever used in production in any form.
+
+Still, it was a lot of fun!
