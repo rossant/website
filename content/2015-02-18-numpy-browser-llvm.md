@@ -48,7 +48,7 @@ Let's first import Numba (I installed the latest stable release with conda):
 >>> from numba import int32
 ```
 
-It seems there is an easy way to get the LLVM IR of a JIT'ed in the development version, but this version didn't work for me, so here is a custom function doing the same thing:
+It seems there is an easy way to get the LLVM IR of a JIT'ed in the development version, but this version didn't work for me, so here is a custom function doing the same thing (we'll make extensive use of unstable API in this post so most things are likely to break with different versions of Numba and other libraries...):
 
 ```python
 >>> def llvm(func, sig=None):
@@ -157,9 +157,11 @@ The `@wrapper.__main__.f.int32.int32` function is more complicated and we won't 
 
 Since our ultimate goal is to compile `f()` in JavaScript where there's no such thing as a CPython interpreter, we only need the `@__main__.f.int32.int32` function here.
 
+Now, let's try to compile this to JavaScript with emscripten!
+
 ## Compiling the LLVM IR to JavaScript with emscripten
 
-scalar
+Emscripten is an impressive piece of software. It can compile C/C++ code, even large projects like game engines ([Unreal Engine](https://blog.mozilla.org/blog/2014/03/12/mozilla-and-epic-preview-unreal-engine-4-running-in-firefox/) for example), to JavaScript. Emscripten uses Clang to compile C/C++ to LLVM, and a custom LLVM backend named *Fastcomp* to compile LLVM IR to JavaScript/**asm.js** (*an extraordinarily optimizable, low-level subset of JavaScript* [according to the project page](http://asmjs.org/)).
 
 ## Now with NumPy arrays
 
