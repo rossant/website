@@ -320,7 +320,48 @@ $('#my_output').val(result[0]);
 
 TODO: HTML calculator
 
+We have successfully compiled our first Python function to Javascript!
+
 ## Now with NumPy arrays
+
+This sounds promising. Now, let's try to go further and use NumPy arrays in our original function:
+
+```python
+>>> @jit(int32(int32[:]), nopython=True)
+... def np_sum(x):
+...     return x.sum()
+```
+
+Let's have a look at the LLVM IR:
+
+```python
+>>> print(llvm(np_sum))
+[...]
+define i32 @"__main__.np_sum.array(int32,_1d,_A,_nonconst)"(i32* nocapture %ret, i8* nocapture readnone %env, { i8*, i64, i64, i32*, [1 x i64], [1 x i64] }* nocapture readonly %arg.x) #0 {
+entry:
+  %.4 = load { i8*, i64, i64, i32*, [1 x i64], [1 x i64] }* %arg.x, align 8
+  %.4.fca.3.extract = extractvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %.4, 3
+  %.4.fca.4.0.extract = extractvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %.4, 4, 0
+  %.4.fca.5.0.extract = extractvalue { i8*, i64, i64, i32*, [1 x i64], [1 x i64] } %.4, 5, 0
+  %.35.i = icmp eq i64 %.4.fca.4.0.extract, 0
+  br i1 %.35.i, label %"numba.targets.arrayobj.array_sum_impl.array(int32,_1d,_A,_nonconst).exit", label %B16.endif.lr.ph.i, !prof !0
+[...]
+```
+
+The code is several hundreds of lines long. Again, we have a core LLVM function and a Python wrapper. Let's examine the (simplified) signature of the core function:
+
+```i32 @"__main__.np_sum.array(int32,_1d,_A,_nonconst)"(i32* %ret, i8* %env, { i8*, i64, i64, i32*, [1 x i64], [1 x i64] }* %arg.x)```
+
+The signature follows the same pattern as before. The first argument is the integer output. The third argument is the most interesting: it represents our input array. It is a pointer to a structure containing six fields. After looking into Numba's code, we find out the signification for these six fields:
+
+* `i8* parent`: apparently mostly relevant to CPython
+* `i64 nitems`: number of items in the array
+* `i64 itemsize`: number of bytes per item
+* `i32* data`: a pointer to the data buffer
+* `[1 x i64] shape`: the shape of the array
+* `[1 x i64] strides`: the strides of the array
+
+
 
 bugs and fix for rust
 
