@@ -146,6 +146,17 @@ In LLVM, the names of global variables and functions start with a `@`. Names can
 
 Let's try to reverse-engineer this. The return value of this LLVM value is a success/failure output value. The actual value returned by our Python function is set in the pointer passed as a first argument. I'm not quite clear about the purpose of the second `i8*` argument; it might be related to the CPython environment and it doesn't seem important for what we're doing here. The last two `i32` arguments are our actual arguments `x` and `y`.
 
+The body of that function seems to do what we expect:
+
+```%.15 = add i32 %arg.y, %arg.x
+store i32 %.15, i32* %ret, align 4```
+
+The `add` instructions adds our two input numbers and saves them in a local variable `%.15`. Then, the `store` instruction puts that value in the `%ret` pointer passed as input: that's the return value of the function.
+
+The `@wrapper.__main__.f.int32.int32` function is more complicated and we won't detail it at all here. This function wraps the core LLVM function and exposes it to the Python interpreter. For example, our input numbers are actually Python objects. Some works needs to be done with the Python C API to extract the actual numbers from these objects and pass them to the core LLVM function.
+
+Since our ultimate goal is to compile `f()` in JavaScript where there's no such thing as a CPython interpreter, we only need the `@__main__.f.int32.int32` function here.
+
 ## Compiling the LLVM IR to JavaScript with emscripten
 
 scalar
