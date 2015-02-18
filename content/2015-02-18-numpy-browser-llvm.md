@@ -480,7 +480,11 @@ Although interesting in itself, this proof-of-concept has important limitations:
 
 * It is inherently limited by what Numba's nopython mode provides. Currently, just the most basic constructs of [Python](http://numba.pydata.org/numba-doc/0.17.0/reference/pysupported.html) and [NumPy](http://numba.pydata.org/numba-doc/0.17.0/reference/numpysupported.html) are available in this mode. There is no array creation, reshaping, no array operations without preallocating the output arrays, etc. Python features are also quite limited; for example, no containers (lists, dicts, sets, etc.) are available as these constructs require the Python C API. It's unclear to me how much the Numba devs want to implement in the nopython mode.
 
+* There is currently limited interest in using this approach compared to writing vanilla JavaScript by hand when needed. Fore sure, JavaScript doesn't support ndarrays (even if there are some JS [ndarray libraries](https://github.com/scijs/ndarray) out there), but we've seen that Numba support for NumPy array computations is still a bit limited. Things would be quite different if we could compile a significant and non-trivial Python/NumPy codebase in nopython mode.
+
 * I hard-coded the LLVM wrappers manually, which is quite horrible. However, I believe it would not be too complicated to build such wrappers dynamically using llvmlite.
+
+* Performance could be better.
 
 * This seems obvious, but: this approach only lets you compile Python functions ahead-of-time. Once you're in JavaScript, you can't write or compile your own functions on-the-fly. By contrast, the first approach I described in the introduction would let you do that.
 
