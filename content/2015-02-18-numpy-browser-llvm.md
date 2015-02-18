@@ -61,8 +61,7 @@ It seems there is an easy way to get the LLVM IR of a JIT'ed in the development 
 Let's define a trivial function operating on scalars:
 
 ```python
->>> @jit(int32(int32, int32), nopython=True)
-... def f(x, y):
+>>> def f(x, y):
 ...     return x + y
 ```
 
@@ -78,6 +77,8 @@ Now, let's compile it in nopython mode:
 ... def f(x, y):
 ...     return x + y
 ```
+
+For simplicity, we have specified the input and output types explicitely. Numba can compile several overloaded versions of the same function at runtime, depending on the types of the arguments.
 
 Let's have a look at the generated LLVM IR:
 
@@ -136,7 +137,14 @@ entry.endif1.1.endif:                             ; preds = %entry.endif1.1
 
 That's a lot of code for such a simple function! And yet I have only kept the most relevant bits.
 
-Two LLVM functions are defined here (`define` instruction)
+Two LLVM functions are defined here (`define` instruction):
+
+* `@__main__.f.int32.int32`
+* `@wrapper.__main__.f.int32.int32`
+
+In LLVM, the names of global variables and functions start with a `@`. Names can contain many non-alphanumerical characters, including dots `.` and quotes `"`. LLVM IR is a strongly-typed language. As we can see in the function definitions, the first function takes four parameters (`i32*`, `i8*`, `i32`, `i32`) and returns a `i32` value.
+
+Let's try to reverse-engineer this. The return value of this LLVM value is a success/failure output value. The actual value returned by our Python function is set in the pointer passed as a first argument. I'm not quite clear about the purpose of the second `i8*` argument; it might be related to the CPython environment and it doesn't seem important for what we're doing here. The last two `i32` arguments are our actual arguments `x` and `y`.
 
 ## Compiling the LLVM IR to JavaScript with emscripten
 
