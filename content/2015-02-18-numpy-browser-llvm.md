@@ -303,7 +303,7 @@ function wrap(args) {
 }
 ```
 
-This wrapper connects JavaScript TypedArray buffers to the virtual machine buffers and pointers. We finally get a chance to call our compiled LLVM functions from JavaScript.
+This wrapper connects JavaScript TypedArray buffers to the virtual machine buffers and pointers. We finally get a chance to call our compiled LLVM functions from JavaScript. Here is an interactive example:
 
 ```javascript
 // We get the input numbers.
@@ -317,6 +317,8 @@ result = add(result, arg1, arg2);
 // We display the result.
 $('#my_output').val(result[0]);
 ```
+
+TODO: HTML calculator
 
 ## Now with NumPy arrays
 
