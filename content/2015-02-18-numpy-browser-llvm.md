@@ -19,7 +19,6 @@ Recently, I heard about a new release of Numba, and I had another look. I discov
 
 Since I had long wanted to play with LLVM, I decided to have a go.
 
-
 ## What is LLVM?
 
 But first, what is LLVM exactly? It is a modular compiler architecture. The core of LLVM is a machine-independent assembly-like language called the **LLVM Intermediate Representation** (IR). Think of it as a strongly-typed instruction set for a virtual machine (even if *the scope of the project is not limited to the creation of virtual machines*, [tells us Wikipedia](http://en.wikipedia.org/wiki/LLVM)).
@@ -27,7 +26,6 @@ But first, what is LLVM exactly? It is a modular compiler architecture. The core
 The IR abstracts away details of the compilation target. As such, it is common target for various language frontends (C, C++, Haskell, Python, and many others) and microarchitecture backends (x86, ARM, Nvidia PTX which is used in CUDA-enabled GPUs, etc.). LLVM also comes with a powerful and modular architecture for optimization passes.
 
 LLVM seems to be quite popular these days, with a strong industrial support, notably by Apple. For example, Apple's **Clang** is a LLVM-based C/C++/Objective C compiler that aims at replacing GCC's compilers for these languages. The compilers of modern languages like Julia and Rust are also built with LLVM.
-
 
 ## What is Numba?
 
@@ -37,31 +35,66 @@ With Numba, things happen quite differently. At runtime, the function bytecode i
 
 That's it for the theory. Now let's get our hands dirty.
 
-
 ## Getting the LLVM IR of a Python function with Numba
 
+Let's first import Numba (I installed the latest stable release with conda):
 
+```python
+>>> import numpy as np
+>>> import llvmlite.binding as ll
+>>> import llvmlite.ir as llvmir
+>>> import numba
+>>> from numba import jit
+>>> from numba import int32
+```
+
+It seems there is an easy way to get the LLVM IR of a JIT'ed in the development version, but this version didn't work for me, so here is a custom function doing the same thing:
+
+```python
+>>> def llvm(func, sig=None):
+...     """Return the LLVM IR of a @jit'ed function."""
+...     if sig is None:
+...         sig = func.signatures[0]
+...     return str(func._compileinfos[sig].library._final_module)
+```
+
+Let's define a trivial function operating on scalars:
+
+```python
+>>> @jit(int32(int32, int32), nopython=True)
+... def f(x, y):
+...     return x + y
+```
+
+```python
+>>> f(1, 2)
+3
+```
+
+Now, let's compile it in nopython mode:
+
+```python
+>>> @jit(int32(int32, int32), nopython=True)
+... def f(x, y):
+...     return x + y
+```
+
+```python
+
+```
 
 ## Compiling the LLVM IR to JavaScript with emscripten
 
 scalar
 
-
 ## Now with NumPy arrays
 
 bugs and fix for rust
 
-
 ## Fixing the bugs with NumPy arrays
-
 
 ## Performance
 
-
 ## Limitations
 
-
-
 ## Conclusion
-
-
