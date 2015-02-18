@@ -8,16 +8,44 @@
 
     <link rel="stylesheet" href="lib/jquery-ui.min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <style>
+    table, div {
+        margin: 10px;
+    }
+    button {
+        margin: 0 10px;
+    }
+    </style>
 </head>
 
 <body>
 
+    <div>Computing the sum of 1,000,000 elements:</div>
+
+    <table class="pure-table">
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Emscripten</td>
+                <td id="emscripten"></td>
+            </tr>
+
+            <tr>
+                <td>Pure JS</td>
+                <td id="purejs"></td>
+            </tr>
+
+        </tbody>
+    </table>
+
     <form class="pure-form">
-        <fieldset>
-            <label>Computing the sum of 1,000,000 elements in:</label>
-            <input type="text" id="my_output" value="" disabled="true" style="width: 80px; color: black;" placeholder="">
-            <button class="pure-button pure-button-primary" onclick="go(); return false;" type="button">Go</button>
-        </fieldset>
+        <button class="pure-button pure-button-primary" onclick="go(); return false;" type="button">Go</button>
     </form>
 
     <script src="lib/jquery-1.11.2.min.js"></script>
@@ -42,12 +70,18 @@
     function go() {
 
         var result = new Int32Array([0]);
-
         var start = (new Date).getTime();
         result = sum(result, arr);
         var diff = (new Date).getTime() - start;
+        $('#emscripten').html(diff + ' ms');
 
-        $('#my_output').val(diff + ' ms');
+        start = (new Date).getTime();
+        var s = 0;
+        for (var i = 0; i < n; i++) {
+             s += arr[i];
+        }
+        diff = (new Date).getTime() - start;
+        $('#purejs').html(diff + ' ms');
     }
 
     go();
