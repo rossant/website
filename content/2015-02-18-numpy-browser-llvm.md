@@ -79,9 +79,64 @@ Now, let's compile it in nopython mode:
 ...     return x + y
 ```
 
-```python
+Let's have a look at the generated LLVM IR:
 
+```python
+>>> print(llvm(f))
+[...]
+
+; Function Attrs: nounwind
+define i32 @__main__.f.int32.int32(i32* nocapture %ret, i8* nocapture readnone %env, i32 %arg.x, i32 %arg.y) #0 {
+entry:
+  %.15 = add i32 %arg.y, %arg.x
+  store i32 %.15, i32* %ret, align 4
+  ret i32 0
+}
+
+[...]
+
+define i8* @wrapper.__main__.f.int32.int32(i8* nocapture readnone %py_closure, i8* %py_args, i8* %py_kws) {
+entry:
+  %.4 = alloca i8*, align 8
+  %.5 = alloca i8*, align 8
+  %.6 = call i32 (i8*, i8*, i8*, i8**, ...)* @PyArg_ParseTupleAndKeywords(i8* %py_args, i8* %py_kws, i8* getelementptr inbounds ([3 x i8]* @.const.OO, i64 0, i64 0), i8** getelementptr inbounds ([3 x i8*]* @.kwlist, i64 0, i64 0), i8** %.4, i8** %.5)
+  %.7 = icmp eq i32 %.6, 0
+  br i1 %.7, label %entry.if, label %entry.endif, !prof !0
+
+entry.if:                                         ; preds = %entry.endif1.1.endif, %entry.endif1.1, %entry.endif, %entry
+  %merge = phi i8* [ null, %entry.endif1.1 ], [ null, %entry.endif ], [ null, %entry ], [ %.57, %entry.endif1.1.endif ]
+  ret i8* %merge
+
+entry.endif:                                      ; preds = %entry
+  %.11 = load i8** %.4, align 8
+  %.12 = call i8* @PyNumber_Long(i8* %.11)
+  %.13 = call i64 @PyLong_AsLongLong(i8* %.12)
+  call void @Py_DecRef(i8* %.12)
+  %.16 = call i8* @PyErr_Occurred()
+  %.17 = icmp eq i8* %.16, null
+  br i1 %.17, label %entry.endif1.1, label %entry.if, !prof !1
+
+entry.endif1.1:                                   ; preds = %entry.endif
+  %.21 = load i8** %.5, align 8
+  %.22 = call i8* @PyNumber_Long(i8* %.21)
+  %.23 = call i64 @PyLong_AsLongLong(i8* %.22)
+  call void @Py_DecRef(i8* %.22)
+  %.26 = call i8* @PyErr_Occurred()
+  %.27 = icmp eq i8* %.26, null
+  br i1 %.27, label %entry.endif1.1.endif, label %entry.if, !prof !1
+
+entry.endif1.1.endif:                             ; preds = %entry.endif1.1
+  %.15.i = add i64 %.23, %.13
+  %sext = shl i64 %.15.i, 32
+  %.51 = ashr exact i64 %sext, 32
+  %.57 = call i8* @PyInt_FromLong(i64 %.51)
+  br label %entry.if
+}
 ```
+
+That's a lot of code for such a simple function! And yet I have only kept the most relevant bits.
+
+Two LLVM functions are defined here (`define` instruction)
 
 ## Compiling the LLVM IR to JavaScript with emscripten
 
