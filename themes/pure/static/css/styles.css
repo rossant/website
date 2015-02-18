@@ -255,6 +255,45 @@ code {
     max-width: 100%;
 }
 
+
+
+
+
+/***** IPYNB INPUT OUTPUT ******/
+.ipynb-input .highlight pre {
+    margin: 0;
+    border-left: 1em solid #888;
+}
+
+.ipynb-output {
+
+    font-family: 'Ubuntu Mono';
+    font-size: .9em;
+    padding: .5em;
+    white-space: pre;
+    word-wrap: normal;
+    overflow: auto;
+    margin: 0 0 1em 0;
+    /*padding: .25em .5em;*/
+    background-color: #ccc;
+}
+
+.ipynb-html {
+    margin: 1em 0;
+}
+
+.ipynb-html td, .ipynb-html th {
+    padding: .25em;
+}
+
+
+
+
+
+
+
+
+
 /****** POSTS HEADER ******/
 /*#posts .post .post-header h3 {
     margin: 1.75em 0 .2em 0;
