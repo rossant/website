@@ -14,30 +14,38 @@
 
     <form class="pure-form">
         <fieldset>
-            <input type="text" id="my_arg1" value="12" style="width: 80px;" placeholder="x">
-            <input type="text" id="my_arg2" value="18" style="width: 80px;" placeholder="y">
+            <input type="text" id="my_arg1" value="1 2 3 4 5" style="width: 200px;" placeholder="numbers">
             <input type="text" id="my_output" value="" disabled="true" style="width: 80px; color: black;" placeholder="">
-            <button class="pure-button pure-button-primary" onclick="go(); return false;">Add</button>
         </fieldset>
     </form>
 
     <script src="lib/jquery-1.11.2.min.js"></script>
     <script src="lib/emscripten-wrapper.js"></script>
-    <script src="lib/emscripten-scalar.js"></script>
+    <script src="lib/emscripten-array.js"></script>
 
     <script>
 
     function go() {
-        var arg1 = parseInt($('#my_arg1').val());
-        var arg2 = parseInt($('#my_arg2').val());
+        var arg1 = $('#my_arg1').val();
+        var n = 10;
+        var arr = new Int32Array(n);
+        var numbers = arg1.split(/[ ,]+/);
 
-        var add = wrap(['int', 'int']);
+        for (var i = 0; i < Math.min(n, numbers.length); i++) {
+            arr[i] = parseInt(numbers[i]);
+        }
+
+        var sum = wrap(['int[:]']);
 
         var result = new Int32Array([0]);
-        result = add(result, arg1, arg2);
+        result = sum(result, arr);
 
         $('#my_output').val(result[0]);
     }
+
+    $('#my_arg1').keypress(function () { go(); });
+
+    go();
     </script>
 
 </body>
