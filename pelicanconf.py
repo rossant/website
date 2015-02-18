@@ -1,5 +1,5 @@
 
-# make sure to end all internal links with '/' so that mod_rewrite .htaccess works 
+# make sure to end all internal links with '/' so that mod_rewrite .htaccess works
 # with subdirectories
 # SITEURL = 'http://cyrille.rossant.net'
 # SITEURL = ''  # FOR LOCAL DEV ONLY
@@ -10,7 +10,7 @@ DISQUS_SITENAME = 'rossant'
 LOCALE = 'en_US.utf8'
 PATH = 'content'
 THEME = 'themes/pure'
-STATIC_PATHS = ['images', 'pdfs']
+STATIC_PATHS = ['images', 'pdfs', 'js']
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU  = False
 DEFAULT_DATE = 'fs'
@@ -29,7 +29,7 @@ PAGINATION_PATTERNS = (
 PLUGIN_PATHS = ['../pelican-plugins']
 PLUGINS = [
 			'pelican_plugin-render_math',
-			'summary', 
+			'summary',
 			'neighbors',
             'ipynb',
 ]

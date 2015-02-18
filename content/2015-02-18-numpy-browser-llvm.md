@@ -40,6 +40,7 @@ That's it for the theory. Now let's get our hands dirty.
 Let's first import Numba (I installed the latest stable release with conda):
 
 ```python
+>>> import os
 >>> import numpy as np
 >>> import llvmlite.binding as ll
 >>> import llvmlite.ir as llvmir
@@ -179,11 +180,174 @@ Here is a little function returning the LLVM library of a Python JIT'ed function
 
 Now, we save the LLVM IR code to a `.ll` file, and we call `emcc` (the emscripten compiler) on this file with a JavaScript output:
 
+os.chdir('/data/git/numpy-js')
 ```python
 >>> lib = get_lib(f)
->>> with open('_tmp.ll', 'w') as f:
-...     f.write((str(lib._final_module)))
->>> os.system('./emscripten/emcc _tmp.ll -o _tmp.js -O3 -s NO_EXIT_RUNTIME=1')
+>>> with open('scalar.ll', 'w') as fh:
+...     fh.write((str(lib._final_module)))
+>>> os.system('./emscripten/emcc scalar.ll -o scalar.js -O3 -s NO_EXIT_RUNTIME=1')
+0
+```
+
+```python
+>>> os.path.getsize('scalar.js')
+138022
+```
+
+```python
+>>> !cut -c-80 scalar.js | head -n5
+var Module;if(!Module)Module=(typeof Module!=="undefined"?Module:null)||{};var m
+var asm=(function(global,env,buffer) {
+"use asm";var a=new global.Int8Array(buffer);var b=new global.Int16Array(buffer)
+// EMSCRIPTEN_START_FUNCS
+function ma(a){a=a|0;var b=0;b=i;i=i+a|0;i=i+15&-16;return b|0}function na(){ret
+```
+
+We now have a JavaScript file that supposedly implements our function. How do we call it from JavaScript? After all, what we have here is a sort of function compiled for a virtual machine in JavaScript. With Numba, we had a LLVM wrapper for Python that let us call the function from Python. Here, we have nothing, and we need to write our own wrapper.
+
+I encountered a few difficulties:
+
+* Programs compiled with emscripten are generally regular C programs with a main loop. However, what I want is an interactive access to my LLVM function from JavaScript.
+* According to the documentation of emscripten, there is a way to access the LLVM functions from JavaScript. However, I must have done something wrong because I only managed to access the `main` entry point function (which actually doesn't exist).
+* So I ended up creating a `main()` function in LLVM wrapping ` @__main__.f.int32.int32()`.
+
+There are surely better ways to do it, but here is a little Python function adding this wrapper:
+
+```python
+>>> def add_wrapper(lib):
+...     """Add a main entry point calling the function."""
+...     main = """
+...     define i32 @main(i64* %arg0, i8* %arg1, i32 %arg2, i32 %arg3)
+...     {
+...         %out = call i32 @__main__.add.int32.int32(i64* %arg0, i8* %arg1, i32 %arg2, i32 %arg3)
+...         ret i32 %out
+...     }
+>>> 
+...     declare i32 @__main__.add.int32.int32(i64*, i8*, i32, i32)
+>>> 
+...     """
+...     ll_module = ll.parse_assembly(main)
+...     ll_module.verify()
+...     try:
+...         lib.add_llvm_module(ll_module)
+...     except RuntimeError:
+...         print("Warning: the module as already been added.")
+...     return lib
+```
+
+It's a bit ugly because the wrapper is hard-coded with the function's signature.
+
+Once we have this `main()` function, we finally get access to it from JavaScript. But we're not done yet, because we need a way to retrieve the result. Recall that the result is stored via a pointer passed as a first argument to our LLVM function.
+
+After a bit of googling, I ended up with a quick-and-dirty JavaScript wrapper:
+
+```python
+>>> %%javascript
+... function Buffer(data) {
+...     // see http://kapadia.github.io/emscripten/2013/09/13/emscripten-pointers-and-pointers.html
+...     // data must be a TypedArray.
+...     this._typed_array = data;
+... 
+...     // Get data byte size, allocate memory on Emscripten heap, and get pointer
+...     var nDataBytes = data.length * data.BYTES_PER_ELEMENT;
+...     var dataPtr = Module._malloc(nDataBytes);
+... 
+...     // Copy data to Emscripten heap (directly accessed from Module.HEAPU8)
+...     var dataHeap = new Uint8Array(Module.HEAPU8.buffer, dataPtr, nDataBytes);
+...     dataHeap.set(new Uint8Array(data.buffer));
+... 
+...     this._data_heap = dataHeap;
+...     this.pointer = dataHeap.byteOffset;
+... }
+... 
+... Buffer.prototype.get = function () {
+...     return new this._typed_array.constructor(this._data_heap.buffer, 
+...                                              this._data_heap.byteOffset, 
+...                                              this._typed_array.length);
+... }
+... 
+... Buffer.prototype.free = function () {
+...     Module._free(this._data_heap.byteOffset);
+... }
+... 
+... function is_array(tp) {
+...     return (tp.indexOf(':') > -1);
+... }
+... 
+... function wrap(args) {
+... 
+...     // return pointer, env
+...     var arg_types = ['number', 'number'];
+... 
+...     // one number per argument
+...     for (var i = 0; i < args.length; i++) {
+...         arg_types.push('number');
+...     }
+...     var func_name = 'main';
+...     var func = Module.cwrap(func_name, 'number', arg_types);
+... 
+...     var wrapped = function(return_arr) {
+...         // Wrap TypedArrays into emscripten buffers.
+... 
+...         // Buffer with the return buffer, initialized with an array 
+...         // passed as argument.
+...         var buffer_out = new Buffer(return_arr);
+... 
+...         // Wrap function arguments.
+...         var func_args = [buffer_out.pointer, 0];
+...         // Skip the first argument which is the return array.
+...         for (var i = 1; i < arguments.length; i++) {
+...             var arg;
+...             // Define the argument to send to the wrapped function.
+...             if (is_array(args[i-1])) {
+...                 // If that argument is an array, pass the pointer to
+...                 // an emscripten buffer containing the data.
+...                 arg = new Buffer(arguments[i]).pointer;
+...             }
+...             else {
+...                 // Otherwise, just pass the argument directly.
+...                 arg = arguments[i];
+...             }
+...             func_args.push(arg);
+...         }
+... 
+...         func.apply(undefined, func_args);
+...         var result = buffer_out.get();
+...         return result;
+...     };
+... 
+...     return wrapped;
+... }
+<IPython.core.display.Javascript object>
+```
+
+This wrapper connects JavaScript TypedArray buffers to the virtual machine buffers and pointers. We finally get a chance to call our compiled LLVM functions from JavaScript.
+
+<script src="/js/wrapper.js"></script>
+<script src="/js/scalar.js"></script>
+
+```python
+>>> %%HTML
+... <script>
+... function go() {
+...     // We get the input numbers.
+...     var arg1 = parseInt($('#my_arg1').val());
+...     var arg2 = parseInt($('#my_arg2').val());
+... 
+...     // We wrap the LLVM main() function, specifying the signature.
+...     var add = wrap(['int', 'int']);
+... 
+...     // We create a buffer that will contain the result.
+...     var result = new Int32Array([0]);
+...     result = add(result, arg1, arg2);
+...     
+...     // We display the result.
+...     $('#my_output').val(result[0]);
+... }
+... </script>
+... <input type="text" id="my_arg1" value="2" style="width: 50px;" /> + <input type="text" id="my_arg2" value="5" style="width: 50px;" /> = <input type="text" id="my_output" style="width: 50px;" disabled="True" />
+... <button onclick="go();">Compute</button>
+<IPython.core.display.HTML object>
 ```
 
 ## Now with NumPy arrays
