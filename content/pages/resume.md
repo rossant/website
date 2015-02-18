@@ -72,6 +72,7 @@ I've conducted data analysis and modeling investigations of locomotor trajectori
 
 ### Books
 
+  * **Rossant C** and Klein A (2015, in press). WebGL Insights. CRC Press (chapter of a community book)
   * **Rossant C** (2015, in prep). Learning IPython for Interactive Computing and Data Visualization, second edition. Packt Publishing, ISBN 9781783986989
   * **Rossant C** (2014). [IPython Interactive Computing and Visualization Cookbook](http://www.packtpub.com/ipython-interactive-computing-and-visualization-cookbook/book). Packt Publishing, 520 pages, ISBN 9781783284818
   * **Rossant C** (2013). [Learning IPython for Interactive Computing and Data Visualization](http://www.packtpub.com/learning-ipython-for-interactive-computing-and-data-visualization/book). Packt Publishing, 138 pages, ISBN 9781782169932
