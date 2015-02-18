@@ -163,6 +163,29 @@ Now, let's try to compile this to JavaScript with emscripten!
 
 Emscripten is an impressive piece of software. It can compile C/C++ code, even large projects like game engines ([Unreal Engine](https://blog.mozilla.org/blog/2014/03/12/mozilla-and-epic-preview-unreal-engine-4-running-in-firefox/) for example), to JavaScript. Emscripten uses Clang to compile C/C++ to LLVM, and a custom LLVM backend named *Fastcomp* to compile LLVM IR to JavaScript/**asm.js** (*an extraordinarily optimizable, low-level subset of JavaScript* [according to the project page](http://asmjs.org/)).
 
+Let's get started. I first tried to use the easy SDK installer, but I had some issues and I had to compile emscripten from source (note: I'm using Ubuntu 14.04 64-bit). Instructions are [here](http://kripken.github.io/emscripten-site/docs/building_from_source/building_emscripten_from_source_on_linux.html#building-emscripten-on-linux). Also, I ended up using the `merge-3.5/merge-pnacl-3.5` branches of emscripten and fastcomp, but using `master` may work as well. The point was to ensure the same version of LLVM is used in Numba and emscripten, to avoid compatibility issues. After all, we're trying to fit a square peg in a round hole.
+
+Fastcomp appears to share code with PNaCl, a project by Google that brings native applications to the Chrome browser through a sandboxing technology based on LLVM.
+
+Here is a little function returning the LLVM library of a Python JIT'ed function. We'll use it later.
+
+```python
+>>> def get_lib(func, sig_index=0):
+...     sig = func.signatures[sig_index]
+...     compiled = func._compileinfos[sig]
+...     lib = compiled.library
+...     return lib
+```
+
+Now, we save the LLVM IR code to a `.ll` file, and we call `emcc` (the emscripten compiler) on this file with a JavaScript output:
+
+```python
+>>> lib = get_lib(f)
+>>> with open('_tmp.ll', 'w') as f:
+...     f.write((str(lib._final_module)))
+>>> os.system('./emscripten/emcc _tmp.ll -o _tmp.js -O3 -s NO_EXIT_RUNTIME=1')
+```
+
 ## Now with NumPy arrays
 
 bugs and fix for rust
