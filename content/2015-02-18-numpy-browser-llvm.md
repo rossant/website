@@ -318,7 +318,7 @@ result = add(result, arg1, arg2);
 $('#my_output').val(result[0]);
 ```
 
-TODO: HTML calculator in an iframe
+<iframe src="/widgets/ emscripten-scalar.html"></iframe>
 
 We have successfully compiled our first Python function to Javascript!
 

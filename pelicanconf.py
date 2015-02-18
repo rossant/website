@@ -10,7 +10,9 @@ DISQUS_SITENAME = 'rossant'
 LOCALE = 'en_US.utf8'
 PATH = 'content'
 THEME = 'themes/pure'
-STATIC_PATHS = ['images', 'pdfs', 'js']
+STATIC_PATHS = ['images', 'pdfs', 'widgets']
+PAGE_EXCLUDES = ['widgets']
+ARTICLE_EXCLUDES = ['widgets']
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU  = False
 DEFAULT_DATE = 'fs'
@@ -89,4 +91,3 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 TAG_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
-

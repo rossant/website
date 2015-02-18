@@ -3,7 +3,7 @@ Tags: python, opendata
 
 I've participated at an [Open Data hackathon](http://fr.okfn.org/2014/05/29/premier-hackaton-sur-les-donnees-du-ministere-de-linterieur/) organized by the French Minister of the Interior and several open data institutions. Together with Rue89 journalists and an OCTO Web developer, we created in two days an [interactive map of all 62,000 road accidents in France in 2012](http://rue89.nouvelobs.com/2014/06/25/carte-presque-tous-les-accidents-route-2012-253113). We used a [very rich dataset](https://www.data.gouv.fr/fr/datasets/donnees-des-accidents-corporels-de-la-circulation-routiere/) released by the Minister of the Interior and Etalab.
 
-![Road accidents]({filename}images/accidents.jpg)
+![Road accidents](/images/accidents.jpg)
 
 <!-- PELICAN_END_SUMMARY -->
 

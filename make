@@ -13,21 +13,21 @@ BASEURL = 'cyrille.rossant.net'
 def call(cmd, wait=True):
     cmd_list = shlex.split(cmd)
     p = subprocess.Popen(cmd_list)
-    if wait: 
+    if wait:
      	p.wait()
 
 def conf():
     "Generate the derivate conf files."
-    
+
     with open('pelicanconf.py', 'r') as f:
         contents = f.read()
-    
-    loc = "SITEURL = '/'\n" + contents
+
+    loc = "SITEURL = ''\n" + contents
     pub = ("SITEURL = 'http://%s'\n" % BASEURL) + contents
-    
+
     with open('pelicanconf_loc.py', 'w') as f:
         f.write(loc)
-    
+
     with open('pelicanconf_pub.py', 'w') as f:
         f.write(pub)
 
@@ -36,7 +36,7 @@ def build(local=True, monitor=True):
     monitor = monitor & local
     conf()
     which = 'loc' if local else 'pub'
-    call("pelican -s=pelicanconf_%s.py %s" % (which, '-r' if monitor else ''), 
+    call("pelican -s=pelicanconf_%s.py %s" % (which, '-r' if monitor else ''),
     	 wait=not(monitor))
 
 def serve():

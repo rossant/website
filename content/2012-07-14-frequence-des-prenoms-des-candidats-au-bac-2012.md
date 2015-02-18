@@ -1,7 +1,7 @@
 Title: Fréquence des prénoms des candidats au bac 2012
 Tags: opendata
 
-Je poursuis mon analyse des prénoms des candidats au bac cette année (voir 
+Je poursuis mon analyse des prénoms des candidats au bac cette année (voir
 [billet précédent](http://cyrille.rossant.net/prenoms-et-reussite-au-bac/)) en
 m'intéressant cette fois à la fréquence des différents prénoms portés
 par les candidats, indépendamment de leurs résultats. Les 346 581
@@ -11,7 +11,7 @@ utilisés, représentatifs des prénoms à la mode aux alentours de l'année
 1994 (nuage réalisé sur [Wordle](http://www.wordle.net)).
 
 
-![Prénoms]({filename}images/prenoms-cloud.png)
+![Prénoms](/images/prenoms-cloud.png)
 
 <!-- PELICAN_END_SUMMARY -->
 
