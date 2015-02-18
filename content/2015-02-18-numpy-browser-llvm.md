@@ -35,6 +35,8 @@ Now, the idea of Numba is the following. Take a Python function performing numer
 
 With Numba, things happen quite differently. At runtime, the function bytecode is analyzed, types are inferred, and LLVM IR is generated before being compiled to machine code. In *nopython mode*, the LLVM IR doesn't make Python C API calls. There are many situations where the Python function cannot be compiled in nopython mode because it uses non-trivial Python features or data structures. In this case, the *object mode* is activated and the LLVM IR makes many Python C API calls.
 
+That's it for the theory. Now let's get our hands dirty.
+
 
 ## Getting the LLVM IR of a Python function with Numba
 
