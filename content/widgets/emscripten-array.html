@@ -14,7 +14,7 @@
 
     <form class="pure-form">
         <fieldset>
-            <input type="text" id="my_arg1" value="1 2 3 4 5" style="width: 200px;" placeholder="numbers">
+            <input type="text" id="my_arg1" value="1 2 3 4 5" style="width: 200px;" placeholder="10 numbers max">
             <input type="text" id="my_output" value="" disabled="true" style="width: 80px; color: black;" placeholder="">
         </fieldset>
     </form>
@@ -43,7 +43,7 @@
         $('#my_output').val(result[0]);
     }
 
-    $('#my_arg1').keypress(function () { go(); });
+    $('#my_arg1').keyup(function () { go(); });
 
     go();
     </script>
