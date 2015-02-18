@@ -53,18 +53,20 @@ def clean():
     shutil.rmtree('cache')
     shutil.rmtree('__pycache__')
 
-def upload(msg):
+def upload(msg=None, nogit=False):
     """Build and push all changes online."""
     build(local=False)
-    call("git add content/*.md")
-    call("git add content/*.ipynb")
-    call('git commit -am "%s"' % msg)
-    call("git push")
+    if not nogit:
+	    call("git add content/*.md")
+	    call("git add content/*.ipynb")
+	    call('git commit -am "%s"' % msg)
+	    call("git push")
     call("cp -ar output/. ../%s" % BASEURL)
     os.chdir("../%s" % BASEURL)
-    call("git add --ignore-removal *")
-    call('git commit -am "%s"' % msg)
-    call('git push')
+    if not nogit:
+	    call("git add --ignore-removal *")
+	    call('git commit -am "%s"' % msg)
+	    call('git push')
 
 def kill():
     "Kill the running processes."
@@ -75,7 +77,9 @@ commands = {
     None: serve,
     'build': build,
     'build_once': lambda: build(monitor=False),
+    'build_web': lambda: upload(nogit=True),
     'serve': serve,
+    'preupload': serve,
     'conf': conf,
     'clean': clean,
     'upload': upload,
