@@ -318,7 +318,7 @@ result = add(result, arg1, arg2);
 $('#my_output').val(result[0]);
 ```
 
-<iframe src="/widgets/ emscripten-scalar.html"></iframe>
+<iframe src="/widgets/emscripten-scalar.html" style="height: 60px;"></iframe>
 
 We have successfully compiled our first Python function to Javascript!
 
