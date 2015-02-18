@@ -318,7 +318,9 @@ result = add(result, arg1, arg2);
 $('#my_output').val(result[0]);
 ```
 
-<iframe src="/widgets/emscripten-scalar.html" style="height: 60px;"></iframe>
+Type some numbers below:
+
+<iframe src="/widgets/emscripten-scalar.html" style="height: 60px;" scrolling="no"></iframe>
 
 We have successfully compiled our first Python function to Javascript!
 
@@ -450,16 +452,21 @@ result = sum(result, arg);
 $('#my_output').val(result[0]);
 ```
 
-TODO: interactive sum
+Type some numbers below to compute the sum (no more than 10 numbers):
 
-This is better than what I expected! I also managed to pass 2D arrays with a little more work with the wrappers:
+<iframe src="/widgets/emscripten-array.html" style="height: 100px;" scrolling="no"></iframe>
 
-TODO: 2D table
+This is better than what I expected! I also managed to pass 2D arrays with a little more work with the wrappers. The following example gives you the index with the maximum element. Click on a number to change it:
+
+<iframe src="/widgets/emscripten-table.html" style="height: 350px;" scrolling="no"></iframe>
 
 ## Performance
 
-.85 ms for sum(1M) in Python
-15 ms in JS LLVM
+I've done some quick and somewhat non-scientific benchmarks. The test function is just `np.sum()` on an array containing one million random 32-bit integers uniformly sampled between -100 and 100. On my laptop, NumPy computes the sum in 0.85 ms. What about Numba/Emscripten and vanilla JavaScript?
+
+<iframe src="/widgets/emscripten-benchmark.html" style="height: 200px;" scrolling="no"></iframe>
+
+The Emscripten-compiled version appears to be 1-2 orders of magnitude slower than vanilla JavaScript and NumPy.
 
 ## Conclusion
 
