@@ -17,7 +17,7 @@
             <input type="text" id="my_arg1" value="12" style="width: 80px;" placeholder="x">
             <input type="text" id="my_arg2" value="18" style="width: 80px;" placeholder="y">
             <input type="text" id="my_output" value="" disabled="true" style="width: 80px; color: black;" placeholder="">
-            <button class="pure-button pure-button-primary" onclick="go(); return false;">Add</button>
+            <button class="pure-button pure-button-primary" onclick="go(); return false;" type="button">Add</button>
         </fieldset>
     </form>
 
@@ -27,11 +27,11 @@
 
     <script>
 
+    var add = wrap(['int', 'int']);
+
     function go() {
         var arg1 = parseInt($('#my_arg1').val());
         var arg2 = parseInt($('#my_arg2').val());
-
-        var add = wrap(['int', 'int']);
 
         var result = new Int32Array([0]);
         result = add(result, arg1, arg2);

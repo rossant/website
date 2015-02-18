@@ -458,7 +458,8 @@ TODO: 2D table
 
 ## Performance
 
-TODO
+.85 ms for sum(1M) in Python
+15 ms in JS LLVM
 
 ## Conclusion
 

@@ -14,36 +14,41 @@
 
     <form class="pure-form">
         <fieldset>
-            <input type="text" id="my_arg1" value="1 2 3 4 5" style="width: 200px;" placeholder="numbers">
+            <label>Computing the sum of 1,000,000 elements in:</label>
             <input type="text" id="my_output" value="" disabled="true" style="width: 80px; color: black;" placeholder="">
+            <button class="pure-button pure-button-primary" onclick="go(); return false;" type="button">Go</button>
         </fieldset>
     </form>
 
     <script src="lib/jquery-1.11.2.min.js"></script>
     <script src="lib/emscripten-wrapper.js"></script>
-    <script src="lib/emscripten-array.js"></script>
+    <script src="lib/emscripten-benchmark.js"></script>
 
     <script>
 
     var sum = wrap(['int[:]']);
 
-    function go() {
-        var arg1 = $('#my_arg1').val();
-        var n = 10;
-        var arr = new Int32Array(n);
-        var numbers = arg1.split(/[ ,]+/);
+    var n = 1000000;
+    var arr = new Int32Array(n);
 
-        for (var i = 0; i < Math.min(n, numbers.length); i++) {
-            arr[i] = parseInt(numbers[i]);
-        }
-
-        var result = new Int32Array([0]);
-        result = sum(result, arr);
-
-        $('#my_output').val(result[0]);
+    for (var i = 0; i < n; i++) {
+        arr[i] = getRandomInt(-100, 100);
     }
 
-    $('#my_arg1').keypress(function () { go(); });
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function go() {
+
+        var result = new Int32Array([0]);
+
+        var start = (new Date).getTime();
+        result = sum(result, arr);
+        var diff = (new Date).getTime() - start;
+
+        $('#my_output').val(diff + ' ms');
+    }
 
     go();
     </script>
