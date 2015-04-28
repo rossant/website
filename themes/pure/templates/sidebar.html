@@ -5,18 +5,19 @@
 		<!-- </div> -->
 	</div>
 	<div class="name">Cyrille Rossant, PhD</div>
-	<div class="sub-name">data scientist | software engineer</div>
+	<div class="sub-name">data | software | neuroscience</div>
 	<div class="contact"><i>first</i>.<i>last</i>@gmail.com</div>
 	<div class="location">Paris, France</div>
 </section>
 
 <section class="tags">
-{% for tag in [ 'neuroinformatics', 
-				'python', 
-				'dataviz', 
-                'gpu',
+{% for tag in [
+				'python',
+				'dataviz',
                 'maths',
+                'gpu',
                 'opendata',
+                'openscience',
                 ] %}
     <span class="tag"><a href="/tag/{{ tag }}/">#{{ tag }}</a></span>
 {% endfor %}
