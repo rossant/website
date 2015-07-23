@@ -1,34 +1,107 @@
 # A compiler infrastructure for data visualization
 
-Despite being more than two years old, VisPy is still in a relatively experimental stage. We knew from day one it would be a hard project. Personally, I wouldn't have thought it would be *that* hard. Yet, it doesn't have to be that hard. Why is it so hard?
+We're seeing new big data tools every day now. There are tens or hundreds of data visualizations libraries out there. Yet I believe we're still lacking a robust, scalable, and cross-platform visualization toolkit that can handle today's massive datasets.
 
-I believe that the main problem is OpenGL itself, and its associated GPU language, GLSL. GLSL is a C-like language that has nothing to do with Python. In VisPy's higher-level layers, we try to hide GLSL to the user completely. Scientists should never have to write their own GPU code in a C dialect for routine scientific visualizations.
+You'll always find excellent tools on all platforms, especially on the web, for little plots with a few hundreds of points, statistical charts like bar plots, histograms, scatter plots and the like. Maps are also extremely popular, and there are now really great open source tools, notably those by Mapbox.
 
-To make this possible, we need to bridge the gap between Python and GLSL. The way OpenGL works is that it accepts a GLSL string, the driver compiles it and sends it to the GPU. This is all handled by the graphics driver. So all we have to do is to generate GLSL strings dynamically. We do this with string templating, regular expressions, parsers, and so on. We have a collection of reusable GLSL components that we can reassemble dynamically when building visuals. A significant part of the library relies on this.
+It seems to me that, for many people, this is the end of the story. Maybe 90%, 95%, even more, of data visualization use cases are covered by these sorts of plots and these libraries.
 
-This brings quite some complexity in the code.
+Yet, there are more complex visualization needs in academia and industry, and I've always been unsatisfied by the tools at our disposal.
 
-Things get even trickier with transformations.
+To be more concrete, here are a few examples of the kinds of visualizations I'm talking about:
 
-The main benefit of the GPU for fast visualization is to perform dynamic data transformations on the GPU. For example, when zooming in a plot, a GPU kernel written in GLSL multiplies by a coefficient the data points residing in a GPU buffer. This is incredibly fast, because that's what GPUs are designed for.
+TODO
 
-However, there are many cases where we need to access the data on the CPU. For example, point picking, or selecting points with a lasso. Since the transformations are done on the GPU, we need a way to get the actual transformed point positions on the CPU.
+You're not going to implement these with SVG and D3. There are two main problems.
 
-OpenGL's way of doing it is quite hackish. It boils down to rendering the scene a second time in a hidden buffer with a unique color for every pickable object, getting the color rendered at the mouse position, and retrieving the associated object.
 
-Another possibility is to implement the *inverse* transformation in Python. This means that every transformation needs to be implemented in GLSL *and* Python, and similarly for its inverse. This leads to some duplication of code.
+## Visualizing millions of points
 
-So we need a framework to define, manipulate, and combine transformation functions that are implemented on both the CPU and the GPU.
+The first problem is speed: things are going to be way too slow and memory-intensive. You might crash your browser or your computer because you're just plotting way more points than what your library can handle.
 
-This adds another layer of complexity.
+An often-heard counter-argument is that you're never going to plot millions of points where you only have a few million pixels on your screen. This is true when you're plotting aggregates like statistical quantities. But this is not as soon as you visualize complex, raw, unstructured datasets, like the ones you may find in some scientific and industrial applications.
 
-Let's mention further sources of difficulty:
+To give only one example in the discipline I know: neurophysiologists can now routinely record in animals' brains thousands of simultaneous digital signals sampled at 20 kHz. That represents at least 20 million points *per second*. Recordings can last several hours or days. High-density 4k screens can now contain about 10 million pixels, maybe several times more in a few years. The scientists I know absolutely *do* want to visualize as much data as possible. They may have two, three, even four HiDPI screens, and they're eager to see all signals in a given time interval, as much as their screens' resolution allows (and they're starting do to it with the visualization prototypes we're developing). This is an unprecendent opportunity to really *see* what's going on in the brain. They're incredibly excited by this opportunity. The reason why very few people do that at the moment is that the tools are not quite there yet (apart from early prototypes).
 
-* We have to deal with the many quirks and bugs of the various OpenGL implementations by the different GPU manufacturers. OpenGL is overly complicated, and a lot of work is the responsability of the drivers. When a driver has a bug, we can either work around it with some hack in our code, or pray that a newer version of the driver will fix the bug in the future.
+I am convinced that the demand is real in neuroscience, genomics, astronomy, particle physics, meteorology, finance, and many other scientific and industrial disciplines.
 
-* GLSL kernels are quite limited in terms of memory access and computations, compared to GPGPU frameworks like CUDA or OpenCL. OpenGL-OpenCL interoperability is possible but extremely hackish, buggy, and driver-dependent. Yet, many applications would highly benefit from real-time GPGPU computations in a visualization application (for example, simulations of physical systems).
+![That's many screens you've got here](http://www.timothysykes.com/wp-content/uploads/2011/04/desk.jpg)
 
-* One of VisPy's goals is to allow for interactive visualizations to work in the browser as well as on the desktop. We have a client-server architecture where OpenGL commands are streamed from Python to the browser and rendered by WebGL. Again, the architecture is complex, hard to debug, and requires a live Python server. An entire client-side implementation of an interactive visualization would be much appreciated, but we have no way to run VisPy in the browser (VisPy is written in Python and NumPy, which don't run in the browser).
+
+## 3D visualization
+
+The second problem is 3D: most plotting libraries are designed for 2D, and when they support 3D, they don't do it well because 3D is implemented as an afterthought.
+
+There are good 3D libraries out there, like three.js. But they're mostly designed to the main use-cases of 3D visualization: video games or modeling. Not data visualization. Your only option is to resort to very low-level tools like OpenGL, which no sane scientist will ever do.
+
+Also, I believe that 3D is going to gain more and more traction in the coming years with the advances in 3D printing technology, virtual reality, augmented reality, etc. The same momentum might happen in data visualization as well.
+
+
+## VisPy: where we are now
+
+These are all the reasons why we've started the [**VisPy project**](http://vispy.org) more than two years ago. We wanted to design a high-performance visualization library in Python that would handle massive datasets well, and where 2D and 3D visualization would both be first-class citizens. The main idea of VisPy is to leverage the massively parallel graphics card through the OpenGL library for data visualization purposes.
+
+VisPy now has half a dozen of core contributors and tens of occasional contributors. We've also reached the highly-respected milestones of 666 stars on GitHub.
+
+However, I personally consider the project to be still in its infancy. There is still a whole lot of work before VisPy gets to a mature and stable state. If the [Jupyter developers admit considering the notebook (almost 5 years old, estimated 2 million users) as a "validated MVP" (Minimum Viable Product)](http://blog.jupyter.org/2015/07/07/project-jupyter-computational-narratives-as-the-engine-of-collaborative-data-science/), I can definitely see VisPy as a somewhat solid proof-of-concept/prototype. This might sound crazy, but it's really not. To give an idea, matplotlib, the state-of-the-art visualization library in Python, is almost 15 years old; Python and OpenGL are about 25 years old; UNIX was developed half a century ago; and so on and so forth. We like to consider software as a fast-paced environment, but, in many respects, time scales can be much slower than what we think.
+
+What will it take to bring the project to the next level? What can we do to ensures it lives through the next 5, 10, even 15 years?
+
+
+## Current challenges
+
+If we're serious about this sustainability question, **I believe we need to rethink the entire logic of the project from scratch**. There are three main reasons.
+
+
+### A pure Python cross-platform library?
+
+From the very beginning, we wanted a pure Python library. We were all using Python for our research, and we had all developed our own OpenGL-based Python prototypes for data visualization. Performance was excellent in our respective prototypes. We weren't using any compiled C extension or Cython, because we didn't need to. We were able to leverage OpenGL's performance quite efficiently thanks to ctypes and NumPy. So we decided to go with a pure Python library.
+
+One of the reasons was that we wanted to avoid compiled extensions at any cost. Packaging and distributing compiled Python libraries used to be an absolute pain. However, this is no longer the case thanks to Anaconda.
+
+Also, I'm now thinking that the whole "pure Python" thing is a bit overrated. None of the main scientific Python libraries (NumPy, SciPy, matplotlib, scikit-learn, pandas) is in pure Python. What does "pure Python" even mean, really? VisPy calls the OpenGL C API through ctypes: is it "pure Python"? Also, you could even argue that a "pure Python" program is being interpreted by CPython, which is all written in *C*...
+
+Another problem comes from VisPy itself. VisPy implements a powerful but complex system for managing transformations between objects in a scene. Because it is in pure Python, there always have been significant performance issues. This is a critical problem in a high-performance visualization library that needs to process huge datasets in real time. These issues are now getting mitigated thanks to heroic efforts by Luke Campagnola. But it should come as no surprise that achieving high performance in a pure Python library is highly challenging. Spending so many efforts just for the sake of being "pure Python" is not worth it in my opinion.
+
+Finally, the most important problem with being pure Python comes from a design goal that came slightly after the project started. We wanted to support the web platform as well thanks to **WebGL**, the browser's implementation of OpenGL. The web platform is now extremely popular, even in the scientific community via the Jupyter notebook. Many data visualization libraries (like D3, Bokeh) are built partly or entirely on the web platform. More and more video games and game engines are being ported to WebGL. Given the efforts spent by the industry, I really believe that this trend will continue for many years.
+
+How do you make Python work in the browser? The browser's language is JavaScript, a language that is fundamentally different from Python. I've been obsessed by this question for a few years. I've explored many options. Unfortunately, none of them is really satisfying. Now, **my conclusion about Python in the browser is that it's never gonna happen**, at least not in the way you might think (more on this later in this post).
+
+There is a similar issue with mobile devices. Sadly, apart from the excellent Kivy project, Python on mobile devices is getting very little attention, and I'm not sure that's ever going to change. Yet, there would be a huge interest in a tool that could convert a visualization designed for the desktop into a mobile application.
+
+I believe these are fundamental problems about Python itself, that, in the case of VisPy, cannot be satisfactorily solved with our current approach. We do have temporary solutions for now, VisPy does have an experimental WebGL backend that works in the Jupyter notebook, but it is fundamentally *experimental*. This is at odds with the idea of designing a solid codebase that can be maintained over many years.
+
+
+### Python and OpenGL
+
+Another fundamental problem comes from OpenGL itself.
+
+Modern OpenGL features a GPU-specific language named GLSL. GLSL is a C-like language that has nothing to do with Python. We believe that scientists should never have to write their own GPU code in a C dialect. Therefore, in VisPy, we try to hide GLSL completely to the user.
+
+To make this possible, we need to bridge the gap between Python and GLSL. The graphics driver typically converts GLSL strings on-the-fly for the GPU. In VisPy, we have no other choice than generating GLSL strings dynamically. We do this with string templates, regular expressions, parsers and so on. We have a large collection of reusable GLSL components (notably contributed by Nicolas Rougier) that are put together automatically as a function of what the user wants to visualize. Designing and implementing a modular API for this was extremely challenging, and as a consequence the code is quite complex. Again, this complexity is inherent to OpenGL and to our desire to generate visualizations on-the-fly with a nice high-level Python API.
+
+There are many other problems with OpenGL. There are many bugs in the drivers, depending on the graphics card's manufacturer. These bugs are hard to debug, and they need to be worked around with various hacks in the code. Memory accesses in the shaders are limited. Interoperability with GPGPU frameworks like CUDA and OpenCL are possible in practice, but so hard and buggy that it's not even worth trying. OpenGL's API is extremely obscure, and we need to hide this in the code through a dedicated abstraction layer. OpenGL has accumulated a lot of technical debt over the last 25 or so years.
+
+This is one of the cases where you get the feeling that the technology is working against you, not with you. And there's absolutely nothing you can do about it: it's just how things work.
+
+
+### OpenGL's future?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 This is what is currently implemented in VisPy, thanks to the heroic efforts of Luke, Almar, Eric, and the other contributors.
 
