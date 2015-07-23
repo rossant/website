@@ -59,7 +59,7 @@ From the very beginning, we wanted a pure Python library. We were all using Pyth
 
 One of the reasons was that we wanted to avoid compiled extensions at any cost. Packaging and distributing compiled Python libraries used to be an absolute pain. However, this is no longer the case thanks to Anaconda.
 
-Also, I'm now thinking that the whole "pure Python" thing is a bit overrated. None of the main scientific Python libraries (NumPy, SciPy, matplotlib, scikit-learn, pandas) is in pure Python. What does "pure Python" even mean, really? VisPy calls the OpenGL C API through ctypes: is it "pure Python"? Also, you could even argue that a "pure Python" program is being interpreted by CPython, which is all written in *C*...
+Also, I'm now thinking that the whole "pure Python" thing is a bit overrated. None of the main scientific Python libraries (NumPy, SciPy, matplotlib, scikit-learn, pandas) is in pure Python. What does "pure Python" even mean, really? VisPy calls the OpenGL C API through ctypes: is it "pure Python"? Also, you could even argue that a "pure Python" program is being interpreted by CPython, which is all written in *C*... Finally, there are other great data analysis platforms out there that could potentially benefit from VisPy, like Julia, R, etc. That's not something you can do with a pure Python library.
 
 Another problem comes from VisPy itself. VisPy implements a powerful but complex system for managing transformations between objects in a scene. Because it is in pure Python, there always have been significant performance issues. This is a critical problem in a high-performance visualization library that needs to process huge datasets in real time. These issues are now getting mitigated thanks to heroic efforts by Luke Campagnola. But it should come as no surprise that achieving high performance in a pure Python library is highly challenging. Spending so many efforts just for the sake of being "pure Python" is not worth it in my opinion.
 
@@ -87,38 +87,40 @@ This is one of the cases where you get the feeling that the technology is workin
 
 ### OpenGL's future?
 
+All of this explains why I was so incredibly excited by the announcement made by the Khronos Group in March. They acknowledged that OpenGL was basically doomed, and they decided to start from scratch with a brand new low-level API for real-time graphics named **Vulkan**.
+
+In my opinion this is just the best decision they could have ever made.
+
+Compared to OpenGL, Vulkan is closer to the metal. It is designed at a different level of abstraction. Graphics drivers for Vulkan should be simpler, lighter and, hopefully, less buggy than before. Consequently, applications will have much more control on the graphics pipeline, but they'll also need to implement many more things, notably memory management on the GPU.
+
+A major feature of the new API is **SPIR-V**, a LLVM-like intermediate language for the GPU. Instead of providing shaders using GLSL strings, graphics applications will have the possibility to provide low-level GPU bitcode directly. There should be tools to translate LLVM code to SPIR-V and reciprocally.
+
+OpenGL and GLSL will still work as before through some conversion layers for obvious retrocompatibility reasons. There will be tools to compile GLSL code to SPIR-V. But applications won't have to go through GLSL if they don't want to.
+
+This might just be the perfect solution for VisPy. Instead of mixing two different languages (Python and GLSL) with strings, templates, regexes, lexers and parsers, we could design a **compiler architecture for data visualization around LLVM and SPIR-V**.
+
+Shaders and GPU kernels will no longer have to be written in GLSL; the can be written in **any language that can be compiled down to LLVM**. This includes low-level languages like GLSL and C/C++, but also Python thanks to **Numba**. Numba can compile an increasing variety of pure Python functions to LLVM. The primary use-case of Numba is high-performance computing, but it could also be used to write GPU kernels for visualization.
+
+This could remove a huge layer of complexity in VisPy.
+
+It might also be a solution to the cross-platform problems. We could potentially port visualizations to the browser by compiling them to JavaScript thanks to emscripten, or to mobile devices thanks to LLVM compilers for Android and iOS.
+
+Before we see in more details how all of this could work, let's describe a hypothetical data visualization use-case that could come true with Vulkan.
+
+
+## Use-case example
+
+There is a new data analysis pipeline that is going to process terabytes of data, and you're in charge of writing the analysis and visualization software. Your users have highly specific visualization needs. They want a fast, reactive, and user-friendly interface to interact with the data in various and complex ways.
+
+You start to design a visualization prototype in the Jupyter notebook.
 
 
 
 
 
+## Main goals
 
-
-
-
-
-
-
-
-
-
-
-This is what is currently implemented in VisPy, thanks to the heroic efforts of Luke, Almar, Eric, and the other contributors.
-
-All of this explains why I was so incredibly excited by the Vulkan announcement in March. The Khronos Group acknowledged the debt accumulated in OpenGL by almost 25 years of development. They decided to start basically from scratch with a brand new, modern, modular low-level API.
-
-Compared to OpenGL, Vulkan is lower-level, closer to the metal, and demands more from applications. Consequently, drivers will be expected to be much lighter, and hopefully much less buggy.
-
-A major feature of the new API is SPIR-V, a LLVM-like intermediate language for GPU kernels. While Vulkan will provide a GLSL-to-SPIR-V compiler (and probably LLVM <-> SPIR-V translators too), third-party applications will have the liberty to implement their own compilers. Potentially, this paves the way for GPU computing and graphics implementations in high-level languages like Python (thanks to projects like Numba).
-
-This might just be the perfect solution for VisPy. Instead of mixing two different languages (Python and GLSL), we could design a compiler architecture around LLVM and SPIR-V. Instead of designing a complex GLSL code generation system in Python, we could just write GPU kernels in Python, or in any other language. Instead of implementing transformations in both Python and GLSL, we could implement them in any language that compiles to LLVM. In other words, we have an opportunity to design a GPU-aware compiler architecture for interactive visualization that could natively support high-level languages like Python.
-
-In this post I'll sketch some ideas about how an ideal low-level data visualization toolkit based on Vulkan could look like. By low-level, I mean a system that targets developers of high-level graphics libraries (for example, plotting libraries, ray tracing engines, etc.).
-
-
-## Objectives
-
-What would I expect from an ideal low-level data visualization tookit?
+What would be expected from an ideal low-level data visualization tookit?
 
 **Speed**. Of course, that's the primary goal of a GPU-based visualization framework. I'd expect the software to display tens or hundreds of millions of points at full speed, i.e. 60 FPS.
 
