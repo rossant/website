@@ -13,7 +13,7 @@ Perhaps contrary to a common belief, this is not the end of the story. There are
 
 The complex visualizations I'll be talking about throughout this post are generally based on large datasets, and they may or may not be in 3D.
 
-![Examples of complex visualizations](images/vispy-complex.png)
+![Examples of complex visualizations](/images/vispy-complex.png)
 
 ### Large datasets
 
