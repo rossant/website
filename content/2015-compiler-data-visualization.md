@@ -13,12 +13,12 @@ To be more concrete, here are a few examples of the kinds of visualizations I'll
 
 TODO
 
-These are not dumb scatter plots. They are complex visualizations of large datasets with elaborate interactivity patterns. You're not going to implement these sorts of visualizations with SVG and D3. There are two main problems.
+These are not dumb scatter plots. They are complex visualizations of large datasets with elaborate interactivity patterns. You're not going to easily implement these sorts of visualizations with SVG and D3. There are two main problems.
 
 
 ### Performance
 
-The first problem is speed: things are going to be way too slow and memory-intensive. You might crash your browser or your computer because you're just plotting way more points than what your library can handle.
+Complex visualizations typically involve millions of points. With most plotting libraries, things are going to be way too slow and memory-intensive. You might crash your browser or your computer because you're just processing way more points than what your library can handle.
 
 An often-heard counter-argument is that you're never going to plot millions of points where you only have a few million pixels on your screen. This is true when you're plotting aggregates like statistical quantities. But this is not as soon as you visualize complex, raw, unstructured datasets, like the ones you may find in some scientific and industrial applications.
 
