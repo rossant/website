@@ -9,12 +9,9 @@ Perhaps contrary to a common belief, this is not the end of the story. There are
 
 ## Complex visualizations
 
-To be more concrete, here are a few examples of the kinds of visualizations I'll be talking about throughout this post:
+The complex visualizations I'll be talking about throughout this post are generally based on large datasets, and they may or may not be in 3D.
 
-TODO
-
-These complex visualizations are generally based on large datasets, and they may or may not be in 3D.
-
+![Examples of complex visualizations](images/vispy-complex.png)
 
 ### Large datasets
 
@@ -43,6 +40,8 @@ Finally, there is always the option to resort to low-level tools like OpenGL, wh
 These are all the reasons why we've started the [**VisPy project**](http://vispy.org) more than two years ago. We wanted to design a high-performance visualization library in Python that would handle massive datasets well, and where 2D and 3D visualization would both be first-class citizens. The main idea of VisPy is to transparently leverage the massively parallel graphics card through the OpenGL library for data visualization purposes.
 
 VisPy now has half a dozen of core contributors and tens of occasional contributors. We've also just reached the highly-respected milestones of 666 stars on GitHub.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_3YoaeoiIFI" frameborder="0" allowfullscreen></iframe>
 
 However, I personally consider the project to be still in its infancy. There is still a whole lot of work before VisPy gets to a mature and stable state. If the [Jupyter developers admit considering the notebook (almost 5 years old, estimated 2 million users) as a "validated MVP" (Minimum Viable Product)](http://blog.jupyter.org/2015/07/07/project-jupyter-computational-narratives-as-the-engine-of-collaborative-data-science/), I can definitely see VisPy as a proof-of-concept/prototype. This might sound crazy, but it's really not. To give an idea, matplotlib, the state-of-the-art visualization library in Python, is almost 15 years old; Python and OpenGL are about 25 years old; UNIX was developed half a century ago; and so on and so forth. We like to consider software as a fast-paced environment, but, in many respects, time scales can be much slower than what we think.
 
@@ -88,23 +87,23 @@ This is one of the cases where you get the feeling that the technology is workin
 
 ### OpenGL's future?
 
-All of this explains why I was so incredibly excited by the announcement made by the Khronos Group in March. They acknowledged that OpenGL was basically doomed (at least that's my interpretation), and they decided to start from scratch with a brand new low-level API for real-time graphics named **Vulkan**.
+All of this explains why I was so incredibly excited by the [announcement made by the Khronos Group in March](https://www.khronos.org/news/press/khronos-reveals-vulkan-api-for-high-efficiency-graphics-and-compute-on-gpus). They acknowledged that OpenGL was basically doomed (at least that's my interpretation), and they decided to start from scratch with a brand new low-level API for real-time graphics named [**Vulkan**](https://www.khronos.org/vulkan).
 
 In my opinion this is just the best decision they could have ever made.
 
 Compared to OpenGL, Vulkan is closer to the metal. It is designed at a different level of abstraction. Graphics drivers for Vulkan should be simpler, lighter and, hopefully, less buggy than before. Consequently, applications will have much more control on the graphics pipeline, but they'll also need to implement many more things, notably memory management on the GPU.
 
-A major feature of the new API is **SPIR-V**, an LLVM-like intermediate language for the GPU. Instead of providing shaders using GLSL strings, graphics applications will have the possibility to provide low-level GPU bitcode directly. [There should be tools to translate LLVM IR to SPIR-V](http://www.phoronix.com/scan.php?page=news_item&px=khronos-coming-spirv-llvm).
+A major feature of the new API is [**SPIR-V**](https://www.khronos.org/spir), an LLVM-like intermediate language for the GPU. Instead of providing shaders using GLSL strings, graphics applications will have the possibility to provide low-level GPU bitcode directly. [There should be tools to translate LLVM IR to SPIR-V](http://www.phoronix.com/scan.php?page=news_item&px=khronos-coming-spirv-llvm).
 
 OpenGL and GLSL will still work as before through via dedicated conversion layers, for obvious retrocompatibility reasons. There will be tools to compile GLSL code to SPIR-V. But applications won't have to go through GLSL if they don't want to.
 
 This might just be the perfect solution for VisPy. Instead of mixing two different languages (Python and GLSL) with strings, templates, regexes, lexers and parsers, we could design a **compiler architecture for data visualization around LLVM and SPIR-V**.
 
-Shaders and GPU kernels will no longer have to be written in GLSL; they could be written in **any language that can be compiled down to LLVM** (and, as a consequence, to SPIR-V). This includes low-level languages like GLSL and C/C++, but also Python thanks to **Numba**. Numba can compile an increasing variety of pure Python functions to LLVM. The primary use-case of Numba is high-performance computing, but it could also be used to write GPU kernels for visualization.
+Shaders and GPU kernels will no longer have to be written in GLSL; they could be written in **any language that can be compiled down to LLVM** (and, as a consequence, to SPIR-V). This includes low-level languages like GLSL and C/C++, but also Python thanks to [**Numba**](http://numba.pydata.org/). Numba can compile an increasing variety of pure Python functions to LLVM. The primary use-case of Numba is high-performance computing, but it could also be used to write GPU kernels for visualization.
 
 This could remove a huge layer of complexity in VisPy.
 
-It might also be a solution to the cross-platform problems. We could potentially port visualizations to the browser by compiling them to JavaScript thanks to emscripten, or to mobile devices thanks to LLVM compilers for Android and iOS.
+It might also be a solution to the cross-platform problems. We could potentially port visualizations to the browser by compiling them to JavaScript thanks to [emscripten](http://kripken.github.io/emscripten-site/), or to mobile devices thanks to LLVM compilers for Android and iOS.
 
 I'd now like to open the discussion on what a future Vulkan-vased data visualization toolkit could look like, on what use-cases it could enable.
 
@@ -117,7 +116,7 @@ Before we see in more details how all of this could work, let's describe a hypot
 
 There is a new data analysis pipeline that is going to process terabytes of data, and you're in charge of writing the analysis and visualization software. Your users have highly specific visualization needs. They want a fast, reactive, and user-friendly interface to interact with the data in various and complex ways.
 
-You start to design a visualization prototype in the Jupyter notebook around your data. Through a Python API, you carefully design how to process and visualize the data on the GPU. This is not more complicated than creating a NumPy universal function (*ufunc*) in pure Python with Numba: it's really the same idea of stream processing, but in a context of data visualization. You describe how your data is stored on the GPU, and how it's converted to vertices and pixels. There is a learning curve, but it is not as bad as OpenGL/GLSL because you are still writing 100% Python code.
+You start to design a visualization prototype in the Jupyter notebook around your data. Through a Python API, you carefully design how to process and visualize the data on the GPU. This is not more complicated than [creating a NumPy universal function (*ufunc*) in pure Python with Numba](http://numba.pydata.org/numba-doc/dev/user/vectorize.html): it's really the same idea of stream processing, but in a context of data visualization. You describe how your data is stored on the GPU, and how it's converted to vertices and pixels. There is a learning curve, but it is not as bad as OpenGL/GLSL because you are still writing 100% Python code.
 
 As part of this process, you also integrate interactivity by specifying how user actions (mouse, keyboard, touch gestures) influence the visualization.
 
@@ -131,7 +130,7 @@ You go back to your Python visualization. Now, instead of running it interactive
 
 Once you have this file, you start writing your web application in HTML and JavaScript (maybe using some of the future Jupyter notebook components). But instead of reimplementing the whole visualization and interactivity logic, you compile your exported file to JavaScript via emscripten. You then have your whole interactive visualization in the browser practically for free.
 
-Of course, this will only work if Vulkan is eventually ported to the browser. There are no such plans yet, Vulkan being such an early project at this point, but I suppose it will depend on the user demand. We might obtain more details during SIGGRAPH in a couple of weeks, where Vulkan could be discussed at length.
+Of course, this will only work if Vulkan is eventually ported to the browser. There are no such plans yet, Vulkan being such an early project at this point, but I suppose it will depend on the user demand. We might obtain more details during [SIGGRAPH](http://s2015.siggraph.org/) in a couple of weeks, where Vulkan could be discussed at length.
 
 Now, your users are even happier, but they want even more. They want a mobile application for visualizing their data interactively. Again, you could compile your platform-independent visualization file to Android or iOS (both platforms are LLVM backends). Or maybe, who knows, mobile browsers will support Vulkan at some point, so your web application will just work!
 
@@ -197,7 +196,7 @@ I should note that VisPy already implements many of these functions in Python or
 
 Vulkan gives applications a lot of freedom regarding memory management. Therefore, we should come up with a simple yet powerful memory model that handles CPU-GPU transfers efficiently. One possibility could be to implement a NumPy-like ndarray structure that lives on both the CPU and GPU. It would be automatically and lazily synchronized between the two.
 
-This is the option chosen by **Glumpy**, VisPy's sister project maintained by Nicolas Rougier. VisPy uses a more complex memory model where data can be stored on the GPU only; while this might save some RAM, it is more complicated to work with this model. Also, the host has typically much more RAM than the GPU.
+This is the option chosen by [**Glumpy**](http://glumpy.github.io/), VisPy's sister project maintained by Nicolas Rougier. VisPy uses a more complex memory model where data can be stored on the GPU only; while this might save some RAM, it is more complicated to work with this model. Also, the host has typically much more RAM than the GPU.
 
 SPIR-V has a nice support for arbitrarily complex data types, and a NumPy-like API could be used.
 
