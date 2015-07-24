@@ -17,9 +17,9 @@ The complex visualizations I'll be talking about throughout this post are genera
 
 ### Large datasets
 
-Most plotting libraries can't handle visualizations with millions of points. Crashes due to out of memory errors are not uncommon.
+Most plotting libraries can't handle visualizations with millions of points. Crashes due to out-of-memory errors are not uncommon.
 
-An often-heard counter-argument is that you're never going to plot millions of points where you only have a few million pixels on your screen. This is true when you're plotting aggregate quantities. But this is not as soon as you visualize complex, raw, unstructured datasets, like the ones you may find in many scientific and industrial applications.
+An often-heard counter-argument is that you're never going to plot millions of points when your screen rarely has more than a few million pixels. This is true with standard visualizations, but not with complex visalizations of raw, unstructured datasets, like the ones you may find in many scientific and industrial applications.
 
 To give only one example in the discipline I know: neurophysiologists can now routinely record in animals' brains a thousand of simultaneous digital signals sampled at 20 kHz. This represents 20 million points *per second*. Recordings can last several hours or days. High-density 4k screens can now contain about 10 million pixels, maybe several times more in a few years.
 
@@ -47,7 +47,7 @@ VisPy now has half a dozen of core contributors and tens of occasional contribut
 
 However, I personally consider the project to be still in its infancy. There is still a whole lot of work before VisPy gets to a mature and stable state. If the [Jupyter developers admit considering the notebook (almost 5 years old, estimated 2 million users) as a "validated MVP" (Minimum Viable Product)](http://blog.jupyter.org/2015/07/07/project-jupyter-computational-narratives-as-the-engine-of-collaborative-data-science/), I can definitely see VisPy as a proof-of-concept/prototype. This might sound crazy, but it's really not. To give an idea, matplotlib, the state-of-the-art visualization library in Python, is almost 15 years old; Python and OpenGL are about 25 years old; UNIX was developed half a century ago; and so on and so forth. We like to consider software as a fast-paced environment, but, in many respects, time scales can be much slower than what we think.
 
-What will it take to bring the project to the next level? What can we do to ensures it lives through the next 5, 10, even 15 years?
+What will it take to bring the project to the next level? What can we do to ensure it lives through the next 5, 10, even 15 years?
 
 
 ## Current challenges
@@ -61,7 +61,7 @@ From the very beginning, we wanted a pure Python library. We were all using Pyth
 
 One of the many reasons was that we wanted to avoid compiled extensions at any cost. Packaging and distributing compiled Python libraries used to be an absolute pain. However, this is no longer the case thanks to Anaconda.
 
-However, I'm now thinking that the whole "pure Python" idea is a bit overrated. None of the main scientific Python libraries (NumPy, SciPy, matplotlib, scikit-learn, pandas) is in pure Python. What does "pure Python" even mean, really? VisPy calls the OpenGL C API through ctypes: is it "pure Python"? Also, you could even argue that a "pure Python" program is being interpreted by CPython, which is all written in C... Finally, there are other great data analysis platforms out there that could potentially benefit from advanced visualization capabilities, like Julia, R, etc. That's not something you could do with a pure Python library.
+I'm now thinking that the whole "pure Python" idea is a bit overrated. None of the main scientific Python libraries (NumPy, SciPy, matplotlib, scikit-learn, pandas) is in pure Python. What does "pure Python" even mean, really? VisPy calls the OpenGL C API through ctypes: is it "pure Python"? Also, you could even argue that a "pure Python" program is being interpreted by CPython, which is all written in C... Finally, there are other great data analysis platforms out there that could potentially benefit from advanced visualization capabilities, like Julia, R, etc. That's not something you could do with a pure Python library.
 
 Another problem comes from VisPy itself. VisPy implements a powerful but complex system for managing transformations between objects in a scene. Because it is in pure Python, there always have been significant performance issues. This is a critical problem in a high-performance visualization library that needs to process huge datasets in real time. These issues are now getting mitigated thanks to heroic efforts by Luke Campagnola. But it should come as no surprise that achieving high performance in a pure Python library is overly difficult. Spending so many efforts just for the sake of being "pure Python" is not worth it in my opinion.
 
@@ -69,9 +69,9 @@ Finally, the most important problem with being pure Python comes from a design g
 
 How do you make Python work in the browser? The browser's language is JavaScript, a language fundamentally different from Python. I've been obsessed by this question for a few years. I've explored many options. Unfortunately, none of them is really satisfying. Now, **my conclusion about Python in the browser is that it's never gonna happen**, at least not in the way you might think (more on this later).
 
-There is a similar issue with mobile devices. Sadly, apart from the excellent Kivy project, Python on mobile devices is getting very little attention, and I'm not sure that's ever going to change. Yet, there would be a huge interest in semi-automatically creating mobile applications from data visualizations made for the desktop.
+There is a similar issue with mobile devices. Sadly, apart from the excellent [Kivy project](http://kivy.org/#home), Python on mobile devices is getting very little attention, and I'm not sure that's ever going to change. Yet, there would be a huge interest in creating mobile applications from data visualizations made for the desktop.
 
-I believe these are fundamental problems about Python itself, that, in the case of VisPy, cannot be satisfactorily solved with our current approach. We do have temporary solutions for now, VisPy does have an experimental WebGL backend that works in the Jupyter notebook (described in the [WebGL Insights chapter](https://books.google.com/books?hl=en&lr=&id=6crECQAAQBAJ&oi=fnd&pg=PA89&ots=Jq7h5UT9TC&sig=aEZX3_JhW_P9fbHsHPqJAIWDH_c&redir_esc=y#v=onepage&q&f=false) that Almar Klein and I wrote this year), but it is fundamentally *experimental*. Because of the WebGL support, we need to stick with the lowest common denominator between the desktop and the browser. This means we cannot support recent OpenGL features like geometry shaders, tesselation shaders, or compute shaders. These issues are at odds with the idea of designing a solid codebase that can be maintained over many years.
+I believe these are fundamental problems about Python itself, which, in the case of VisPy, cannot be satisfactorily solved with our current approach. We do have temporary solutions for now, VisPy does have an experimental WebGL backend that works in the Jupyter notebook (described in the [WebGL Insights chapter](https://books.google.com/books?hl=en&lr=&id=6crECQAAQBAJ&oi=fnd&pg=PA89&ots=Jq7h5UT9TC&sig=aEZX3_JhW_P9fbHsHPqJAIWDH_c&redir_esc=y#v=onepage&q&f=false) that Almar Klein and I wrote this year), but it is fundamentally *experimental*. Because of the WebGL support, we need to stick with the lowest common denominator between the desktop and the browser. This means we cannot support recent OpenGL features like geometry shaders, tesselation shaders, or compute shaders. These issues are at odds with the idea of designing a solid codebase that can be maintained over many years.
 
 
 ### Python and OpenGL
@@ -107,7 +107,7 @@ This could remove a huge layer of complexity in VisPy.
 
 It might also be a solution to the cross-platform problems. We could potentially port visualizations to the browser by compiling them to JavaScript thanks to [emscripten](http://kripken.github.io/emscripten-site/), or to mobile devices thanks to LLVM compilers for Android and iOS.
 
-I'd now like to open the discussion on what a future Vulkan-vased data visualization toolkit could look like, on what use-cases it could enable.
+I'd now like to open the discussion on what a future Vulkan-based data visualization toolkit could look like, on what use-cases it could enable.
 
 I should precise that everything that comes next is kind of speculative and depends on very partial information released by the Khronos group on early specification drafts. Also, I am well aware that this is a really ambitious and optimistic vision that might just be too hard to implement. But I believe it is worth trying. This journey is completely independent from the normal development of the VisPy library as it exists today. The two roads will only cross in the most optimistic case, and not before several years.
 
@@ -130,7 +130,7 @@ I believe we can do better.
 
 You go back to your Python visualization. Now, instead of running it interactively, you *compile* it automatically to a platform-independent bitcode file. Under the hood, this uses the LLVM platform. You get a binary file that implements the entire logic of your interactive visualization. This includes the GPU kernels, the rendering flow, and (possibly) interactivity. In a way, this is similar to running a C++ program generating a function dynamically via the LLVM API, versus compiling a function to an LLVM bitcode file.
 
-Once you have this file, you start writing your web application in HTML and JavaScript (maybe using some of the future Jupyter notebook components). But instead of reimplementing the whole visualization and interactivity logic, you compile your exported file to JavaScript via emscripten. You then have your whole interactive visualization in the browser practically for free.
+Once you have this file, you start writing your web application in HTML and JavaScript (maybe using some of the future Jupyter notebook components). But instead of reimplementing the whole visualization and interactivity logic, you compile your exported file to JavaScript via emscripten. Then, you have your whole interactive visualization in the browser practically for free.
 
 Of course, this will only work if Vulkan is eventually ported to the browser. There are no such plans yet, Vulkan being such an early project at this point, but I suppose it will depend on the user demand. We might obtain more details during [SIGGRAPH](http://s2015.siggraph.org/) in a couple of weeks, where Vulkan could be discussed at length.
 
@@ -183,13 +183,15 @@ There could be a rich user-contributed library of reusable pure LLVM functions, 
 * special mathematical functions
 * linear algebra routines
 * geometric tests
+* collision detection
+* tesselation algorithms
 * classical mechanics equations
-* common optics and lighting equations
-* common markers
+* optics and lighting equations
+* standard marker equations
 * antialiasing routines
 * font generators with signed distance functions
 
-Most of these could be written in any language that compiles to LLVM. This includes C/C++, GLSL, but also Python via Numba, making user contributions much easier.
+Most of these functions could be written in any language that compiles to LLVM. This includes C/C++, GLSL, but also Python via Numba, making user contributions much easier.
 
 I should note that VisPy already implements many of these functions in Python or GLSL, so we could reuse a lot of code.
 
@@ -219,7 +221,7 @@ This vision represents a significant departure from the current state of the Vis
 
 ### Future-proof
 
-We can consider that OpenGL is on a rather slow deprecation road since Vulkan has been announced last March. Of course, OpenGL is so widely used that it's not going to disappear before many, many years. But by chosing to move forward with a brand new API, the Khronos Group sent a clear signal to the industry.
+We can consider that OpenGL is on a rather slow deprecation road since Vulkan has been announced last March. Of course, OpenGL is so widely used that it's not going to disappear before many, many years. But by choosing to move forward with a brand new API, the Khronos Group sent a clear signal to the industry.
 
 I also believe that LLVM has a clear future.
 
@@ -228,7 +230,7 @@ I also believe that LLVM has a clear future.
 
 By moving forward with a C++ core and an LLVM-based compiler architecture, we obtain a truly cross-platform framework. We are not prisonners of a given language like Python, but we have the possibility to target various low-level and high-level languages at leisure. We have potentially access to x86-64, ARM, desktop, mobile, and browser platforms.
 
-This is made possible thanks to great projects such as LLVM, emscripten, clang, Numba, and others.
+This is made possible thanks to great projects such as LLVM, emscripten, clang, and Numba.
 
 
 ### Modular and extendable architecture
@@ -252,17 +254,17 @@ Being a pure Python library, VisPy needs to resort to many tricks to achieve goo
 
 With a C++ engine and Vulkan command buffers, implementing collections might be unnecessary. We could still batch-rendering calls, but on the CPU instead of on the GPU, which is much easier. Performance might be similar than VisPy's collections, but this remains to be tested.
 
-More generally, on the CPU side, we have much more freedom in the algorithms we can implement. For example, implementing polygon triangulation should not represent a major problem, whereas it would be much more complicated in Python. Since it's C++, we're no longer limited by CPython's performance.
+More generally, on the CPU side, we have much more freedom on the algorithms we can implement. For example, implementing polygon triangulation should not represent a major problem, whereas it would be much more complicated in Python. Since it's C++, we're no longer limited by CPython's performance.
 
 
 ### GPGPU-powered visualizations
 
-The ability to combine compute kernels with visualization kernels on the GPU is also a major advantage of the system. The features basically comes "for free" with Vulkan, and it is no longer necessary to mess with arcane interoperability commands.
+The ability to combine compute kernels with visualization kernels on the GPU is also a major advantage of the system. This feature basically comes "for free" with Vulkan, and it is no longer necessary to mess with arcane interoperability commands.
 
 
 ## Conclusion
 
-Since this is such a major departure from the current state of the project, the system discussed here should be explored independently from the development of the VisPy library. This is an experiment to investigate an radically different system based on a brand new low-level graphics API.
+Since this is such a major departure from the current state of the project, the system discussed here should be explored independently from the development of the VisPy library. This is an experiment to investigate a radically different system based on a brand new low-level graphics API.
 
 Obviously, these are just ideas that need a lot of discussions, and many details need to be worked out. But I think this is a really interesting project to pursue.
 
