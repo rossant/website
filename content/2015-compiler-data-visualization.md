@@ -8,27 +8,29 @@ It seems to me that, for many people, this is the end of the story. Maybe 90%, 9
 
 Yet, there are more complex visualization needs in academia and industry, and I've always been unsatisfied by the tools at our disposal.
 
-To be more concrete, here are a few examples of the kinds of visualizations I'm talking about:
+## Complex visualizations
+
+To be more concrete, here are a few examples of the kinds of visualizations I'll be talking about throughout this post:
 
 TODO
 
-You're not going to implement these with SVG and D3. There are two main problems.
+These are not dumb scatter plots. They are complex visualizations of large datasets with elaborate interactivity patterns. You're not going to implement these sorts of visualizations with SVG and D3. There are two main problems.
 
 
-## Visualizing millions of points
+### Performance
 
 The first problem is speed: things are going to be way too slow and memory-intensive. You might crash your browser or your computer because you're just plotting way more points than what your library can handle.
 
 An often-heard counter-argument is that you're never going to plot millions of points where you only have a few million pixels on your screen. This is true when you're plotting aggregates like statistical quantities. But this is not as soon as you visualize complex, raw, unstructured datasets, like the ones you may find in some scientific and industrial applications.
 
-To give only one example in the discipline I know: neurophysiologists can now routinely record in animals' brains thousands of simultaneous digital signals sampled at 20 kHz. That represents at least 20 million points *per second*. Recordings can last several hours or days. High-density 4k screens can now contain about 10 million pixels, maybe several times more in a few years. The scientists I know absolutely *do* want to visualize as much data as possible. They may have two, three, even four HiDPI screens, and they're eager to see all signals in a given time interval, as much as their screens' resolution allows (and they're starting do to it with the visualization prototypes we're developing). This is an unprecendent opportunity to really *see* what's going on in the brain. They're incredibly excited by this opportunity. The reason why very few people do that at the moment is that the tools are not quite there yet (apart from early prototypes).
+To give only one example in the discipline I know: neurophysiologists can now routinely record in animals' brains thousands of simultaneous digital signals sampled at 20 kHz. That represents at least 20 million points *per second*. Recordings can last several hours or days. High-density 4k screens can now contain about 10 million pixels, maybe several times more in a few years. The scientists I know absolutely *do* want to visualize as much data as possible. They may have two, three, even four HiDPI screens, and they're eager to see all signals in a given time interval, as much as their screens' resolution allows (and they're starting do to it with the visualization prototypes we're developing). This is an unprecendent opportunity to really *see* what's going on in the brain. They're incredibly excited by this opportunity. The reason why very few people do that at the moment is that the tools are not quite there yet (apart from early prototypes). This is an example where the user absolutely needs to look at the raw data, not some aggregates, because they wouldn't even know what to aggregate. This is basically uncharted territory, and the only chance they can have to get some scientific insight in the data is to look at the raw data directly.
 
 I am convinced that the demand is real in neuroscience, genomics, astronomy, particle physics, meteorology, finance, and many other scientific and industrial disciplines.
 
 ![That's many screens you've got here](http://www.timothysykes.com/wp-content/uploads/2011/04/desk.jpg)
 
 
-## 3D visualization
+### 3D
 
 The second problem is 3D: most plotting libraries are designed for 2D, and when they support 3D, they don't do it well because 3D is implemented as an afterthought.
 
@@ -59,17 +61,17 @@ From the very beginning, we wanted a pure Python library. We were all using Pyth
 
 One of the reasons was that we wanted to avoid compiled extensions at any cost. Packaging and distributing compiled Python libraries used to be an absolute pain. However, this is no longer the case thanks to Anaconda.
 
-Also, I'm now thinking that the whole "pure Python" thing is a bit overrated. None of the main scientific Python libraries (NumPy, SciPy, matplotlib, scikit-learn, pandas) is in pure Python. What does "pure Python" even mean, really? VisPy calls the OpenGL C API through ctypes: is it "pure Python"? Also, you could even argue that a "pure Python" program is being interpreted by CPython, which is all written in *C*... Finally, there are other great data analysis platforms out there that could potentially benefit from VisPy, like Julia, R, etc. That's not something you can do with a pure Python library.
+Also, I'm now thinking that the whole "pure Python" thing is a bit overrated. None of the main scientific Python libraries (NumPy, SciPy, matplotlib, scikit-learn, pandas) is in pure Python. What does "pure Python" even mean, really? VisPy calls the OpenGL C API through ctypes: is it "pure Python"? Also, you could even argue that a "pure Python" program is being interpreted by CPython, which is all written in *C*... Finally, there are other great data analysis platforms out there that could potentially benefit from advanced visualization capabilities, like Julia, R, etc. That's not something you could do with a pure Python library.
 
 Another problem comes from VisPy itself. VisPy implements a powerful but complex system for managing transformations between objects in a scene. Because it is in pure Python, there always have been significant performance issues. This is a critical problem in a high-performance visualization library that needs to process huge datasets in real time. These issues are now getting mitigated thanks to heroic efforts by Luke Campagnola. But it should come as no surprise that achieving high performance in a pure Python library is highly challenging. Spending so many efforts just for the sake of being "pure Python" is not worth it in my opinion.
 
-Finally, the most important problem with being pure Python comes from a design goal that came slightly after the project started. We wanted to support the web platform as well thanks to **WebGL**, the browser's implementation of OpenGL. The web platform is now extremely popular, even in the scientific community via the Jupyter notebook. Many data visualization libraries (like D3, Bokeh) are built partly or entirely on the web platform. More and more video games and game engines are being ported to WebGL. Given the efforts spent by the industry, I really believe that this trend will continue for many years.
+Finally, the most important problem with being pure Python comes from a design goal that came slightly after the project started. We wanted to support the web platform as well as Python thanks to **WebGL**, the browser's implementation of OpenGL. The web platform is now extremely popular, even in the scientific community via the Jupyter notebook. Many data visualization libraries (like D3, Bokeh) are built partly or entirely on the web platform. More and more video games and game engines are being ported to WebGL. Given the efforts spent by the industry, I really believe that this trend will continue for many years.
 
-How do you make Python work in the browser? The browser's language is JavaScript, a language that is fundamentally different from Python. I've been obsessed by this question for a few years. I've explored many options. Unfortunately, none of them is really satisfying. Now, **my conclusion about Python in the browser is that it's never gonna happen**, at least not in the way you might think (more on this later in this post).
+How do you make Python work in the browser? The browser's language is JavaScript, a language fundamentally different from Python. I've been obsessed by this question for a few years. I've explored many options. Unfortunately, none of them is really satisfying. Now, **my conclusion about Python in the browser is that it's never gonna happen**, at least not in the way you might think (more on this later).
 
-There is a similar issue with mobile devices. Sadly, apart from the excellent Kivy project, Python on mobile devices is getting very little attention, and I'm not sure that's ever going to change. Yet, there would be a huge interest in a tool that could convert a visualization designed for the desktop into a mobile application.
+There is a similar issue with mobile devices. Sadly, apart from the excellent Kivy project, Python on mobile devices is getting very little attention, and I'm not sure that's ever going to change. Yet, there would be a huge interest in semi-automatically creating mobile applications from data visualizations made for the desktop.
 
-I believe these are fundamental problems about Python itself, that, in the case of VisPy, cannot be satisfactorily solved with our current approach. We do have temporary solutions for now, VisPy does have an experimental WebGL backend that works in the Jupyter notebook, but it is fundamentally *experimental*. This is at odds with the idea of designing a solid codebase that can be maintained over many years.
+I believe these are fundamental problems about Python itself, that, in the case of VisPy, cannot be satisfactorily solved with our current approach. We do have temporary solutions for now, VisPy does have an experimental WebGL backend that works in the Jupyter notebook, but it is fundamentally *experimental*. Because of the WebGL support, we need to stick with the lowest common denominator between the desktop and the browser. This means we cannot support recent OpenGL features like geometry shaders, tesselation shaders, or compute shaders. These issues are at odds with the idea of designing a solid codebase that can be maintained over many years.
 
 
 ### Python and OpenGL
@@ -80,7 +82,7 @@ Modern OpenGL features a GPU-specific language named GLSL. GLSL is a C-like lang
 
 To make this possible, we need to bridge the gap between Python and GLSL. The graphics driver typically converts GLSL strings on-the-fly for the GPU. In VisPy, we have no other choice than generating GLSL strings dynamically. We do this with string templates, regular expressions, parsers and so on. We have a large collection of reusable GLSL components (notably contributed by Nicolas Rougier) that are put together automatically as a function of what the user wants to visualize. Designing and implementing a modular API for this was extremely challenging, and as a consequence the code is quite complex. Again, this complexity is inherent to OpenGL and to our desire to generate visualizations on-the-fly with a nice high-level Python API.
 
-There are many other problems with OpenGL. There are many bugs in the drivers, depending on the graphics card's manufacturer. These bugs are hard to debug, and they need to be worked around with various hacks in the code. Memory accesses in the shaders are limited. Interoperability with GPGPU frameworks like CUDA and OpenCL are possible in practice, but so hard and buggy that it's not even worth trying. OpenGL's API is extremely obscure, and we need to hide this in the code through a dedicated abstraction layer. OpenGL has accumulated a lot of technical debt over the last 25 or so years.
+There are many other problems with OpenGL. There are many bugs in the drivers, depending on the graphics card's manufacturer. These bugs are hard to debug, and they need to be worked around with various hacks in the code. Memory accesses in the shaders are limited. Interoperability with GPGPU frameworks like CUDA and OpenCL are possible in practice, but so hard and buggy that it's not even worth trying. OpenGL's API is extremely obscure, and we need to hide this in the code through a dedicated abstraction layer. OpenGL has accumulated a lot of technical debt over the last 25 or so years. Everyone in the OpenGL community is well aware of the issue.
 
 This is one of the cases where you get the feeling that the technology is working against you, not with you. And there's absolutely nothing you can do about it: it's just how things work.
 
@@ -93,17 +95,19 @@ In my opinion this is just the best decision they could have ever made.
 
 Compared to OpenGL, Vulkan is closer to the metal. It is designed at a different level of abstraction. Graphics drivers for Vulkan should be simpler, lighter and, hopefully, less buggy than before. Consequently, applications will have much more control on the graphics pipeline, but they'll also need to implement many more things, notably memory management on the GPU.
 
-A major feature of the new API is **SPIR-V**, a LLVM-like intermediate language for the GPU. Instead of providing shaders using GLSL strings, graphics applications will have the possibility to provide low-level GPU bitcode directly. There should be tools to translate LLVM code to SPIR-V and reciprocally.
+A major feature of the new API is **SPIR-V**, an LLVM-like intermediate language for the GPU. Instead of providing shaders using GLSL strings, graphics applications will have the possibility to provide low-level GPU bitcode directly. There should be tools to translate LLVM code to SPIR-V and reciprocally.
 
 OpenGL and GLSL will still work as before through some conversion layers for obvious retrocompatibility reasons. There will be tools to compile GLSL code to SPIR-V. But applications won't have to go through GLSL if they don't want to.
 
 This might just be the perfect solution for VisPy. Instead of mixing two different languages (Python and GLSL) with strings, templates, regexes, lexers and parsers, we could design a **compiler architecture for data visualization around LLVM and SPIR-V**.
 
-Shaders and GPU kernels will no longer have to be written in GLSL; the can be written in **any language that can be compiled down to LLVM**. This includes low-level languages like GLSL and C/C++, but also Python thanks to **Numba**. Numba can compile an increasing variety of pure Python functions to LLVM. The primary use-case of Numba is high-performance computing, but it could also be used to write GPU kernels for visualization.
+Shaders and GPU kernels will no longer have to be written in GLSL; the can be written in **any language that can be compiled down to LLVM** (and, as a consequence, to SPIR-V). This includes low-level languages like GLSL and C/C++, but also Python thanks to **Numba**. Numba can compile an increasing variety of pure Python functions to LLVM. The primary use-case of Numba is high-performance computing, but it could also be used to write GPU kernels for visualization.
 
 This could remove a huge layer of complexity in VisPy.
 
 It might also be a solution to the cross-platform problems. We could potentially port visualizations to the browser by compiling them to JavaScript thanks to emscripten, or to mobile devices thanks to LLVM compilers for Android and iOS.
+
+I'd now like to open the discussion on what a future Vulkan-vased data visualization toolkit could look like, on what use-cases it could enable. I should precise that everything that comes next is kind of speculative and depends on very partial information released by the Khronos group on early specification drafts. Also, I am well aware that this is a really ambitious and optimistic vision that might just be too hard to implement. But I believe it is worth trying.
 
 Before we see in more details how all of this could work, let's describe a hypothetical data visualization use-case that could come true with Vulkan.
 
@@ -112,120 +116,129 @@ Before we see in more details how all of this could work, let's describe a hypot
 
 There is a new data analysis pipeline that is going to process terabytes of data, and you're in charge of writing the analysis and visualization software. Your users have highly specific visualization needs. They want a fast, reactive, and user-friendly interface to interact with the data in various and complex ways.
 
-You start to design a visualization prototype in the Jupyter notebook.
+You start to design a visualization prototype in the Jupyter notebook around your data. Through a Python API, you carefully design how to process and visualize the data on the GPU. This is not more complicated than creating a NumPy ufunc in pure Python with Numba: it's really the same idea of stream processing, but in a context of data visualization.
+
+As part of this process, you also integrate interactivity by specifying how user actions (mouse, keyboard, touch gestures) influence the visualization.
+
+At this point, you can embed your interactive visualization in a desktop Python application (for example with PyQt).
+
+Now, your users are happy, they can visualize their data on the desktop, but they want more. They want a web interface to access, share, and visualize their data, all in the browser. The way it would happen today is that you'd hire one or two web developers to reimplement all your application in JavaScript and maybe WebGL. Now, you have two implementations of the same applications, in two different languages, for two different platforms.
+
+I believe we can do better.
+
+You go back to your Python visualization. Now, instead of running it interactively, you *compile* it automatically to a platform-independent bitcode file. Under the hood, this uses the LLVM platform. You get a binary file that implements the entire logic of your interactive visualization. This includes the GPU kernels, the rendering flow, and (possibly) interactivity. In a way, this is similar to running a C++ program generating a function dynamically via the LLVM API, versus compiling a function to an LLVM bitcode file.
+
+Once you have this file, you start writing your web application in HTML and JavaScript (maybe using some of the future Jupyter notebook components). But instead of reimplementing the whole visualization and interactivity logic, you compile your exported file to JavaScript via emscripten. You then have your whole interactive visualization in the browser practically for free.
+
+Of course, this will only work if Vulkan is eventually ported to the browser. There are no such plans yet, Vulkan being such an early project at this point, but I suppose it will depend on the user demand.
+
+Now, your users are even happier, but they want even more. They want a mobile application for visualizing their data interactively. Again, you could compile your platform-independent visualization file to Android or iOS (both platforms are LLVM backends). Or maybe, who knows, mobile browsers will support Vulkan at some point, so your web application will just work!
+
+Depending on your use-cases, the rest of the analysis pipeline can very well be implemented server-side in any language, like Python (potentially using Jupyter notebook components). It could even involve a cloud engine like Spark. The visualization logic could remain client-side, but you might have to implement custom level-of-detail techniques adapted to your data.
+
+
+## Architecture
+
+What would it take to make this use-case a reality?
+
+There are several components:
+
+* A Python API for creating interactive visualizations
+* An engine that compiles visualizations to platform-independent files
+* A runtime that executes visualizations specified via the Python API or via compiled files
+
+### Language
+
+In what cross-platform language could we implement these components? Python is not really an option because it cannot run on the browser or mobile devices.
+
+I believe that a sensible option would be **modern C++** (typically C++ 11).
+
+I used to dislike old-style C++, however I discovered in C++ 11 a really different language. It is modern, safe, mature, it has a wide community and solid documentation. The standard library looks reasonably powerful and well-designed.
+
+C++ 11 can be compiled on many architectures, including JavaScript through the LLVM-based emscripten project. It seems to be well-supported on mobile devices as well. It is worth noting that the LLVM API itself is implemented in C++.
+
+Of course, there may be other choices.
+
+Obviously, choosing a relatively low-level language like C++ doesn't mean that end-users will have to write a single line of C++. There could be a Python library wrapping the C++ engine via ctypes, cffi, Cython, or something else. This is not really different from wrapping OpenGL via ctypes. Instead of leveraging a graphics driver that we cannot control at all, we use a C++ library on which we have full control.
+
+I imagine that both the compiler and the runtime could be implemented in C++, and ported to the browser and mobile platforms via the LLVM toolchain.
+
+
+### Library of functions
+
+The compiler and runtime are just the core components. Then, to make the users' lives easier, we'd have to implement a rich library of functions, visuals, interactivity routines, and high-level APIs. Having a highly modular architecture is critical here.
+
+There could be a rich user-contributed library of reusable pure functions:
+
+* geometric transformations: linear, polar, logarithmic, various Earth projections, etc.
+* color space transformations and colormaps
+* easing functions for animations
+* special mathematical functions
+* linear algebra routines
+* geometric tests
+* classical mechanics equations
+* common optics and lighting equations
+* antialiasing routines
+* common markers
+* font generators with signed distance functions
+
+Most of these could be written in any language that compiles to LLVM. This includes C/C++, GLSL, but also Python via Numba, making user contributions much easier.
+
+I should note that VisPy already implements many of these functions in Python or GLSL, so we could reuse a lot of code.
+
+
+### Memory model
+
+Vulkan gives applications a lot of freedom regarding memory management. Therefore, we should come up with a simple yet powerful memory model that handles CPU-GPU transfers efficiently. One possibility could be to implement a NumPy-like ndarray structure that lives on both the CPU and GPU. It would be automatically and lazily synchronized.
+
+This is the option chosen by **Glumpy**, VisPy's sister project maintained by Nicolas Rougier. VisPy uses a more complex memory model where data can be stored on the GPU only; while this might save some RAM, it is more complicated to work with this model. Also, the host has typically much more RAM than the GPU.
+
+SPIR-V has a nice support for arbitrarily complex data types, and a NumPy-like API could be used.
+
+One significant advantage of Vulkan and SPIR-V over OpenGL is that the framework encompasses OpenCL-like GPGPU routines as well as visualization shaders. Therefore, it would be possible to execute complex computation kernels on the same GPU data structures that are used for visualization, with no copy involved at all. Typical examples include real-time visualization of numerically-simulated systems like fluids, n-body simulations, biological networks, and so on.
+
+
+### Higher-level APIs
+
+All of this represents the core of a relatively low-level data visualization toolkit. A core that would let you create powerful and scalable interactive visualizations in any language, on any platform, and with optimal performance.
+
+On top of this, we could imagine plotting libraries with various programming interfaces. The hypothetical core I've been describing would be a sort of "game engine, but for data visualization".
+
+
+## Advantages
+
+This vision represents a significant departure from the current state of the project. As a summary, I list here the advantages of choosing this path.
+
+
+### Future-proof
 
 
 
+### Truly cross-platform
 
 
-## Main goals
 
-What would be expected from an ideal low-level data visualization tookit?
-
-**Speed**. Of course, that's the primary goal of a GPU-based visualization framework. I'd expect the software to display tens or hundreds of millions of points at full speed, i.e. 60 FPS.
-
-**Flexibility**. I'd want to use the same framework and API for 2D plots, complex 3D viewers, demoscene-like animations, *processing*-like data visualizations, d3-like graphs, little video games, etc.
-
-**Modularity**. I'd want to reuse some existing visuals and combine them with my own visuals, all written in my language of choice.
-
-**Cross-platform**. If I write a complex visualization application, I'd want to use it on my desktop, share it online, and develop a mobile app around it.
-
-**Cross-languages**. If I'm working in Python, I'd expect to write 100% of my visualization code in pure Python, and have a way to run it in the browser and on mobile devices. This may require some platform-specific development efforts, but most of the visualization code wouldn't need to be rewritten. Further, there's no reason to stick with Python: the library could work with other languages like Julia, R, or even MATLAB.
-
-**Exportable**. I'd want to export my visualization to EPS, PDF, SVG, PNG, videos, etc.
-
-**Cloud-friendly**. If I'm analyzing some data in the Jupyter notebook with Spark, I'd want to visualize huge amounts of data interactively in the browser (client-side or server-side rendering, depending on the use-cases).
-
-**High-density-screens-friendly**. Because too many people have Retina MacBooks.
-
-* **CPU fallback**. I'd want to run my visualization on the CPU if the GPU is not available or not powerful enough. That would also be convenient for automated testing, debugging, etc.
-
-That's about it. That's very ambitious, but I think that, with technologies like Vulkan, SPIR-V, and LLVM, we'll have all the tools we need to achieve these goals.
+### Modular and extendable architecture
 
 
-## Use-cases
 
-Let's see a few examples of typical visualizations or end-user applications that could work with this hypothetical library:
-
-* A boring 2D plot with full support for high-quality markers, axes, LaTeX labels, ticks, grids, smooth panning and zooming (scales to tens or hundreds of millions of points). A set of points can be selected by dragging a box or a lasso. That seems trivial, but it took us 2.5 years to get to this point in VisPy.
-
-* A digital acquisition system that can display thousands of real-time animated signal with zmooth panning and zooming.
-
-* A high-resolution dynamic fractal viewer with smooth panning and zooming and variable parameters. The fractal is entirely rendered on the GPU.
-
-* A visualizer of an arbitrarily complex 3D model, with a trackball camera, selectable components, full transparency support, dynamic lighting, etc.
-
-* An animated force-directed layout of a network containing millions of nodes and edges, with smooth panning and zooming. Nodes should be individually selectable.
-
-* A real-time POV-like ray-tracing engine, or a shadertoy-like animation that is entirely implemented in the fragment shader.
-
-* A fast photo/video viewer or a slideshow presenter with animated transitions.
-
-I should note that most if not all of these examples are already possible with VisPy. However, performance is suboptimal, the API is still changing, the code is complex and hard to maintain, and it is based on an aging 25-years-old technology. Vulkan is an opportunity to design a framework on much saner bases.
+### A "pure Python" end-user experience
 
 
-## Language
 
-The cross-platform and cross-languages objectives put strong constraints on the development languages. We know we'd like to use Vulkan, SPIR-V, and LLVM. On the backend side, we'd like to target the desktop, the browser, and mobile devices. On the frontend side, we'd like to support high-level languages like Python, Julia, R, Lua, MATLAB, and many others, potentially. What language could we possibly use for the library itself?
-
-I think that C++ 11 would be a compelling solution. I was used to dislike old-style C++, however I discovered in C++ 11 a significantly different (in the positive meaning) language. It seems to be a modern, safe, and appreciated language, with a wide community and solid documentation. The standard library looks reasonably powerful and well-designed.
-
-C++ 11 can be compiled on many architectures, including JavaScript through the LLVM-based emscripten project. As far as I know, it is supported on mobile devices as well. Finally, the LLVM API itself is written in C++.
-
-There may be other choices as well.
-
-The core of the library being written in C++ wouldn't mean that users would have to write a single line of C++, of course. The whole point of the library is to design an architecture where a visualizations can be defined in any language, and compiled through C++ into a language-independent representation.
+### Access to modern GPU features
 
 
-## Standard library of LLVM functions
 
-The library would come with a large base of reusable functions: geometric transformations and their inverses (linear, polar, logarithmic, various Earth projections, etc.), color space transformations and colormaps, easing functions for animations, special mathematical functions, linear algebra algorithms, geometric tests, physics equations for lighting, optics, mechanics, algorithms for antialiasing, AGG rendering, font rendering with signed distance functions, contours of common markers, etc.
-
-These functions could be originally written in any language that compiles to LLVM (C/C++, Python, GLSL, etc.); they'd be compiled to the LLVM IR and stored as binary `.bc` (bitcode) files in some directory. This would provide a solid basis for all kinds of visuals. These functions could run on the CPU thanks to the LLVM library, and on the GPU thanks to the hypothetical LLVM-to-SPIR-V translator that would be provided by Khronos.
-
-The richness of the library would actually come from the wide range of built-in functions. Many advanced visuals could be written without too much efforts by combining several of these fuctions. Most of these functions would be automatically vectorized on GPUs for optimal performance.
-
-Users could implement their own functions in the language of their choice; they'd be compiled to LLVM at runtime. In Python, the Numba library could be used for this.
+### Optimal performance
 
 
-## Data arrays
 
-The library would provide a simple memory model. For example, NumPy-like N-dimensional arrays could be represented on both the CPU and GPU. The data would be automatically and lazily synchronized between the two.
-
-This is how Glumpy works (VisPy's sister project), but not VisPy. VisPy uses a more complex memory model where data can be stored on the GPU only; this saves host RAM when using large datasets, but it is a less convenient model to work with. The host has typically much more RAM than a GPU, so I think the convenience of not having to deal with manual CPU-GPU transfers wins over saving some RAM.
-
-SPIR-V has a nice support for complex data types. As far as I understand, data types are defined recursively from a few primitive types, and any C structure could be used.
-
-LLVM kernels would have a way to address any location in an array, but the procedure might be different between compute and graphics kernels. Also, one would need to be aware of coalesced memory accesses in order to achieve better performance. Finally, there could be a way for kernels to access shared memory and to implement memory fences (SPIR-V will support this).
+### High-performance GPGPU-powered visualizations
 
 
-## Visuals
 
-Visuals form a major abstraction in VisPy. It represents any object that is part of the scene. A visuals exposes a set of public attributes and methods. For example, a `DiscVisual` would expose a radius, line width, and background and foreground colors.
-
-In addition, a visual holds some internal data; typically, CPU-GPU-synchronized ndarrays. For example, the disc visual could compute and store the vertices defining the circular edge. The number of vertices would depend on the disc's radius.
-
-Finally, a visual implements a drawing method that renders it in a given coordinate system, using a handful of primitive rendering methods. The Vulkan API specification has yet to be released, but I imagine it could work like this (this is probably highly simplified):
-
-* acquire the ndarrays you're going to use (using something like a `with` context in Python)
-* generate N vertices
-* call some compute and graphics kernels (vertex, geometry, tesselation, fragment shaders)
-* render with a given primitive type (point, line, triangle)
-
-A visual would have full control on the command buffer for rendering.
-
-The C++ API would provide a dynamic visual builder; users of high-level languages could implement a visual in the language of their choice, and the library would compile it at runtime.
+## Risks
 
 
-## Coordinate systems
 
-There would be a few predefined coordinate systems: normalized coordinates (-1, 0, 1) and device-independent pixels (width, height). Further custom coordinate systems could be defined by the user; they would have a name, and a set of transformation functions with respect to existing coordinate systems. The transformation from any coordinate system A to another sytem B could be computed from the graph of dependences.
-
-The API could let the user decide how to render the visuals.
-
-
-## Interactivity
-
-As for visuals, interactivity could be written in any language and compiled to machine code via LLVM. An alternative possibility would be to implement the interactivity logic in a high-level language and let the interpreter run it.
-
-Interactivity functions would have access to user input variables (mouse positions, key pressed) and the ndarrays.
