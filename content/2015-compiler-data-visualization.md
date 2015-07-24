@@ -43,7 +43,7 @@ Also, I believe that 3D is going to gain more and more traction in the coming ye
 
 These are all the reasons why we've started the [**VisPy project**](http://vispy.org) more than two years ago. We wanted to design a high-performance visualization library in Python that would handle massive datasets well, and where 2D and 3D visualization would both be first-class citizens. The main idea of VisPy is to leverage the massively parallel graphics card through the OpenGL library for data visualization purposes.
 
-VisPy now has half a dozen of core contributors and tens of occasional contributors. We've also reached the highly-respected milestones of 666 stars on GitHub.
+VisPy now has half a dozen of core contributors and tens of occasional contributors. We've also just reached the highly-respected milestones of 666 stars on GitHub.
 
 However, I personally consider the project to be still in its infancy. There is still a whole lot of work before VisPy gets to a mature and stable state. If the [Jupyter developers admit considering the notebook (almost 5 years old, estimated 2 million users) as a "validated MVP" (Minimum Viable Product)](http://blog.jupyter.org/2015/07/07/project-jupyter-computational-narratives-as-the-engine-of-collaborative-data-science/), I can definitely see VisPy as a somewhat solid proof-of-concept/prototype. This might sound crazy, but it's really not. To give an idea, matplotlib, the state-of-the-art visualization library in Python, is almost 15 years old; Python and OpenGL are about 25 years old; UNIX was developed half a century ago; and so on and so forth. We like to consider software as a fast-paced environment, but, in many respects, time scales can be much slower than what we think.
 
@@ -261,3 +261,13 @@ Since this is such a major departure from the current state of the project, the 
 If this experiment is successful, the system could potentially become the basis of VisPy in several years.
 
 It may not be successful, but I believe this is our best bet to ensure a long life to VisPy.
+
+
+
+
+
+more details needed
+python compiler
+dynamic visuals
+right level of abstraction for an API on top of vulkan, like gloo
+
