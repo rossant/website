@@ -58,11 +58,11 @@ For this to happen, **I believe we need to rethink the entire logic of the proje
 
 From the very beginning, we wanted a pure Python library. We were all using Python for our research, and we had all developed our own OpenGL-based Python prototypes for data visualization. Performance was excellent in our respective prototypes. We weren't using any compiled C extension or Cython, because we didn't need to. We were able to leverage OpenGL's performance quite efficiently thanks to ctypes and NumPy. So we decided to go with a pure Python library.
 
-One of the reasons was that we wanted to avoid compiled extensions at any cost. Packaging and distributing compiled Python libraries used to be an absolute pain. However, this is no longer the case thanks to Anaconda.
+One of the many reasons was that we wanted to avoid compiled extensions at any cost. Packaging and distributing compiled Python libraries used to be an absolute pain. However, this is no longer the case thanks to Anaconda.
 
-Also, I'm now thinking that the whole "pure Python" thing is a bit overrated. None of the main scientific Python libraries (NumPy, SciPy, matplotlib, scikit-learn, pandas) is in pure Python. What does "pure Python" even mean, really? VisPy calls the OpenGL C API through ctypes: is it "pure Python"? Also, you could even argue that a "pure Python" program is being interpreted by CPython, which is all written in *C*... Finally, there are other great data analysis platforms out there that could potentially benefit from advanced visualization capabilities, like Julia, R, etc. That's not something you could do with a pure Python library.
+However, I'm now thinking that the whole "pure Python" idea is a bit overrated. None of the main scientific Python libraries (NumPy, SciPy, matplotlib, scikit-learn, pandas) is in pure Python. What does "pure Python" even mean, really? VisPy calls the OpenGL C API through ctypes: is it "pure Python"? Also, you could even argue that a "pure Python" program is being interpreted by CPython, which is all written in C... Finally, there are other great data analysis platforms out there that could potentially benefit from advanced visualization capabilities, like Julia, R, etc. That's not something you could do with a pure Python library.
 
-Another problem comes from VisPy itself. VisPy implements a powerful but complex system for managing transformations between objects in a scene. Because it is in pure Python, there always have been significant performance issues. This is a critical problem in a high-performance visualization library that needs to process huge datasets in real time. These issues are now getting mitigated thanks to heroic efforts by Luke Campagnola. But it should come as no surprise that achieving high performance in a pure Python library is highly challenging. Spending so many efforts just for the sake of being "pure Python" is not worth it in my opinion.
+Another problem comes from VisPy itself. VisPy implements a powerful but complex system for managing transformations between objects in a scene. Because it is in pure Python, there always have been significant performance issues. This is a critical problem in a high-performance visualization library that needs to process huge datasets in real time. These issues are now getting mitigated thanks to heroic efforts by Luke Campagnola. But it should come as no surprise that achieving high performance in a pure Python library is overly difficult. Spending so many efforts just for the sake of being "pure Python" is not worth it in my opinion.
 
 Finally, the most important problem with being pure Python comes from a design goal that came slightly after the project started. We wanted to support the web platform as well as Python thanks to **WebGL**, the browser's implementation of OpenGL. The web platform is now extremely popular, even in the scientific community via the Jupyter notebook. Many data visualization libraries (like D3, Bokeh) are built partly or entirely on the web platform. More and more video games and game engines are being ported to WebGL. Given the efforts spent by the industry, I really believe that this trend will continue for many years.
 
@@ -77,37 +77,38 @@ I believe these are fundamental problems about Python itself, that, in the case 
 
 Another fundamental problem comes from OpenGL itself.
 
-Modern OpenGL features a GPU-specific language named GLSL. GLSL is a C-like language that has nothing to do with Python. We believe that scientists should never have to write their own GPU code in a C dialect. Therefore, in VisPy, we try to hide GLSL completely to the user.
+Modern OpenGL features a GPU-specific language named GLSL. GLSL is a C-like language that has nothing to do with Python. We believe that scientists should never have to write their own GPU code in a C variant. Therefore, in VisPy, we try to hide GLSL completely to the user.
 
 To make this possible, we need to bridge the gap between Python and GLSL. The graphics driver typically converts GLSL strings on-the-fly for the GPU. In VisPy, we have no other choice than generating GLSL strings dynamically. We do this with string templates, regular expressions, parsers and so on. We have a large collection of reusable GLSL components (notably contributed by Nicolas Rougier) that are put together automatically as a function of what the user wants to visualize. Designing and implementing a modular API for this was extremely challenging, and as a consequence the code is quite complex. Again, this complexity is inherent to OpenGL and to our desire to generate visualizations on-the-fly with a nice high-level Python API.
 
-There are many other problems with OpenGL. There are many bugs in the drivers, depending on the graphics card's manufacturer. These bugs are hard to debug, and they need to be worked around with various hacks in the code. Memory accesses in the shaders are limited. Interoperability with GPGPU frameworks like CUDA and OpenCL are possible in practice, but so hard and buggy that it's not even worth trying. OpenGL's API is extremely obscure, and we need to hide this in the code through a dedicated abstraction layer. OpenGL has accumulated a lot of technical debt over the last 25 or so years. Everyone in the OpenGL community is well aware of the issue.
+There are many other problems with OpenGL. All sorts of bugs in the drivers, depending on the graphics card's manufacturer. These bugs are hard to fix, and they need to be worked around with various hacks in the code. Memory accesses in the shaders are limited. Interoperability with GPGPU frameworks like CUDA and OpenCL are possible in practice, but so hard and buggy that it's not even worth trying. OpenGL's API is extremely obscure, and we need to hide this in the code through a dedicated abstraction layer. OpenGL has accumulated a lot of technical debt over the last 25 or so years. Everyone in the OpenGL community is well aware of the issue.
 
 This is one of the cases where you get the feeling that the technology is working against you, not with you. And there's absolutely nothing you can do about it: it's just how things work.
 
 
 ### OpenGL's future?
 
-All of this explains why I was so incredibly excited by the announcement made by the Khronos Group in March. They acknowledged that OpenGL was basically doomed, and they decided to start from scratch with a brand new low-level API for real-time graphics named **Vulkan**.
+All of this explains why I was so incredibly excited by the announcement made by the Khronos Group in March. They acknowledged that OpenGL was basically doomed (at least that's my interpretation), and they decided to start from scratch with a brand new low-level API for real-time graphics named **Vulkan**.
 
 In my opinion this is just the best decision they could have ever made.
 
 Compared to OpenGL, Vulkan is closer to the metal. It is designed at a different level of abstraction. Graphics drivers for Vulkan should be simpler, lighter and, hopefully, less buggy than before. Consequently, applications will have much more control on the graphics pipeline, but they'll also need to implement many more things, notably memory management on the GPU.
 
-http://www.phoronix.com/scan.php?page=news_item&px=khronos-coming-spirv-llvm
-A major feature of the new API is **SPIR-V**, an LLVM-like intermediate language for the GPU. Instead of providing shaders using GLSL strings, graphics applications will have the possibility to provide low-level GPU bitcode directly. [There should be tools to translate LLVM code to SPIR-V](http://www.phoronix.com/scan.php?page=news_item&px=khronos-coming-spirv-llvm).
+A major feature of the new API is **SPIR-V**, an LLVM-like intermediate language for the GPU. Instead of providing shaders using GLSL strings, graphics applications will have the possibility to provide low-level GPU bitcode directly. [There should be tools to translate LLVM IR to SPIR-V](http://www.phoronix.com/scan.php?page=news_item&px=khronos-coming-spirv-llvm).
 
-OpenGL and GLSL will still work as before through some conversion layers for obvious retrocompatibility reasons. There will be tools to compile GLSL code to SPIR-V. But applications won't have to go through GLSL if they don't want to.
+OpenGL and GLSL will still work as before through via dedicated conversion layers, for obvious retrocompatibility reasons. There will be tools to compile GLSL code to SPIR-V. But applications won't have to go through GLSL if they don't want to.
 
 This might just be the perfect solution for VisPy. Instead of mixing two different languages (Python and GLSL) with strings, templates, regexes, lexers and parsers, we could design a **compiler architecture for data visualization around LLVM and SPIR-V**.
 
-Shaders and GPU kernels will no longer have to be written in GLSL; the can be written in **any language that can be compiled down to LLVM** (and, as a consequence, to SPIR-V). This includes low-level languages like GLSL and C/C++, but also Python thanks to **Numba**. Numba can compile an increasing variety of pure Python functions to LLVM. The primary use-case of Numba is high-performance computing, but it could also be used to write GPU kernels for visualization.
+Shaders and GPU kernels will no longer have to be written in GLSL; they could be written in **any language that can be compiled down to LLVM** (and, as a consequence, to SPIR-V). This includes low-level languages like GLSL and C/C++, but also Python thanks to **Numba**. Numba can compile an increasing variety of pure Python functions to LLVM. The primary use-case of Numba is high-performance computing, but it could also be used to write GPU kernels for visualization.
 
 This could remove a huge layer of complexity in VisPy.
 
 It might also be a solution to the cross-platform problems. We could potentially port visualizations to the browser by compiling them to JavaScript thanks to emscripten, or to mobile devices thanks to LLVM compilers for Android and iOS.
 
-I'd now like to open the discussion on what a future Vulkan-vased data visualization toolkit could look like, on what use-cases it could enable. I should precise that everything that comes next is kind of speculative and depends on very partial information released by the Khronos group on early specification drafts. Also, I am well aware that this is a really ambitious and optimistic vision that might just be too hard to implement. But I believe it is worth trying.
+I'd now like to open the discussion on what a future Vulkan-vased data visualization toolkit could look like, on what use-cases it could enable.
+
+I should precise that everything that comes next is kind of speculative and depends on very partial information released by the Khronos group on early specification drafts. Also, I am well aware that this is a really ambitious and optimistic vision that might just be too hard to implement. But I believe it is worth trying. This journey is completely independent from the normal development of the VisPy library as it exists today. The two roads will only cross in the most optimistic case, and not before several years.
 
 Before we see in more details how all of this could work, let's describe a hypothetical data visualization use-case that could come true with Vulkan.
 
@@ -116,13 +117,13 @@ Before we see in more details how all of this could work, let's describe a hypot
 
 There is a new data analysis pipeline that is going to process terabytes of data, and you're in charge of writing the analysis and visualization software. Your users have highly specific visualization needs. They want a fast, reactive, and user-friendly interface to interact with the data in various and complex ways.
 
-You start to design a visualization prototype in the Jupyter notebook around your data. Through a Python API, you carefully design how to process and visualize the data on the GPU. This is not more complicated than creating a NumPy ufunc in pure Python with Numba: it's really the same idea of stream processing, but in a context of data visualization.
+You start to design a visualization prototype in the Jupyter notebook around your data. Through a Python API, you carefully design how to process and visualize the data on the GPU. This is not more complicated than creating a NumPy universal function (*ufunc*) in pure Python with Numba: it's really the same idea of stream processing, but in a context of data visualization. You describe how your data is stored on the GPU, and how it's converted to vertices and pixels. There is a learning curve, but it is not as bad as OpenGL/GLSL because you are still writing 100% Python code.
 
 As part of this process, you also integrate interactivity by specifying how user actions (mouse, keyboard, touch gestures) influence the visualization.
 
 At this point, you can embed your interactive visualization in a desktop Python application (for example with PyQt).
 
-Now, your users are happy, they can visualize their data on the desktop, but they want more. They want a web interface to access, share, and visualize their data, all in the browser. The way it would happen today is that you'd hire one or two web developers to reimplement all your application in JavaScript and maybe WebGL. Now, you have two implementations of the same applications, in two different languages, for two different platforms.
+Now, your users are happy, they can visualize their data on the desktop, but they want more. They want a web interface to access, share, and visualize their data, all in the browser. The way it would happen today is that you'd hire one or two web developers to reimplement all your application in JavaScript and WebGL. Now, you have two implementations of the same applications, in two different languages, for two different platforms.
 
 I believe we can do better.
 
@@ -166,14 +167,14 @@ Obviously, choosing a relatively low-level language like C++ doesn't mean that e
 
 While the runtime would likely be implemented in C++, the compiler could be written either in Python or in C++. If it is written in Python, other languages like R or Julia would need to implement it as well. But a Python implementation of the compiler might be an interesting first step.
 
-The C++ Vulkan and CPU runtimes could be ported to the browser and mobile platforms via the LLVM toolchain.
+The C++ Vulkan and CPU runtimes could be ported to the browser and to mobile platforms via the LLVM toolchain.
 
 
 ### Library of functions
 
 The compiler and runtime are just the core components. Then, to make the users' lives easier, we'd have to implement a rich library of functions, visuals, interactivity routines, and high-level APIs. Having a highly modular architecture is critical here.
 
-There could be a rich user-contributed library of reusable pure functions, for example:
+There could be a rich user-contributed library of reusable pure LLVM functions, for example:
 
 * geometric transformations: linear, polar, logarithmic, various Earth projections, etc.
 * color space transformations and colormaps
@@ -183,8 +184,8 @@ There could be a rich user-contributed library of reusable pure functions, for e
 * geometric tests
 * classical mechanics equations
 * common optics and lighting equations
-* antialiasing routines
 * common markers
+* antialiasing routines
 * font generators with signed distance functions
 
 Most of these could be written in any language that compiles to LLVM. This includes C/C++, GLSL, but also Python via Numba, making user contributions much easier.
@@ -200,7 +201,7 @@ This is the option chosen by **Glumpy**, VisPy's sister project maintained by Ni
 
 SPIR-V has a nice support for arbitrarily complex data types, and a NumPy-like API could be used.
 
-One significant advantage of Vulkan and SPIR-V over OpenGL is that the framework encompasses OpenCL-like GPGPU kernels as well as visualization shaders. Therefore, it would be possible to execute computation kernels on the same GPU data structures that are used for visualization, with no copy involved at all. Typical examples include real-time visualization of numerically-simulated systems like fluids, n-body simulations, biological networks, and so on.
+One significant advantage of Vulkan and SPIR-V over OpenGL is that the framework encompasses OpenCL-like GPGPU kernels as well as visualization shaders. Therefore, it would be possible to execute computation kernels on the same GPU data structures than those that are used for visualization, with no copy at all. Typical examples include real-time visualization of numerically-simulated systems like fluids, n-body simulations, biological networks, and so on.
 
 
 ### Higher-level APIs
@@ -246,7 +247,7 @@ Vulkan gives access to modern GPU features such as geometry shaders, tesselation
 
 ### Optimal performance with C++
 
-Being a pure Python library, VisPy needs to resort to many tricks to achieve good performance. For example, every OpenGL call is quite expensive, because of the driver overhead, but also because of the Python bindings. For this reason, we need to batch on the GPU as many calls as possible. This is the main motivation for *collections*, where severaly independent but similar items are concatenated together and rendered at once on the GPU. This is a somewhat complex system.
+Being a pure Python library, VisPy needs to resort to many tricks to achieve good performance. For example, every OpenGL call is quite expensive, because of the driver overhead, but also because of the Python bindings. For this reason, we need to batch as many calls as possible on the GPU. This is the main motivation for the *collections* API, where severaly independent but similar items are concatenated together and rendered at once on the GPU. This is a somewhat complex system.
 
 With a C++ engine and Vulkan command buffers, implementing collections might be unnecessary. We could still batch-rendering calls, but on the CPU instead of on the GPU, which is much easier. Performance might be similar than VisPy's collections, but this remains to be tested.
 
@@ -260,17 +261,8 @@ The ability to combine compute kernels with visualization kernels on the GPU is 
 
 ## Conclusion
 
-Since this is such a major departure from the current state of the project, the system discussed here should be explored independently from the development of the VisPy library. This is an experiment to investigate an entirely different system for VisPy's internals.
+Since this is such a major departure from the current state of the project, the system discussed here should be explored independently from the development of the VisPy library. This is an experiment to investigate an radically different system based on a brand new low-level graphics API.
+
+Obviously, these are just ideas that need a lot of discussions, and many details need to be worked out. But I think this is a really interesting project to pursue.
 
 If this experiment is successful, the system could potentially become the basis of VisPy in several years.
-
-It may not be successful, but I believe this is our best bet to ensure a long life to VisPy.
-
-
-
-
-
-more details needed
-dynamic visuals
-completely separate from vispy
-current codebase not future proof
