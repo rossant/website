@@ -1,4 +1,5 @@
-# A compiler infrastructure for data visualization
+Title: A compiler infrastructure for data visualization
+Tags: python, dataviz, gpu
 
 There are many data visualization tools out there. Yet, I believe we're still lacking a robust, scalable, and cross-platform visualization toolkit that can handle today's massive datasets.
 
@@ -6,6 +7,7 @@ Most existing tools target simple plots with a few hundreds or thousands of poin
 
 Perhaps contrary to a common belief, this is not the end of the story. There are much more complex visualization needs in academia and industry, and I've always been unsatisfied by the tools at our disposal.
 
+<!-- PELICAN_END_SUMMARY -->
 
 ## Complex visualizations
 
