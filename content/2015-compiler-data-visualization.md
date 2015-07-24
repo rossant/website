@@ -71,7 +71,7 @@ How do you make Python work in the browser? The browser's language is JavaScript
 
 There is a similar issue with mobile devices. Sadly, apart from the excellent Kivy project, Python on mobile devices is getting very little attention, and I'm not sure that's ever going to change. Yet, there would be a huge interest in semi-automatically creating mobile applications from data visualizations made for the desktop.
 
-I believe these are fundamental problems about Python itself, that, in the case of VisPy, cannot be satisfactorily solved with our current approach. We do have temporary solutions for now, VisPy does have an experimental WebGL backend that works in the Jupyter notebook, but it is fundamentally *experimental*. Because of the WebGL support, we need to stick with the lowest common denominator between the desktop and the browser. This means we cannot support recent OpenGL features like geometry shaders, tesselation shaders, or compute shaders. These issues are at odds with the idea of designing a solid codebase that can be maintained over many years.
+I believe these are fundamental problems about Python itself, that, in the case of VisPy, cannot be satisfactorily solved with our current approach. We do have temporary solutions for now, VisPy does have an experimental WebGL backend that works in the Jupyter notebook (described in the [WebGL Insights chapter](https://books.google.com/books?hl=en&lr=&id=6crECQAAQBAJ&oi=fnd&pg=PA89&ots=Jq7h5UT9TC&sig=aEZX3_JhW_P9fbHsHPqJAIWDH_c&redir_esc=y#v=onepage&q&f=false) that Almar Klein and I wrote this year), but it is fundamentally *experimental*. Because of the WebGL support, we need to stick with the lowest common denominator between the desktop and the browser. This means we cannot support recent OpenGL features like geometry shaders, tesselation shaders, or compute shaders. These issues are at odds with the idea of designing a solid codebase that can be maintained over many years.
 
 
 ### Python and OpenGL
@@ -95,7 +95,8 @@ In my opinion this is just the best decision they could have ever made.
 
 Compared to OpenGL, Vulkan is closer to the metal. It is designed at a different level of abstraction. Graphics drivers for Vulkan should be simpler, lighter and, hopefully, less buggy than before. Consequently, applications will have much more control on the graphics pipeline, but they'll also need to implement many more things, notably memory management on the GPU.
 
-A major feature of the new API is **SPIR-V**, an LLVM-like intermediate language for the GPU. Instead of providing shaders using GLSL strings, graphics applications will have the possibility to provide low-level GPU bitcode directly. There should be tools to translate LLVM code to SPIR-V and reciprocally.
+http://www.phoronix.com/scan.php?page=news_item&px=khronos-coming-spirv-llvm
+A major feature of the new API is **SPIR-V**, an LLVM-like intermediate language for the GPU. Instead of providing shaders using GLSL strings, graphics applications will have the possibility to provide low-level GPU bitcode directly. [There should be tools to translate LLVM code to SPIR-V](http://www.phoronix.com/scan.php?page=news_item&px=khronos-coming-spirv-llvm).
 
 OpenGL and GLSL will still work as before through some conversion layers for obvious retrocompatibility reasons. There will be tools to compile GLSL code to SPIR-V. But applications won't have to go through GLSL if they don't want to.
 
@@ -130,7 +131,7 @@ You go back to your Python visualization. Now, instead of running it interactive
 
 Once you have this file, you start writing your web application in HTML and JavaScript (maybe using some of the future Jupyter notebook components). But instead of reimplementing the whole visualization and interactivity logic, you compile your exported file to JavaScript via emscripten. You then have your whole interactive visualization in the browser practically for free.
 
-Of course, this will only work if Vulkan is eventually ported to the browser. There are no such plans yet, Vulkan being such an early project at this point, but I suppose it will depend on the user demand.
+Of course, this will only work if Vulkan is eventually ported to the browser. There are no such plans yet, Vulkan being such an early project at this point, but I suppose it will depend on the user demand. We might obtain more details during SIGGRAPH in a couple of weeks, where Vulkan could be discussed at length.
 
 Now, your users are even happier, but they want even more. They want a mobile application for visualizing their data interactively. Again, you could compile your platform-independent visualization file to Android or iOS (both platforms are LLVM backends). Or maybe, who knows, mobile browsers will support Vulkan at some point, so your web application will just work!
 
@@ -159,7 +160,7 @@ C++ 11 can be compiled on many architectures, including JavaScript through the L
 
 Of course, there may be other choices.
 
-Obviously, choosing a relatively low-level language like C++ doesn't mean that end-users will have to write a single line of C++. There could be a Python library wrapping the C++ engine via ctypes, cffi, Cython, or something else. This is not really different from wrapping OpenGL via ctypes. Instead of leveraging a graphics driver that we cannot control at all, we use a C++ library on which we have full control.
+Obviously, choosing a relatively low-level language like C++ doesn't mean that end-users will have to write a single line of C++. There could be a Python (3-only, while we're at it!) library wrapping the C++ engine via ctypes, cffi, Cython, or something else. This is not really different from wrapping OpenGL via ctypes. Instead of leveraging a graphics driver that we cannot control at all, we use a C++ library on which we have full control.
 
 I imagine that both the compiler and the runtime could be implemented in C++, and ported to the browser and mobile platforms via the LLVM toolchain.
 
@@ -212,33 +213,51 @@ This vision represents a significant departure from the current state of the pro
 
 ### Future-proof
 
+We can consider that OpenGL is on a rather slow deprecation road since Vulkan has been announced. Of course, OpenGL is so widely used that it's not going to disappear before many, many years. But by chosing to move forward with a brand new API, the Khronos Group sent a clear signal to the industry.
+
+I also believe that LLVM has a clear future.
 
 
 ### Truly cross-platform
 
+By moving forward with a C++ core and an LLVM-based compiler architecture, we obtain a truly cross-platform framework. We are not prisonners of a given language like Python, but we have the possibility to target various low-level and high-level languages at leisure. We have potentially access to x86-64, ARM, desktop, mobile, and browser platforms.
+
+This is made possible thanks to great projects such as LLVM, emscripten, clang, Numba, and others.
 
 
 ### Modular and extendable architecture
 
+A modular and extendable architecture is key to a future-proof and sustainable software project. An architecture designed around a compiler, a runtime, a library of pure LLVM functions, and a small number of APIs should meet these criteria.
 
 
 ### A "pure Python" end-user experience
 
+Perhaps ironically, achieving a "pure Python" end-user experience is made possible by designing a compiler architecture around C++ and LLVM, not by writing a 100% Python engine... I think that having an entire codebase in Python is not a requisite for being pure Python; however, having an entirely Pythonic Python API is. That your Python code leverages CPython, a C++ library, or is being compiled straight to LLVM IR or assembly doesn't matter much from the user's point of view. It's still "just Python".
 
 
 ### Access to modern GPU features
 
+Vulkan gives access to modern GPU features such as geometry shaders, tesselation shaders, and GPGPU compute kernels. This allows for an exceptional degree of customization in complex visualizations.
 
 
-### Optimal performance
+### Optimal performance with C++
+
+Being a pure Python library, VisPy needs to resort to many tricks to achieve good performance. For example, every OpenGL call is quite expensive, because of the driver overhead, but also because of the Python bindings. For this reason, we need to batch as many calls as possible. This is the main motivation for *collections*, where severaly independent but similar items are concatenated together and rendered at once on the GPU. This is a somewhat complex system.
+
+With a C++ engine and Vulkan's command buffers, implementing collections might be unnecessary. We could still batch rendering calls, but on the CPU instead of on the GPU, which is much easier. Performance might be similar than VisPy's collections, but this remains to be tested.
+
+More generally, on the CPU side, we have much more freedom in the algorithms we can implement. For example, implementing polygon triangulation should not represent a major problem, whereas it would be more complicated in Python. Since it's C++, we're no longer limited by CPython's performance.
 
 
+### GPGPU-powered visualizations
 
-### High-performance GPGPU-powered visualizations
-
-
-
-## Risks
+The ability to combine compute kernels with visualization kernels on the GPU is also a major advantage of the system. The features comes "for free" with Vulkan, and it is no longer necessary to mess with arcane interoperability commands.
 
 
+## Conclusion
 
+Since this is such a major departure from the current state of the project, the system discussed here should be explored completely independently from the development of the VisPy library. This is an experiment to investigate a completely different system for VisPy's internals.
+
+If this experiment is successful, the system could potentially become the basis of VisPy in several years.
+
+It may not be successful, but I believe this is our best bet to ensure a long life to VisPy.
