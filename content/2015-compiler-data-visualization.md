@@ -1,8 +1,8 @@
 # A compiler infrastructure for data visualization
 
-We're seeing new big data tools every day now. There are tens or hundreds of data visualizations libraries out there. Yet I believe we're still lacking a robust, scalable, and cross-platform visualization toolkit that can handle today's massive datasets.
+There are many data visualization tools out there. Yet, I believe we're still lacking a robust, scalable, and cross-platform visualization toolkit that can handle today's massive datasets.
 
-You'll always find excellent tools on all platforms, especially on the web, for simple plots with a few hundreds or thousands of points: bar plots, scatter plots, histograms and the like. Typically, these figures represent aggregated statistical quantities. Maps are also extremely popular, and there are now really great open source tools.
+Most existing tools target simple plots with a few hundreds or thousands of points: bar plots, scatter plots, histograms and the like. Typically, these figures represent aggregated statistical quantities. Maps are also particularly popular, and there are now really great open source tools.
 
 Perhaps contrary to a common belief, this is not the end of the story. There are much more complex visualization needs in academia and industry, and I've always been unsatisfied by the tools at our disposal.
 
@@ -13,45 +13,45 @@ To be more concrete, here are a few examples of the kinds of visualizations I'll
 
 TODO
 
-These are not dumb scatter plots. They are complex visualizations of large datasets with elaborate interactivity patterns. You're not going to easily implement these sorts of visualizations with SVG and D3. There are two main problems.
+These complex visualizations are generally based on large datasets, and they may or may not be in 3D.
 
 
-### Performance
+### Large datasets
 
-Complex visualizations typically involve millions of points. With most plotting libraries, things are going to be way too slow and memory-intensive. You might crash your browser or your computer because you're just processing way more points than what your library can handle.
+Most plotting libraries can't handle visualizations with millions of points. Crashes due to out of memory errors are not uncommon.
 
-An often-heard counter-argument is that you're never going to plot millions of points where you only have a few million pixels on your screen. This is true when you're plotting aggregates like statistical quantities. But this is not as soon as you visualize complex, raw, unstructured datasets, like the ones you may find in some scientific and industrial applications.
+An often-heard counter-argument is that you're never going to plot millions of points where you only have a few million pixels on your screen. This is true when you're plotting aggregate quantities. But this is not as soon as you visualize complex, raw, unstructured datasets, like the ones you may find in many scientific and industrial applications.
 
-To give only one example in the discipline I know: neurophysiologists can now routinely record in animals' brains thousands of simultaneous digital signals sampled at 20 kHz. That represents at least 20 million points *per second*. Recordings can last several hours or days. High-density 4k screens can now contain about 10 million pixels, maybe several times more in a few years. The scientists I know absolutely *do* want to visualize as much data as possible. They may have two, three, even four HiDPI screens, and they're eager to see all signals in a given time interval, as much as their screens' resolution allows (and they're starting do to it with the visualization prototypes we're developing). This is an unprecendent opportunity to really *see* what's going on in the brain. They're incredibly excited by this opportunity. The reason why very few people do that at the moment is that the tools are not quite there yet (apart from early prototypes). This is an example where the user absolutely needs to look at the raw data, not some aggregates, because they wouldn't even know what to aggregate. This is basically uncharted territory, and the only chance they can have to get some scientific insight in the data is to look at the raw data directly.
+To give only one example in the discipline I know: neurophysiologists can now routinely record in animals' brains a thousand of simultaneous digital signals sampled at 20 kHz. This represents 20 million points *per second*. Recordings can last several hours or days. High-density 4k screens can now contain about 10 million pixels, maybe several times more in a few years.
 
-I am convinced that the demand is real in neuroscience, genomics, astronomy, particle physics, meteorology, finance, and many other scientific and industrial disciplines.
+The scientists I know absolutely *do* want to visualize as much data as possible. They may have two, three, even four HiDPI screens, and they're eager to see all signals in a given time interval, as much as their screens' resolution allows (and they're starting do to it with the visualization prototypes we're developing). This is an unprecedented opportunity to really see what's going on in the brain. There is no way around looking at the raw data directly, because they wouldn't know how to simplify the data or make statistical aggregates out of it.
+
+I am convinced that the demand for these sorts of visualization is real not only in neuroscience, but also in genomics, astronomy, particle physics, meteorology, finance, and many other scientific and industrial disciplines that deal with complex and massive datasets.
 
 ![That's many screens you've got here](http://www.timothysykes.com/wp-content/uploads/2011/04/desk.jpg)
 
 
 ### 3D
 
-The second problem is 3D: most plotting libraries are designed for 2D, and when they support 3D, they don't do it well because 3D is implemented as an afterthought.
+The second characteristic of complex visualizations is often 3D: most plotting libraries are designed for 2D, and when they support 3D, they don't do it well because 3D is implemented as an afterthought. On the other hand, 3D visualization libraries tend to be old, heavy, hard to use and to extend, and they do not support 2D visualizations well. There are more modern 3D libraries, like three.js for example, but they target video games more than scientific visualization.
 
-There are good 3D libraries out there, like three.js. But they're mostly designed to the main use-cases of 3D visualization: video games or modeling. Not data visualization. Your only option is to resort to very low-level tools like OpenGL, which no sane scientist will ever do.
-
-Also, I believe that 3D is going to gain more and more traction in the coming years with the advances in 3D printing technology, virtual reality, augmented reality, etc. The same momentum might happen in data visualization as well.
+Finally, there is always the option to resort to low-level tools like OpenGL, which no sane scientist will ever do.
 
 
 ## VisPy: where we are now
 
-These are all the reasons why we've started the [**VisPy project**](http://vispy.org) more than two years ago. We wanted to design a high-performance visualization library in Python that would handle massive datasets well, and where 2D and 3D visualization would both be first-class citizens. The main idea of VisPy is to leverage the massively parallel graphics card through the OpenGL library for data visualization purposes.
+These are all the reasons why we've started the [**VisPy project**](http://vispy.org) more than two years ago. We wanted to design a high-performance visualization library in Python that would handle massive datasets well, and where 2D and 3D visualization would both be first-class citizens. The main idea of VisPy is to transparently leverage the massively parallel graphics card through the OpenGL library for data visualization purposes.
 
 VisPy now has half a dozen of core contributors and tens of occasional contributors. We've also just reached the highly-respected milestones of 666 stars on GitHub.
 
-However, I personally consider the project to be still in its infancy. There is still a whole lot of work before VisPy gets to a mature and stable state. If the [Jupyter developers admit considering the notebook (almost 5 years old, estimated 2 million users) as a "validated MVP" (Minimum Viable Product)](http://blog.jupyter.org/2015/07/07/project-jupyter-computational-narratives-as-the-engine-of-collaborative-data-science/), I can definitely see VisPy as a somewhat solid proof-of-concept/prototype. This might sound crazy, but it's really not. To give an idea, matplotlib, the state-of-the-art visualization library in Python, is almost 15 years old; Python and OpenGL are about 25 years old; UNIX was developed half a century ago; and so on and so forth. We like to consider software as a fast-paced environment, but, in many respects, time scales can be much slower than what we think.
+However, I personally consider the project to be still in its infancy. There is still a whole lot of work before VisPy gets to a mature and stable state. If the [Jupyter developers admit considering the notebook (almost 5 years old, estimated 2 million users) as a "validated MVP" (Minimum Viable Product)](http://blog.jupyter.org/2015/07/07/project-jupyter-computational-narratives-as-the-engine-of-collaborative-data-science/), I can definitely see VisPy as a proof-of-concept/prototype. This might sound crazy, but it's really not. To give an idea, matplotlib, the state-of-the-art visualization library in Python, is almost 15 years old; Python and OpenGL are about 25 years old; UNIX was developed half a century ago; and so on and so forth. We like to consider software as a fast-paced environment, but, in many respects, time scales can be much slower than what we think.
 
 What will it take to bring the project to the next level? What can we do to ensures it lives through the next 5, 10, even 15 years?
 
 
 ## Current challenges
 
-If we're serious about this sustainability question, **I believe we need to rethink the entire logic of the project from scratch**. There are three main reasons.
+For this to happen, **I believe we need to rethink the entire logic of the project from the ground up**. There are three main reasons.
 
 
 ### A pure Python cross-platform library?
