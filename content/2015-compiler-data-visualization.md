@@ -2,11 +2,10 @@
 
 We're seeing new big data tools every day now. There are tens or hundreds of data visualizations libraries out there. Yet I believe we're still lacking a robust, scalable, and cross-platform visualization toolkit that can handle today's massive datasets.
 
-You'll always find excellent tools on all platforms, especially on the web, for little plots with a few hundreds of points, statistical charts like bar plots, histograms, scatter plots and the like. Maps are also extremely popular, and there are now really great open source tools, notably those by Mapbox.
+You'll always find excellent tools on all platforms, especially on the web, for simple plots with a few hundreds or thousands of points: bar plots, scatter plots, histograms and the like. Typically, these figures represent aggregated statistical quantities. Maps are also extremely popular, and there are now really great open source tools.
 
-It seems to me that, for many people, this is the end of the story. Maybe 90%, 95%, even more, of data visualization use cases are covered by these sorts of plots and these libraries.
+Perhaps contrary to a common belief, this is not the end of the story. There are much more complex visualization needs in academia and industry, and I've always been unsatisfied by the tools at our disposal.
 
-Yet, there are more complex visualization needs in academia and industry, and I've always been unsatisfied by the tools at our disposal.
 
 ## Complex visualizations
 
