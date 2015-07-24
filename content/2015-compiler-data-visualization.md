@@ -144,32 +144,37 @@ What would it take to make this use-case a reality?
 
 There are several components:
 
-* A Python API for creating interactive visualizations
-* An engine that compiles visualizations to platform-independent files
-* A runtime that executes visualizations specified via the Python API or via compiled files
+* A **compiler API** to specify interactive visualizations programmatically and compile them to platform-independent files
+* A **Vulkan runtime** that executes visualizations on the GPU
+* Optionally, a **CPU runtime** that executes visualizations on the CPU, as a fallback if a GPU is not available
+
+The API will have to be designed at the most appropriate level of abstraction: higher than Vulkan, but low enough to support a wide variety of use cases. This would be the Vulkan equivalent of VisPy's *gloo* API, built on top of OpenGL. It would not have the limitations inherent to OpenGL.
+
+The API would cover memory management with data arrays on the GPU, compilation of shaders and kernels, and the rendering workflow.
+
 
 ### Language
 
-In what cross-platform language could we implement these components? Python is not really an option because it cannot run on the browser or mobile devices.
+In what cross-platform languages could we implement these components? At least for the runtime, Python is not really an option because it cannot run on the browser or mobile devices.
 
-I believe that a sensible option would be **modern C++** (typically C++ 11).
+I believe that a sensible option (notably for the runtime) would be **modern C++** (typically C++ 11).
 
-I used to dislike old-style C++, however I discovered in C++ 11 a really different language. It is modern, safe, mature, it has a wide community and solid documentation. The standard library looks reasonably powerful and well-designed.
+I used to dislike old-style C++, however I discovered in C++ 11 a really different language. It is modern, safe, mature, with a wide community and solid documentation. The standard library looks reasonably powerful and well-designed.
 
 C++ 11 can be compiled on many architectures, including JavaScript through the LLVM-based emscripten project. It seems to be well-supported on mobile devices as well. It is worth noting that the LLVM API itself is implemented in C++.
 
-Of course, there may be other choices.
+Obviously, choosing a relatively low-level language like C++ doesn't mean that end-users will have to write a single line of C++. There could be a Python (3-only, while we're at it!) library wrapping the C++ engine via ctypes, cffi, Cython, or something else. This is not really different from wrapping OpenGL via ctypes like we do in VisPy. Instead of leveraging a graphics driver that we cannot control at all, we use a C++ library on which we have full control.
 
-Obviously, choosing a relatively low-level language like C++ doesn't mean that end-users will have to write a single line of C++. There could be a Python (3-only, while we're at it!) library wrapping the C++ engine via ctypes, cffi, Cython, or something else. This is not really different from wrapping OpenGL via ctypes. Instead of leveraging a graphics driver that we cannot control at all, we use a C++ library on which we have full control.
+While the runtime would likely be implemented in C++, the compiler could be written either in Python or in C++. If it is written in Python, other languages like R or Julia would need to implement it as well. But a Python implementation of the compiler might be an interesting first step.
 
-I imagine that both the compiler and the runtime could be implemented in C++, and ported to the browser and mobile platforms via the LLVM toolchain.
+The C++ Vulkan and CPU runtimes could be ported to the browser and mobile platforms via the LLVM toolchain.
 
 
 ### Library of functions
 
 The compiler and runtime are just the core components. Then, to make the users' lives easier, we'd have to implement a rich library of functions, visuals, interactivity routines, and high-level APIs. Having a highly modular architecture is critical here.
 
-There could be a rich user-contributed library of reusable pure functions:
+There could be a rich user-contributed library of reusable pure functions, for example:
 
 * geometric transformations: linear, polar, logarithmic, various Earth projections, etc.
 * color space transformations and colormaps
@@ -190,30 +195,30 @@ I should note that VisPy already implements many of these functions in Python or
 
 ### Memory model
 
-Vulkan gives applications a lot of freedom regarding memory management. Therefore, we should come up with a simple yet powerful memory model that handles CPU-GPU transfers efficiently. One possibility could be to implement a NumPy-like ndarray structure that lives on both the CPU and GPU. It would be automatically and lazily synchronized.
+Vulkan gives applications a lot of freedom regarding memory management. Therefore, we should come up with a simple yet powerful memory model that handles CPU-GPU transfers efficiently. One possibility could be to implement a NumPy-like ndarray structure that lives on both the CPU and GPU. It would be automatically and lazily synchronized between the two.
 
 This is the option chosen by **Glumpy**, VisPy's sister project maintained by Nicolas Rougier. VisPy uses a more complex memory model where data can be stored on the GPU only; while this might save some RAM, it is more complicated to work with this model. Also, the host has typically much more RAM than the GPU.
 
 SPIR-V has a nice support for arbitrarily complex data types, and a NumPy-like API could be used.
 
-One significant advantage of Vulkan and SPIR-V over OpenGL is that the framework encompasses OpenCL-like GPGPU routines as well as visualization shaders. Therefore, it would be possible to execute complex computation kernels on the same GPU data structures that are used for visualization, with no copy involved at all. Typical examples include real-time visualization of numerically-simulated systems like fluids, n-body simulations, biological networks, and so on.
+One significant advantage of Vulkan and SPIR-V over OpenGL is that the framework encompasses OpenCL-like GPGPU kernels as well as visualization shaders. Therefore, it would be possible to execute computation kernels on the same GPU data structures that are used for visualization, with no copy involved at all. Typical examples include real-time visualization of numerically-simulated systems like fluids, n-body simulations, biological networks, and so on.
 
 
 ### Higher-level APIs
 
-All of this represents the core of a relatively low-level data visualization toolkit. A core that would let you create powerful and scalable interactive visualizations in any language, on any platform, and with optimal performance.
+All of this represents the core of a relatively low-level data visualization toolkit. A core that would let users create powerful and scalable interactive visualizations in any language, on any platform, and with optimal performance.
 
 On top of this, we could imagine plotting libraries with various programming interfaces. The hypothetical core I've been describing would be a sort of "game engine, but for data visualization".
 
 
 ## Advantages
 
-This vision represents a significant departure from the current state of the project. As a summary, I list here the advantages of choosing this path.
+This vision represents a significant departure from the current state of the VisPy library. As a summary, I list here the advantages of choosing this path.
 
 
 ### Future-proof
 
-We can consider that OpenGL is on a rather slow deprecation road since Vulkan has been announced. Of course, OpenGL is so widely used that it's not going to disappear before many, many years. But by chosing to move forward with a brand new API, the Khronos Group sent a clear signal to the industry.
+We can consider that OpenGL is on a rather slow deprecation road since Vulkan has been announced last March. Of course, OpenGL is so widely used that it's not going to disappear before many, many years. But by chosing to move forward with a brand new API, the Khronos Group sent a clear signal to the industry.
 
 I also believe that LLVM has a clear future.
 
@@ -242,21 +247,21 @@ Vulkan gives access to modern GPU features such as geometry shaders, tesselation
 
 ### Optimal performance with C++
 
-Being a pure Python library, VisPy needs to resort to many tricks to achieve good performance. For example, every OpenGL call is quite expensive, because of the driver overhead, but also because of the Python bindings. For this reason, we need to batch as many calls as possible. This is the main motivation for *collections*, where severaly independent but similar items are concatenated together and rendered at once on the GPU. This is a somewhat complex system.
+Being a pure Python library, VisPy needs to resort to many tricks to achieve good performance. For example, every OpenGL call is quite expensive, because of the driver overhead, but also because of the Python bindings. For this reason, we need to batch on the GPU as many calls as possible. This is the main motivation for *collections*, where severaly independent but similar items are concatenated together and rendered at once on the GPU. This is a somewhat complex system.
 
-With a C++ engine and Vulkan's command buffers, implementing collections might be unnecessary. We could still batch rendering calls, but on the CPU instead of on the GPU, which is much easier. Performance might be similar than VisPy's collections, but this remains to be tested.
+With a C++ engine and Vulkan command buffers, implementing collections might be unnecessary. We could still batch-rendering calls, but on the CPU instead of on the GPU, which is much easier. Performance might be similar than VisPy's collections, but this remains to be tested.
 
-More generally, on the CPU side, we have much more freedom in the algorithms we can implement. For example, implementing polygon triangulation should not represent a major problem, whereas it would be more complicated in Python. Since it's C++, we're no longer limited by CPython's performance.
+More generally, on the CPU side, we have much more freedom in the algorithms we can implement. For example, implementing polygon triangulation should not represent a major problem, whereas it would be much more complicated in Python. Since it's C++, we're no longer limited by CPython's performance.
 
 
 ### GPGPU-powered visualizations
 
-The ability to combine compute kernels with visualization kernels on the GPU is also a major advantage of the system. The features comes "for free" with Vulkan, and it is no longer necessary to mess with arcane interoperability commands.
+The ability to combine compute kernels with visualization kernels on the GPU is also a major advantage of the system. The features basically comes "for free" with Vulkan, and it is no longer necessary to mess with arcane interoperability commands.
 
 
 ## Conclusion
 
-Since this is such a major departure from the current state of the project, the system discussed here should be explored completely independently from the development of the VisPy library. This is an experiment to investigate a completely different system for VisPy's internals.
+Since this is such a major departure from the current state of the project, the system discussed here should be explored independently from the development of the VisPy library. This is an experiment to investigate an entirely different system for VisPy's internals.
 
 If this experiment is successful, the system could potentially become the basis of VisPy in several years.
 
@@ -267,7 +272,6 @@ It may not be successful, but I believe this is our best bet to ensure a long li
 
 
 more details needed
-python compiler
 dynamic visuals
-right level of abstraction for an API on top of vulkan, like gloo
-
+completely separate from vispy
+current codebase not future proof
