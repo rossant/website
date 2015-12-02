@@ -31,8 +31,8 @@ I've written two books on Python for data science.
 
 
 <a name="minibook"></a>
-## IPython Minibook
-<div class="sub-header-2">april 2013</div>
+## IPython Minibook, second edition
+<div class="sub-header-2">october 2015</div>
 
 <div class="pure-g">
     <div class="book-cover pure-u-1 pure-u-sm-1-3">
@@ -40,8 +40,8 @@ I've written two books on Python for data science.
     </div>
 
     <div class="book-descr pure-u-1 pure-u-sm-2-3">
-        <h3><a href="http://ipython-books.github.io/minibook/">Learning IPython for Interactive Computing and Data Visualization</a></h3>
-        <div class="sub-header-3">Packt Publishing (135 pages, 20$)</div>
+        <h3><a href="http://ipython-books.github.io/minibook/">Learning IPython for Interactive Computing and Data Visualization, second edition</a></h3>
+        <div class="sub-header-3">Packt Publishing (175 pages, 25$)</div>
 
         <p>
             This book is a beginner-level introduction to Python for data analysis:
